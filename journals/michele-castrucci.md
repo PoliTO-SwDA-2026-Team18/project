@@ -1,4 +1,4 @@
-# Project Journal — Gabriele Ferrero
+# Project Journal — Michele Castrucci
 
 ---
 
