@@ -64,5 +64,4 @@
 | Architecture — Container          |       |
 | Architecture — Component          |       |
 | Architecture — Characteristics    |       |
-| Review & Editing                  |       |
 | **Total**                         |       |
