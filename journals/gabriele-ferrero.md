@@ -6,7 +6,7 @@
 
 | Date       | Hours | Report Section        | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 2026-04-15 |   2.5 | Repository Setup & Configuration | Created the directory structure and general project files | 24c2755 |
 
 **Summary:**
 
