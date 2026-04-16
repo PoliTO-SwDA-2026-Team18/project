@@ -64,4 +64,5 @@
 | Architecture — Container          |       |
 | Architecture — Component          |       |
 | Architecture — Characteristics    |       |
+| Repository Setup & Configuration  |       |
 | **Total**                         |       |
