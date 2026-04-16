@@ -1,0 +1,3 @@
+[submodule "egeria"]
+	path = egeria
+	url = https://github.com/odpi/egeria.git
