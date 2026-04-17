@@ -6,7 +6,7 @@
 
 | Date       | Hours | Report Section        | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 15/04/2026 | 30 min | Meeting              | Meeting with team members to discuss how divide the work for the analysis |        |
 
 **Summary:**
 
