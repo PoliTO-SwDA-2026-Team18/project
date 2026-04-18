@@ -4,7 +4,7 @@
 
 ## Sprint 1 — Apr 7–20, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 | 15/04/2026 | 30 min | Meeting              | Meeting with team members to discuss how divide the work for the analysis |        |
 
@@ -14,7 +14,7 @@
 
 ## Sprint 2 — Apr 21 – May 4, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -24,7 +24,7 @@
 
 ## Sprint 3 — May 5–18, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -34,7 +34,7 @@
 
 ## Sprint 4 — May 19 – Jun 1, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -44,7 +44,7 @@
 
 ## Sprint 5 — Jun 2–10, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -54,8 +54,9 @@
 
 ## Total Effort
 
-| Report Section                    | Hours |
+| Activity Type                     | Hours |
 |-----------------------------------|------:|
+| Meeting                           |       |
 | Overview                          |       |
 | Design — Dependencies             |       |
 | Design — Patterns                 |       |

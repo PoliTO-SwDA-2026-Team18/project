@@ -58,7 +58,7 @@ Final reports are in `reports/`. Individual sections that each member works on i
 
 ### Individual Journals
 
-One file per team member, logging activities, hours spent, and report contributions.
+One file per team member, logging activities, hours spent, and project contributions.
 
 | File | Member |
 |---|---|

@@ -4,9 +4,10 @@
 
 ## Sprint 1 — Apr 7–20, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-| 2026-04-15 |   2.5 | Repository Setup & Configuration | Created the directory structure and general project files | 24c2755 |
+| 15/04/2026 |   0.5 | Meeting               | Meeting with team members to discuss how divide the work for the analysis |        |
+| 15/04/2026 |   2.5 | Repository Setup & Configuration | Created the directory structure and general project files | 24c2755 |
 
 **Summary:**
 
@@ -14,7 +15,7 @@
 
 ## Sprint 2 — Apr 21 – May 4, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -24,7 +25,7 @@
 
 ## Sprint 3 — May 5–18, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -34,7 +35,7 @@
 
 ## Sprint 4 — May 19 – Jun 1, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -44,7 +45,7 @@
 
 ## Sprint 5 — Jun 2–10, 2026
 
-| Date       | Hours | Report Section        | Notes | Commit |
+| Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
@@ -54,8 +55,9 @@
 
 ## Total Effort
 
-| Report Section                    | Hours |
+| Activity Type                     | Hours |
 |-----------------------------------|------:|
+| Meeting                           |       |
 | Overview                          |       |
 | Design — Dependencies             |       |
 | Design — Patterns                 |       |
