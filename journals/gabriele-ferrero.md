@@ -8,6 +8,7 @@
 |------------|------:|-----------------------|-------|--------|
 | 15/04/2026 |   0.5 | Meeting               | Meeting with team members to discuss how divide the work for the analysis |        |
 | 15/04/2026 |   2.5 | Repository Setup & Configuration | Created the directory structure and general project files | 24c2755 |
+| 19/04/2026 |   4.5 | Overview | Completed the Overview report section, including system purpose, stakeholders, technical description, and figures | 3ba780d |
 
 **Summary:**
 
