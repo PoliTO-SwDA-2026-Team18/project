@@ -49,13 +49,13 @@ Egeria runs on the **OMAG Server Platform**, a multi-tenant Java process hosting
 
 **Content packs** (`.omarchive` files) are ready-to-use packages that add new metadata types, reference data, and governance configurations to the platform. Once loaded, their content is immediately activated by the runtime.
 
-**How metadata flows.** When metadata changes in a source tool, its connector writes the update to the Metadata Access Server, which publishes an event on a notification channel. All other connectors receive this event and update their respective tools, keeping the entire ecosystem synchronized.
+**How metadata flows.** When metadata changes in a source tool, its connector writes the update to the **Metadata Access Server**, which publishes an event on a notification channel. All other connectors receive this event and update their respective tools, keeping the entire ecosystem synchronized.
 
 *Figure 4 — Bidirectional metadata exchange through Egeria connectors*
 
 ![Egeria exchange](./images/egeria-exchange.svg)
 
-For enterprises with tools spread across multiple data centers and cloud providers, Egeria supports **federated operation**. Multiple platforms can form an **open metadata cohort** — a group where each member broadcasts changes to a shared channel and caches peer updates locally. Every platform thus maintains a complete, real-time view of the global metadata graph without central coordination.
+For enterprises operating tools across multiple data centers, multiple platforms can join an **Open Metadata Repository Cohort** — a collection of servers sharing metadata using a peer-to-peer exchange protocol. Once a server becomes a member of the cohort, it can share metadata with, and receive metadata from, any other member either via events or **federated queries**.
 
 *Figure 5 — Distributed operation: multiple OMAG platforms in a federated cohort*
 
