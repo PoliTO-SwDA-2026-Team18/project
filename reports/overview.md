@@ -69,7 +69,7 @@ The source repository is organized into top-level modules, each serving a distin
 |---|---|
 | `open-metadata-implementation/` | Core source code split into 14 sub-modules that implement all platform services, APIs, and connectors |
 | `open-metadata-resources/` | Samples, utilities, and developer-oriented resources to help contributors get started |
-| `open-metadata-conformance-suite/` | Conformance Test Suite validating correct implementation of Egeria's APIs, repository behaviors, and sharing protocols |
+| `open-metadata-conformance-suite/` | Conformance test suite validating correct implementation of Egeria's APIs and repository behaviors |
 | `open-metadata-distribution/` | Docker images and platform distribution packages used for deployment |
 | `content-packs/` | 25 pre-built `.omarchive` content packs ready for immediate loading |
 
