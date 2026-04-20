@@ -55,7 +55,7 @@ Egeria runs on the **OMAG Server Platform**, a multi-tenant Java process hosting
 
 ![Egeria exchange](./images/egeria-exchange.svg)
 
-For enterprises operating tools across multiple data centers, multiple platforms can join an **Open Metadata Repository Cohort** — a collection of servers sharing metadata using a peer-to-peer exchange protocol. Once a server becomes a member of the cohort, it can share metadata with, and receive metadata from, any other member either via events or **federated queries**.
+For enterprises operating tools across multiple data centers, multiple platforms can join an **[Open Metadata Repository Cohort](https://egeria-project.org/features/cohort-operation/overview/)** — a collection of servers sharing metadata using a peer-to-peer exchange protocol. Once a server becomes a member of the cohort, it can share metadata with, and receive metadata from, any other member either via events or **federated queries**.
 
 *Figure 5 — Distributed operation: multiple OMAG platforms in a federated cohort*
 
