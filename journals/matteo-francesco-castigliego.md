@@ -6,7 +6,7 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-| 15/04/2026 | 30 min | Meeting              | Meeting with team members to discuss how divide the work for the analysis |        |
+| 15/04/2026 |  0.5  | Meeting               | Meeting with team members to discuss how divide the work for the analysis |        |
 
 **Summary:**
 
@@ -16,7 +16,7 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 22/04/2026 |  1.5  | Architecture - Component | First look to the the project and firt notes to describe components | 853e2a0 |
 
 **Summary:**
 
