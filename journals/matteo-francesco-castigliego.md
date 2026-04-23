@@ -17,6 +17,7 @@
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 | 22/04/2026 |  1.5  | Architecture - Component | First look to the the project and firt notes to describe components | 853e2a0 |
+| 23/04/2026 |   1   | Architecture - Component | Added informations about some component and module and added other informations | 4a39916 |
 
 **Summary:**
 
