@@ -1,0 +1,34 @@
+@startuml C4_Context_Egeria
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Egeria Platform - Context Diagram (L1)
+
+Person(dataUsers, "Data Platform Users", "Data Engineers, Officers, Stewards, Analysts")
+Person(admins, "Platform Administrators", "DevOps, SRE, Platform Team")
+Person(governance, "Data Governance Teams", "Compliance, Privacy, Security Officers")
+
+System(egeria, "Egeria Platform", "Metadata & Governance Orchestration - manages metadata, lineage, governance policies across enterprise")
+
+System_Ext(dataSources, "Data Sources", "SQL Databases, File Systems, Kafka Topics, Data Lakes, Unity Catalog, etc.")
+System_Ext(externalTools, "External Tools", "BI Tools, ETL Platforms, Data Catalogs, Analytics Platforms")
+System_Ext(kafka, "Message Bus", "Apache Kafka - Event streaming platform")
+
+Rel(dataUsers, egeria, "Requests metadata, creates glossaries, manages governance")
+Rel(egeria, dataUsers, "Exposes REST APIs, metadata search results")
+
+Rel(admins, egeria, "Configures platform, manages servers")
+Rel(egeria, admins, "Server status, operational metrics")
+
+Rel(governance, egeria, "Creates policies, audit requirements")
+Rel(egeria, governance, "Compliance reports, governance status")
+
+Rel(egeria, dataSources, "Discovers schema, lineage, statistics")
+Rel(dataSources, kafka, "Publishes lineage and audit events")
+Rel(egeria, kafka, "Publishes/subscribes metadata change events")
+
+Rel(egeria, externalTools, "Exports metadata, lineage, policies via REST APIs")
+Rel(externalTools, egeria, "Provides data discovery requests via REST APIs")
+
+@enduml
