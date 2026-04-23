@@ -3,10 +3,12 @@
 
 LAYOUT_WITH_LEGEND()
 
-title Egeria Platform - Context Diagram (L1)
+title Egeria Platform - Context Diagram (Level 1)
 
 Person(dataUsers, "Data Platform Users", "Data Engineers, Officers, Stewards, Analysts")
+' All 26 identified user roles are represented by the collective "Data Platform Users" actor
 Person(admins, "Platform Administrators", "DevOps, SRE, Platform Team")
+' TODO: decide if "Data Governance Teams" should be merged with "Data Platform Users" or kept separate
 Person(governance, "Data Governance Teams", "Compliance, Privacy, Security Officers")
 
 System(egeria, "Egeria Platform", "Metadata & Governance Orchestration - manages metadata, lineage, governance policies across enterprise")
@@ -14,6 +16,7 @@ System(egeria, "Egeria Platform", "Metadata & Governance Orchestration - manages
 System_Ext(dataSources, "Data Sources", "SQL Databases, File Systems, Kafka Topics, Data Lakes, Unity Catalog, etc.")
 System_Ext(externalTools, "External Tools", "BI Tools, ETL Platforms, Data Catalogs, Analytics Platforms")
 System_Ext(kafka, "Message Bus", "Apache Kafka - Event streaming platform")
+' TODO: check if other critical external systems are missing.
 
 Rel(dataUsers, egeria, "Requests metadata, creates glossaries, manages governance")
 Rel(egeria, dataUsers, "Exposes REST APIs, metadata search results")
