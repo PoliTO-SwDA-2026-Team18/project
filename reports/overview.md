@@ -88,7 +88,7 @@ The `open-metadata-implementation/` module is further divided into **14 sub-modu
 | `platform-services` | APIs for configuring the platform and discovering information about hosted servers |
 | `repository-services` (OMRS) | Events, interfaces, and implementation of metadata exchange and federation capabilities |
 | `server-operations` | Starting and shutdown of OMAG Servers on the platform |
-| `user-interfaces` | Basic user interfaces to demonstrate open metadata and governance capabilities |
+| `view-server-generic-services` | Basic user interfaces to demonstrate open metadata and governance capabilities |
 | `user-security` | Token-based authentication and authorization for the platform |
 | `view-services` (OMVS) | Domain-specific services for tools and platforms maintaining and retrieving metadata |
 
