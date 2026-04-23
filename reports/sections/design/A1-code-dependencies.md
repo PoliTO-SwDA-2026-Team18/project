@@ -2,7 +2,7 @@
 
 ## Methodology
 
-**[Depends](https://github.com/multilang-depends/depends)** (v0.9.7) was used for the initial static analysis of the source code, producing a JSON dependency matrix; a custom Python script (`analyze_dependencies.py`) then processed this output to compute the final statistics.
+**[Depends](https://github.com/multilang-depends/depends)** (v0.9.7) was used for the initial static analysis of the source code, producing a JSON dependency matrix; a custom Python script ([`dependency-analysis.py`](/analysis/scripts/dependency-analysis.py)) then processed this output to compute the final statistics.
 
 ---
 
