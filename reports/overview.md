@@ -35,7 +35,7 @@ In short, Egeria's role is to receive metadata from any connected tool, normaliz
 
 ### 3.1 Functional Overview
 
-Egeria runs on the **OMAG Server Platform**, a multi-tenant Java process hosting virtual servers called **OMAG Servers**. Each server type is specialized for a particular task:
+Egeria’s highly configurable platform supports multi-tenancy, allowing multiple organizations to run independent instances simultaneously. This is managed via virtual **Open Metadata and Governance (OMAG) servers**, each specialized for specific tasks:
 
 *Figure 3 — OMAG Platform with its server types*
 
@@ -104,8 +104,7 @@ The `open-metadata-implementation/` module is further divided into **14 sub-modu
 | Markdown | 600 | 14,097 | 0 | 5,963 |
 | Gradle | 246 | 7,418 | 385 | 1,284 |
 | JSON | 8 | 1,421 | 0 | 3 |
-| YAML | 29 | 1,338 | 142 | 95 |
-| Other | 207 | 4,942 | 901 | 2,598 |
+| Other | 236 | 6,280 | 1,043 | 2,693 |
 | **Total** | **5,180** | **585,975** | **303,448** | **152,462** |
 
 ### 4.2 Summary Metrics
@@ -114,8 +113,6 @@ The `open-metadata-implementation/` module is further divided into **14 sub-modu
 |---|---|
 | Total files / LOC | 5,180 / 585,975 |
 | Total lines (all content) | 1,041,885 |
-| Core sub-modules | 14 (`open-metadata-implementation`) |
-| Content packs | 25 |
 | Primary language | Java (~95% of LOC) |
 | Contributors / Maintainers | 63 / 14 |
 | Total releases | 50 (v1.0 – v6.0) |
