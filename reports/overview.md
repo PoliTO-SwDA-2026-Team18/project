@@ -10,7 +10,7 @@ Modern organizations rely on dozens of specialized tools — catalogs, analysis 
 
 **Egeria** solves this by acting as an open metadata hub: each tool needs only one link to Egeria, and Egeria manages the complexity of the exchange. The link is a **connector** (the orange circles in Figure 2), a component that translates between the tool's proprietary format and Egeria's **Open Metadata Types**.
 
-*Figure 2 — The Egeria concept: one connector per tool as the translation bridge*
+*Figure 2 — Egeria concept: one connector per tool as the translation bridge*
 
 ![Egeria concept](./images/connecting-to-egeria.svg)
 
@@ -35,9 +35,9 @@ In short, Egeria's role is to receive metadata from any connected tool, normaliz
 
 ### 3.1 Functional Overview
 
-Egeria’s highly configurable platform supports multi-tenancy, allowing multiple organizations to run independent instances simultaneously. This is managed via virtual **Open Metadata and Governance (OMAG) servers**, each specialized for specific tasks:
+Egeria’s highly configurable platform supports multi-tenancy, allowing multiple organizations to run independent metadata solution in the same platform instance. This is managed via virtual **Open Metadata and Governance (OMAG) servers**, each specialized for specific tasks:
 
-*Figure 3 — OMAG Platform with its server types*
+*Figure 3 — OMAG Platform*
 
 ![Egeria solution components exposed](./images/egeria-solution-components-exposed.svg)
 
