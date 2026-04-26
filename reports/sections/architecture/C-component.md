@@ -48,5 +48,12 @@ In this container there are tools for a continued syncronization:
     - *Connector*: interfaces for components that access real-world digital resources.
     - *Watchdog*: monitoring for events and issues actions to report.
 
- 
 
+## 2. Justify any decisions to exclude specific containers from analysis
+
+I decided to exclude peripheral containers (such as the *View Server*, UI applications, or pure administrative/platform chassis services) because they do not handle the core business logic of metadata federation and synchronization. I've done a "zoom in" on the most important and complex containers. Modules like `repository-services`, `access-services`, `adapters`, and `frameworks` act as the central hubs of the system, possessing the highest number of inter-module dependencies. Focusing on the *Metadata Access Server* and *Integration Daemon* provides the best way for understanding Egeria's architecture.
+
+
+## 3. SOLID Principle Violations at Level 3
+
+<!-- TODO: Insert analysis of SOLID principle violations (SRP, OCP, LSP, ISP, DIP) -->
