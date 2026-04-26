@@ -7,8 +7,9 @@
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 | 15/04/2026 |  0.5  | Meeting               | Meeting with team members to discuss how divide the work for the analysis |        |
+| 19/04/2026 |   2   | Overview | General analysis of all documentation files and overview.md to decide main containers and components to focus for components description |     |
 
-**Summary:**
+**Summary:** During Sprint 1 I partecipated to the meeting to organize the work and I read the most of the documentation to understand the structure of the project to be ready for the writing of the analysis. 
 
 ---
 
@@ -18,6 +19,7 @@
 |------------|------:|-----------------------|-------|--------|
 | 22/04/2026 |  1.5  | Architecture - Component | First look to the the project and firt notes to describe components | 853e2a0 |
 | 23/04/2026 |   1   | Architecture - Component | Added informations about some component and module and added other informations | 4a39916 |
+| 26/04/2026 |  1.5  | Architecture - Component | Added informations about last components i decided to analyze, added justification for excluded components and began the description for SOLID principles violation | e7ad72d-45c713f-a31451a |
 
 **Summary:**
 
