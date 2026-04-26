@@ -56,4 +56,7 @@ I decided to exclude peripheral containers (such as the *View Server*, UI applic
 
 ## 3. SOLID Principle Violations at Level 3
 
-<!-- TODO: Insert analysis of SOLID principle violations (SRP, OCP, LSP, ISP, DIP) -->
+### 3.1 Open/Closed Principle (OCP)
+The system should be open for extension but closed for modification. 
+Egeria allows the addition of new adapters without overturn the code. However, if a completely new standard of metadata is introduced, all the core as *access-services* or *repository-services* might require great modifications on the logic, not only extensions of interfaces, and as conseguence there's the OCP violation.
+
