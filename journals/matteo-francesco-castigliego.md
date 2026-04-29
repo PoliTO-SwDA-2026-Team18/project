@@ -20,7 +20,7 @@
 | 22/04/2026 |  1.5  | Architecture - Component | First look to the the project and firt notes to describe components | 853e2a0 |
 | 23/04/2026 |   1   | Architecture - Component | Added informations about some component and module and added other informations | 4a39916 |
 | 26/04/2026 |  1.5  | Architecture - Component | Added informations about last components i decided to analyze, added justification for excluded components and began the description for SOLID principles violation | e7ad72d-45c713f-a31451a |
-
+| 29/04/2026 |  1.5  | Architecture - Component | Added description of missing SOLID principles | 7211e0c |
 **Summary:**
 
 ---
