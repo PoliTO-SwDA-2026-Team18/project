@@ -56,7 +56,22 @@ I decided to exclude peripheral containers (such as the *View Server*, UI applic
 
 ## 3. SOLID Principle Violations at Level 3
 
-### 3.1 Open/Closed Principle (OCP)
+### 3.1 Single Responsability Principle (SRP)
+According to this principle there should be only one actor responsable of changes in each class or module. 
+We can see that this principle is violated for exsample by `JacquardIntegrationConnector`, which is responsable to assemble all the **Open Metadata Digital Product Catalog** that is composed by several components like catalogs, glossaries or dictionaries. Each of them has its own set of elements and properties.
+
+### 3.2 Open/Closed Principle (OCP)
 The system should be open for extension but closed for modification. 
 Egeria allows the addition of new adapters without overturn the code. However, if a completely new standard of metadata is introduced, all the core as *access-services* or *repository-services* might require great modifications on the logic, not only extensions of interfaces, and as conseguence there's the OCP violation.
 
+### 3.3 Interface Segregation Principle (ISP)
+Each actor should have its own interface composed by the elements that are effectively used by him, not a general interface where everything is putted inside it and several components aren't used depending by the actor. This violation is marked in the `OMRSMetadataCollection`, a module situated in the *repository-services-apis*, which contains all methods that manages entities, relationships etc., so if an actor needs only some part of that must depend by all the entire interface.
+
+### 3.4 Liskov Substitution Principle (LSP)
+Objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.
+In a project too big like this, it's impossible to have metadata tools that support every operation of the interface, infact even if there are a lot of *adapters* they can throw exceptions; this represents a violation of the principle causing a crash of the application.
+
+### 3.5 Dependency Inversion Principle (DIP)
+High-level modules should not depend on low-level modules; both should depend on abstractions. 
+Especially within the `frameworks` module, there are still instances of tight coupling where high-level modules depend on concrete implementations. An example is found in the `OMAGServerPlatformCatalogConnector`, which directly instantiates the concrete class `SoftwareServerProperties` via the `new` keyword: 
+SoftwareServerProperties softwareServerProperties = new SoftwareServerProperties();
