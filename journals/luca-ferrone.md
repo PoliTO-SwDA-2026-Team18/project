@@ -20,6 +20,7 @@
 | 24/04/2026 |  0.5  | Design — Dependencies | Selection, installation and understanding of a tool to detect co-dependencies. |
 | 24/04/2026 |  1.5  | Design — Dependencies | Co-dependencies analysis with python and code-maat|
 | 25/04/2026 |  1.25 | Design — Dependencies | Co-dependencies analysis with python              |
+| 29/04/2026 |  3.5  | Design — Dependencies | Co-dependencies analysis and writing of report    |
 
 **Summary:**
 

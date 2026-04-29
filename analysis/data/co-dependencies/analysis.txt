@@ -1,0 +1,556 @@
+=== TOP HUB (file più connessi) ===
+EgeriaContentPacksGUIDMap.json -> 14
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive -> 9
+content-packs/CocoOrganizationArchive.omarchive -> 9
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive -> 9
+content-packs/CocoTypesArchive.omarchive -> 9
+content-packs/CocoSustainabilityArchive.omarchive -> 9
+content-packs/CocoGovernanceProgramArchive.omarchive -> 9
+content-packs/CocoComboArchive.omarchive -> 9
+content-packs/CocoBusinessSystemsArchive.omarchive -> 9
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java -> 9
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java -> 8
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java -> 8
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java -> 8
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java -> 8
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java -> 8
+content-packs/OpenMetadataTypes.omarchive -> 8
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle -> 7
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle -> 7
+open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle -> 7
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle -> 7
+open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle -> 7
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java -> 7
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java -> 7
+open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle -> 7
+content-packs/ApacheAtlasContentPack.omarchive -> 6
+content-packs/UnityCatalogContentPack.omarchive -> 6
+content-packs/APIsContentPack.omarchive -> 6
+content-packs/PostgresContentPack.omarchive -> 6
+content-packs/ApacheKafkaContentPack.omarchive -> 6
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile -> 6
+open-metadata-resources/open-metadata-deployment/docker/platform/README.md -> 6
+open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle -> 6
+open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md -> 6
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java -> 6
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle -> 6
+developer-resources/License-Example-Files/License_for_POM_Files.xml -> 6
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md -> 6
+open-metadata-resources/open-metadata-deployment/docker/README.md -> 6
+content-packs/CoreContentPack.omarchive -> 6
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java -> 6
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java -> 5
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java -> 5
+open-metadata-resources/open-metadata-deployment/sample-configs/integration-daemon/config/integration-daemon.config -> 4
+open-metadata-resources/open-metadata-deployment/sample-configs/simple-metadata-store/config/simple-metadata-store.config -> 4
+open-metadata-resources/open-metadata-deployment/sample-configs/view-server/config/view-server.config -> 4
+open-metadata-resources/open-metadata-deployment/sample-configs/active-metadata-store/config/active-metadata-store.config -> 4
+open-metadata-resources/open-metadata-deployment/sample-configs/engine-host/config/engine-host.config -> 4
+.github/workflows/codeql-v5.yml -> 4
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeader.java -> 4
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSMetadataCollection.java -> 4
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-avro-sample/build.gradle -> 3
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-csv-sample/build.gradle -> 3
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-csv-sample/build.gradle -> 3
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-avro-sample/build.gradle -> 3
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByClassificationExecutor.java -> 3
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyValueExecutor.java -> 3
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyExecutor.java -> 3
+.github/workflows/merge-v5.yml -> 3
+.github/workflows/release-v5.yml -> 3
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityDetail.java -> 3
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityProxy.java -> 3
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Classification.java -> 3
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesExecutor.java -> 3
+.github/workflows/pr-v5.yml -> 3
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollectionBase.java -> 3
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositoryconnector/LocalOMRSMetadataCollection.java -> 3
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/inmemory-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/inmemory/repositoryconnector/InMemoryOMRSMetadataCollection.java -> 3
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/omrs-rest-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/rest/repositoryconnector/OMRSRESTMetadataCollection.java -> 3
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntitySummary.java -> 2
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/DatabaseStore.java -> 2
+gradle/wrapper/gradle-wrapper.jar -> 2
+gradlew -> 2
+open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionConnector.java -> 2
+open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java -> 2
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelatedEntitiesIterator.java -> 2
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerErrorCode.java -> 2
+open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/ffdc/GovernanceActionConnectorsAuditCode.java -> 2
+open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/LocalRepositoryServicesResource.java -> 2
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/GovernanceServicesDescription.java -> 2
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformActiveServices.java -> 2
+gradle/wrapper/gradle-wrapper.properties -> 2
+open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ffdc/ConnectionCheckedException.java -> 1
+open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ffdc/ConnectorCheckedException.java -> 1
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/PostgresOMRSMetadataStore.java -> 1
+open-metadata-implementation/adapters/open-connectors/data-manager-connectors/unity-catalog-connectors/UnityCatalog-demo-cataloguing-uc.http -> 1
+open-metadata-implementation/adapters/open-connectors/data-manager-connectors/unity-catalog-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/unitycatalog/sync/OSSUnityCatalogInsideCatalogSyncFunctions.java -> 1
+assets/css/style-sub.scss -> 1
+assets/css/style.scss -> 1
+CONTRIBUTING.md -> 1
+GOVERNANCE.md -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntitySearch.java -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipSearch.java -> 1
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelationshipsIterator.java -> 1
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryErrorHandler.java -> 1
+open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/EnterpriseRepositoryServicesResource.java -> 1
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/repositoryconnector/OMRSRepositoryHelper.java -> 1
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositorycontentmanager/OMRSRepositoryContentHelper.java -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceProfile.java -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceProfileRequirement.java -> 1
+open-metadata-implementation/repository-services/repository-services-apis/src/test/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeaderTest.java -> 1
+open-metadata-implementation/adapters/open-connectors/event-bus-connectors/open-metadata-topic-connectors/kafka-open-metadata-topic-connector/src/main/java/org/odpi/openmetadata/adapters/eventbus/topic/kafka/KafkaOpenMetadataTopicConnectorAuditCode.java -> 1
+open-metadata-implementation/adapters/open-connectors/event-bus-connectors/open-metadata-topic-connectors/kafka-open-metadata-topic-connector/src/main/java/org/odpi/openmetadata/adapters/eventbus/topic/kafka/KafkaOpenMetadataTopicConnectorErrorCode.java -> 1
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/QueryBuilder.java -> 1
+open-metadata-implementation/repository-services/repository-services-client/src/main/java/org/odpi/openmetadata/repositoryservices/clients/MetadataCollectionServicesClient.java -> 1
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/CommonServicesDescription.java -> 1
+open-metadata-implementation/common-services/multi-tenant/src/main/java/org/odpi/openmetadata/commonservices/multitenant/OMAGServerInstance.java -> 1
+open-metadata-implementation/common-services/multi-tenant/src/main/java/org/odpi/openmetadata/commonservices/multitenant/OMAGServerPlatformInstanceMap.java -> 1
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryIteratorForEntities.java -> 1
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/EngineServiceDescription.java -> 1
+open-metadata-implementation/common-services/metadata-security/metadata-security-connectors/src/main/java/org/odpi/openmetadata/metadatasecurity/connectors/OpenMetadataServerSecurityConnector.java -> 1
+open-metadata-implementation/common-services/metadata-security/metadata-security-server/src/main/java/org/odpi/openmetadata/metadatasecurity/server/OpenMetadataServerSecurityVerifier.java -> 1
+open-metadata-implementation/common-services/ffdc-services/src/main/java/org/odpi/openmetadata/commonservices/ffdc/InvalidParameterHandler.java -> 1
+open-metadata-implementation/common-services/ffdc-services/src/main/java/org/odpi/openmetadata/commonservices/ffdc/OMAGCommonErrorCode.java -> 1
+_layouts/default.html -> 1
+_layouts/homepage.html -> 1
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceHeader.java -> 1
+open-metadata-implementation/repository-services/repository-services-archive-utilities/src/main/java/org/odpi/openmetadata/repositoryservices/archiveutilities/OMRSArchiveBuilder.java -> 1
+open-metadata-implementation/repository-services/repository-services-archive-utilities/src/main/java/org/odpi/openmetadata/repositoryservices/archiveutilities/OMRSArchiveHelper.java -> 1
+open-metadata-implementation/platform-services/platform-services-spring/src/main/java/org/odpi/openmetadata/platformservices/server/spring/OMAGServerPlatformActiveResource.java -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityProxyLifecycle.java -> 1
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/properties/AdminServicesConfigHeader.java -> 1
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/properties/OMAGServerConfig.java -> 1
+Community-Guide.md -> 1
+Egeria-Operations.md -> 1
+open-metadata-implementation/platform-services/platform-services-client/src/main/java/org/odpi/openmetadata/platformservices/client/PlatformServicesClient.java -> 1
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/repositoryconnector/OMRSRepositoryValidator.java -> 1
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositorycontentmanager/OMRSRepositoryContentValidator.java -> 1
+open-metadata-implementation/common-services/generic-handlers/src/main/java/org/odpi/openmetadata/commonservices/generichandlers/AssetHandler.java -> 1
+open-metadata-implementation/common-services/generic-handlers/src/main/java/org/odpi/openmetadata/commonservices/generichandlers/ConnectionHandler.java -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/RepositoryConformanceTestCase.java -> 1
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceWorkPad.java -> 1
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerAuditCode.java -> 1
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/OMRSRepositoryRESTServices.java -> 1
+.github/workflows/scorecards.yml -> 1
+open-metadata-implementation/admin-services/admin-services-client/src/main/java/org/odpi/openmetadata/adminservices/client/CohortMemberConfigurationClient.java -> 1
+open-metadata-implementation/admin-services/admin-services-spring/src/main/java/org/odpi/openmetadata/adminservices/spring/ConfigRepositoryServicesResource.java -> 1
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/connectormanager/OMRSEnterpriseConnectorManager.java -> 1
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSRepositoryConnector.java -> 1
+
+=== TOP COUPLING ===
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoOrganizationArchive.omarchive (100.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoClinicalTrialsTemplatesArchive.omarchive (100.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoSustainabilityArchive.omarchive (100.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoGovernanceProgramArchive.omarchive (100.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoComboArchive.omarchive (100.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/CocoTypesArchive.omarchive (100.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/CocoGovernanceProgramArchive.omarchive (100.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/CocoComboArchive.omarchive (100.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/CocoTypesArchive.omarchive (100.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/CocoSustainabilityArchive.omarchive (100.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/CocoClinicalTrialsTemplatesArchive.omarchive (100.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> content-packs/CocoTypesArchive.omarchive (100.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> content-packs/CocoSustainabilityArchive.omarchive (100.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> content-packs/CocoComboArchive.omarchive (100.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> content-packs/CocoGovernanceProgramArchive.omarchive (100.0)
+content-packs/CocoTypesArchive.omarchive <-> content-packs/CocoGovernanceProgramArchive.omarchive (100.0)
+content-packs/CocoTypesArchive.omarchive <-> content-packs/CocoSustainabilityArchive.omarchive (100.0)
+content-packs/CocoTypesArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/CocoTypesArchive.omarchive <-> content-packs/CocoComboArchive.omarchive (100.0)
+content-packs/CocoSustainabilityArchive.omarchive <-> content-packs/CocoGovernanceProgramArchive.omarchive (100.0)
+content-packs/CocoSustainabilityArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/CocoSustainabilityArchive.omarchive <-> content-packs/CocoComboArchive.omarchive (100.0)
+content-packs/CocoGovernanceProgramArchive.omarchive <-> content-packs/CocoComboArchive.omarchive (100.0)
+content-packs/CocoGovernanceProgramArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/CocoComboArchive.omarchive <-> content-packs/CocoBusinessSystemsArchive.omarchive (100.0)
+content-packs/ApacheAtlasContentPack.omarchive <-> content-packs/UnityCatalogContentPack.omarchive (100.0)
+content-packs/ApacheAtlasContentPack.omarchive <-> content-packs/ApacheKafkaContentPack.omarchive (100.0)
+content-packs/ApacheAtlasContentPack.omarchive <-> content-packs/APIsContentPack.omarchive (100.0)
+content-packs/ApacheAtlasContentPack.omarchive <-> content-packs/PostgresContentPack.omarchive (100.0)
+content-packs/UnityCatalogContentPack.omarchive <-> content-packs/APIsContentPack.omarchive (100.0)
+content-packs/UnityCatalogContentPack.omarchive <-> content-packs/PostgresContentPack.omarchive (100.0)
+content-packs/UnityCatalogContentPack.omarchive <-> content-packs/ApacheKafkaContentPack.omarchive (100.0)
+content-packs/APIsContentPack.omarchive <-> content-packs/PostgresContentPack.omarchive (100.0)
+content-packs/APIsContentPack.omarchive <-> content-packs/ApacheKafkaContentPack.omarchive (100.0)
+content-packs/PostgresContentPack.omarchive <-> content-packs/ApacheKafkaContentPack.omarchive (100.0)
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-avro-sample/build.gradle <-> open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-csv-sample/build.gradle (100.0)
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-avro-sample/build.gradle <-> open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-csv-sample/build.gradle (100.0)
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-avro-sample/build.gradle <-> open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-avro-sample/build.gradle (100.0)
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-csv-sample/build.gradle <-> open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-avro-sample/build.gradle (100.0)
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-csv-sample/build.gradle <-> open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-csv-sample/build.gradle (100.0)
+open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-csv-sample/build.gradle <-> open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-avro-sample/build.gradle (100.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/integration-daemon/config/integration-daemon.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/simple-metadata-store/config/simple-metadata-store.config (100.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByClassificationExecutor.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyValueExecutor.java (100.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/integration-daemon/config/integration-daemon.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/view-server/config/view-server.config (92.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/integration-daemon/config/integration-daemon.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/engine-host/config/engine-host.config (92.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/integration-daemon/config/integration-daemon.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/active-metadata-store/config/active-metadata-store.config (92.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/simple-metadata-store/config/simple-metadata-store.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/active-metadata-store/config/active-metadata-store.config (92.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/simple-metadata-store/config/simple-metadata-store.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/engine-host/config/engine-host.config (92.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/simple-metadata-store/config/simple-metadata-store.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/view-server/config/view-server.config (92.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByClassificationExecutor.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyExecutor.java (92.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyValueExecutor.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyExecutor.java (92.0)
+.github/workflows/merge-v5.yml <-> .github/workflows/release-v5.yml (91.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityDetail.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java (90.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityDetail.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityProxy.java (90.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityDetail.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Classification.java (90.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntitySummary.java (90.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile <-> open-metadata-resources/open-metadata-deployment/docker/platform/README.md (90.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle (88.0)
+open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ffdc/ConnectionCheckedException.java <-> open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ffdc/ConnectorCheckedException.java (87.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/view-server/config/view-server.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/engine-host/config/engine-host.config (85.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/view-server/config/view-server.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/active-metadata-store/config/active-metadata-store.config (85.0)
+open-metadata-resources/open-metadata-deployment/sample-configs/active-metadata-store/config/active-metadata-store.config <-> open-metadata-resources/open-metadata-deployment/sample-configs/engine-host/config/engine-host.config (85.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle (85.0)
+open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md <-> open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java (85.0)
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/PostgresOMRSMetadataStore.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/DatabaseStore.java (85.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityProxy.java (83.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Classification.java (83.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityProxy.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Classification.java (83.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle (83.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle (82.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle (82.0)
+open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md <-> developer-resources/License-Example-Files/License_for_POM_Files.xml (81.0)
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java <-> developer-resources/License-Example-Files/License_for_POM_Files.xml (81.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle (79.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java (78.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java (78.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByClassificationExecutor.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesExecutor.java (76.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyValueExecutor.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesExecutor.java (76.0)
+gradle/wrapper/gradle-wrapper.jar <-> gradlew (76.0)
+open-metadata-implementation/adapters/open-connectors/data-manager-connectors/unity-catalog-connectors/UnityCatalog-demo-cataloguing-uc.http <-> open-metadata-implementation/adapters/open-connectors/data-manager-connectors/unity-catalog-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/unitycatalog/sync/OSSUnityCatalogInsideCatalogSyncFunctions.java (76.0)
+developer-resources/License-Example-Files/License_for_POM_Files.xml <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md (75.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java (75.0)
+assets/css/style-sub.scss <-> assets/css/style.scss (75.0)
+CONTRIBUTING.md <-> GOVERNANCE.md (75.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle (74.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle (73.0)
+open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md (73.0)
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md (73.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntitySearch.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipSearch.java (73.0)
+open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionConnector.java <-> open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java (73.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle (72.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyExecutor.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesExecutor.java (71.0)
+.github/workflows/release-v5.yml <-> .github/workflows/pr-v5.yml (70.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle (69.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java (69.0)
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelatedEntitiesIterator.java <-> open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelationshipsIterator.java (69.0)
+developer-resources/License-Example-Files/License_for_POM_Files.xml <-> open-metadata-resources/open-metadata-deployment/docker/README.md (68.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (68.0)
+open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md <-> open-metadata-resources/open-metadata-deployment/docker/README.md (66.0)
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java <-> open-metadata-resources/open-metadata-deployment/docker/README.md (66.0)
+open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java <-> open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/ffdc/GovernanceActionConnectorsAuditCode.java (66.0)
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryErrorHandler.java <-> open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerErrorCode.java (66.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle (65.0)
+content-packs/ApacheAtlasContentPack.omarchive <-> content-packs/CoreContentPack.omarchive (64.0)
+content-packs/UnityCatalogContentPack.omarchive <-> content-packs/CoreContentPack.omarchive (64.0)
+content-packs/APIsContentPack.omarchive <-> content-packs/CoreContentPack.omarchive (64.0)
+content-packs/PostgresContentPack.omarchive <-> content-packs/CoreContentPack.omarchive (64.0)
+content-packs/ApacheKafkaContentPack.omarchive <-> content-packs/CoreContentPack.omarchive (64.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (64.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java (64.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java (64.0)
+open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/EnterpriseRepositoryServicesResource.java <-> open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/LocalRepositoryServicesResource.java (64.0)
+.github/workflows/merge-v5.yml <-> .github/workflows/pr-v5.yml (63.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (63.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java (62.0)
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md <-> open-metadata-resources/open-metadata-deployment/docker/README.md (62.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/repositoryconnector/OMRSRepositoryHelper.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositorycontentmanager/OMRSRepositoryContentHelper.java (62.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoOrganizationArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoTypesArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoSustainabilityArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoGovernanceProgramArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoComboArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+content-packs/CocoBusinessSystemsArchive.omarchive <-> EgeriaContentPacksGUIDMap.json (61.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (61.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java (61.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (61.0)
+content-packs/ApacheAtlasContentPack.omarchive <-> EgeriaContentPacksGUIDMap.json (60.0)
+content-packs/UnityCatalogContentPack.omarchive <-> EgeriaContentPacksGUIDMap.json (60.0)
+content-packs/APIsContentPack.omarchive <-> EgeriaContentPacksGUIDMap.json (60.0)
+content-packs/PostgresContentPack.omarchive <-> EgeriaContentPacksGUIDMap.json (60.0)
+content-packs/ApacheKafkaContentPack.omarchive <-> EgeriaContentPacksGUIDMap.json (60.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java (60.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollectionBase.java (60.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (58.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceProfile.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceProfileRequirement.java (58.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (57.0)
+.github/workflows/pr-v5.yml <-> .github/workflows/codeql-v5.yml (57.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeader.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/test/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeaderTest.java (57.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle (56.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java (56.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollectionBase.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSMetadataCollection.java (56.0)
+open-metadata-implementation/adapters/open-connectors/event-bus-connectors/open-metadata-topic-connectors/kafka-open-metadata-topic-connector/src/main/java/org/odpi/openmetadata/adapters/eventbus/topic/kafka/KafkaOpenMetadataTopicConnectorAuditCode.java <-> open-metadata-implementation/adapters/open-connectors/event-bus-connectors/open-metadata-topic-connectors/kafka-open-metadata-topic-connector/src/main/java/org/odpi/openmetadata/adapters/eventbus/topic/kafka/KafkaOpenMetadataTopicConnectorErrorCode.java (56.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/README.md <-> developer-resources/License-Example-Files/License_for_POM_Files.xml (55.0)
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/DatabaseStore.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/QueryBuilder.java (55.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java (55.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java (55.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle (54.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java (54.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java (54.0)
+open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/LocalRepositoryServicesResource.java <-> open-metadata-implementation/repository-services/repository-services-client/src/main/java/org/odpi/openmetadata/repositoryservices/clients/MetadataCollectionServicesClient.java (54.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSMetadataCollection.java (54.0)
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/CommonServicesDescription.java <-> open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/GovernanceServicesDescription.java (54.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java (53.0)
+.github/workflows/release-v5.yml <-> .github/workflows/codeql-v5.yml (52.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile <-> developer-resources/License-Example-Files/License_for_POM_Files.xml (52.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/README.md <-> open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md (52.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/README.md <-> open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java (52.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntitySummary.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeader.java (52.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java (52.0)
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelatedEntitiesIterator.java <-> open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryIteratorForEntities.java (52.0)
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/GovernanceServicesDescription.java <-> open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/EngineServiceDescription.java (52.0)
+open-metadata-implementation/common-services/multi-tenant/src/main/java/org/odpi/openmetadata/commonservices/multitenant/OMAGServerInstance.java <-> open-metadata-implementation/common-services/multi-tenant/src/main/java/org/odpi/openmetadata/commonservices/multitenant/OMAGServerPlatformInstanceMap.java (52.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle (51.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle (51.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (51.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java (51.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java (51.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositoryconnector/LocalOMRSMetadataCollection.java (51.0)
+open-metadata-implementation/common-services/metadata-security/metadata-security-connectors/src/main/java/org/odpi/openmetadata/metadatasecurity/connectors/OpenMetadataServerSecurityConnector.java <-> open-metadata-implementation/common-services/metadata-security/metadata-security-server/src/main/java/org/odpi/openmetadata/metadatasecurity/server/OpenMetadataServerSecurityVerifier.java (51.0)
+content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoOrganizationArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoClinicalTrialsTemplatesArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoTypesArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoSustainabilityArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoGovernanceProgramArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoComboArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+content-packs/CocoBusinessSystemsArchive.omarchive <-> content-packs/OpenMetadataTypes.omarchive (50.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeader.java (50.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile <-> open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java (50.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile <-> open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md (50.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle (50.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle (50.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (50.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java (50.0)
+open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionConnector.java <-> open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/ffdc/GovernanceActionConnectorsAuditCode.java (50.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java (50.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeader.java <-> open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceHeader.java (50.0)
+open-metadata-implementation/common-services/ffdc-services/src/main/java/org/odpi/openmetadata/commonservices/ffdc/InvalidParameterHandler.java <-> open-metadata-implementation/common-services/ffdc-services/src/main/java/org/odpi/openmetadata/commonservices/ffdc/OMAGCommonErrorCode.java (50.0)
+_layouts/default.html <-> _layouts/homepage.html (50.0)
+.github/workflows/merge-v5.yml <-> .github/workflows/codeql-v5.yml (48.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (48.0)
+open-metadata-implementation/repository-services/repository-services-archive-utilities/src/main/java/org/odpi/openmetadata/repositoryservices/archiveutilities/OMRSArchiveBuilder.java <-> open-metadata-implementation/repository-services/repository-services-archive-utilities/src/main/java/org/odpi/openmetadata/repositoryservices/archiveutilities/OMRSArchiveHelper.java (48.0)
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformActiveServices.java <-> open-metadata-implementation/platform-services/platform-services-spring/src/main/java/org/odpi/openmetadata/platformservices/server/spring/OMAGServerPlatformActiveResource.java (48.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/README.md <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md (47.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle (47.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (47.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (47.0)
+gradle/wrapper/gradle-wrapper.jar <-> gradle/wrapper/gradle-wrapper.properties (47.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityProxyLifecycle.java (47.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java (46.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java (46.0)
+open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/properties/AdminServicesConfigHeader.java <-> open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/properties/OMAGServerConfig.java (46.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md (45.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle (45.0)
+gradlew <-> gradle/wrapper/gradle-wrapper.properties (45.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java (45.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSMetadataCollection.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositoryconnector/LocalOMRSMetadataCollection.java (45.0)
+open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformActiveServices.java <-> open-metadata-implementation/platform-services/platform-services-client/src/main/java/org/odpi/openmetadata/platformservices/client/PlatformServicesClient.java (45.0)
+Community-Guide.md <-> Egeria-Operations.md (45.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java (44.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/repositoryconnector/OMRSRepositoryValidator.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositorycontentmanager/OMRSRepositoryContentValidator.java (44.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java (43.0)
+open-metadata-implementation/common-services/generic-handlers/src/main/java/org/odpi/openmetadata/commonservices/generichandlers/AssetHandler.java <-> open-metadata-implementation/common-services/generic-handlers/src/main/java/org/odpi/openmetadata/commonservices/generichandlers/ConnectionHandler.java (43.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java (42.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/inmemory-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/inmemory/repositoryconnector/InMemoryOMRSMetadataCollection.java (42.0)
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/inmemory-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/inmemory/repositoryconnector/InMemoryOMRSMetadataCollection.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/omrs-rest-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/rest/repositoryconnector/OMRSRESTMetadataCollection.java (42.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/RepositoryConformanceTestCase.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceWorkPad.java (42.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/README.md <-> open-metadata-resources/open-metadata-deployment/docker/README.md (41.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle (41.0)
+open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerErrorCode.java <-> open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerAuditCode.java (41.0)
+content-packs/CoreContentPack.omarchive <-> EgeriaContentPacksGUIDMap.json (41.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/omrs-rest-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/rest/repositoryconnector/OMRSRESTMetadataCollection.java (41.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSMetadataCollection.java <-> open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/inmemory-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/inmemory/repositoryconnector/InMemoryOMRSMetadataCollection.java (41.0)
+open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile <-> open-metadata-resources/open-metadata-deployment/docker/README.md (40.0)
+open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle <-> open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle (40.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java (40.0)
+open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java <-> open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java (40.0)
+open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollectionBase.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositoryconnector/LocalOMRSMetadataCollection.java (40.0)
+.github/workflows/codeql-v5.yml <-> .github/workflows/scorecards.yml (40.0)
+open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/omrs-rest-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/rest/repositoryconnector/OMRSRESTMetadataCollection.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/OMRSRepositoryRESTServices.java (40.0)
+open-metadata-implementation/admin-services/admin-services-client/src/main/java/org/odpi/openmetadata/adminservices/client/CohortMemberConfigurationClient.java <-> open-metadata-implementation/admin-services/admin-services-spring/src/main/java/org/odpi/openmetadata/adminservices/spring/ConfigRepositoryServicesResource.java (40.0)
+open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/connectormanager/OMRSEnterpriseConnectorManager.java <-> open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSRepositoryConnector.java (40.0)
+
+=== CLUSTERS ===
+Cluster 1: size 16
+  - content-packs/UnityCatalogContentPack.omarchive
+  - content-packs/CocoGovernanceEngineDefinitionsArchive.omarchive
+  - content-packs/CoreContentPack.omarchive
+  - content-packs/CocoSustainabilityArchive.omarchive
+  - content-packs/CocoComboArchive.omarchive
+  - content-packs/ApacheKafkaContentPack.omarchive
+  - content-packs/CocoOrganizationArchive.omarchive
+  - content-packs/CocoBusinessSystemsArchive.omarchive
+  - content-packs/APIsContentPack.omarchive
+  - content-packs/CocoClinicalTrialsTemplatesArchive.omarchive
+  - content-packs/CocoGovernanceProgramArchive.omarchive
+  - EgeriaContentPacksGUIDMap.json
+  - content-packs/OpenMetadataTypes.omarchive
+  - content-packs/CocoTypesArchive.omarchive
+  - content-packs/ApacheAtlasContentPack.omarchive
+  - content-packs/PostgresContentPack.omarchive
+Cluster 2: size 10
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReferenceCopyLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedClassificationLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedReferenceCopyClassificationLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityProxyLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReferenceCopyLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityRetype.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityReidentify.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntityLifecycle.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipReidentify.java
+Cluster 3: size 8
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Classification.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityProxy.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/test/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeaderTest.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceHeader.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/InstanceAuditHeader.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntityDetail.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/EntitySummary.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/properties/instances/Relationship.java
+Cluster 4: size 8
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/governance-program-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/digital-architecture-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/asset-consumer-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/community-profile-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/asset-owner-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/data-manager-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/asset-manager-fvt/build.gradle
+  - open-metadata-test/open-metadata-fvt/access-services-fvt/stewardship-action-fvt/build.gradle
+Cluster 5: size 7
+  - open-metadata-resources/open-metadata-deployment/docker/platform/README.md
+  - open-metadata-conformance-suite/docs/platform-workbench/test-cases/platform-origin-test-case.md
+  - developer-resources/License-Example-Files/License_for_POM_Files.xml
+  - open-metadata-resources/open-metadata-deployment/docker/platform/Dockerfile
+  - open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformOriginServices.java
+  - open-metadata-resources/open-metadata-deployment/docker/README.md
+  - open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/docs/README.md
+Cluster 6: size 7
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/OMRSRepositoryRESTServices.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSMetadataCollection.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositoryconnector/LocalOMRSMetadataCollection.java
+  - open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/inmemory-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/inmemory/repositoryconnector/InMemoryOMRSMetadataCollection.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollectionBase.java
+  - open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/omrs-rest-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/rest/repositoryconnector/OMRSRESTMetadataCollection.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/OMRSMetadataCollection.java
+Cluster 7: size 5
+  - open-metadata-resources/open-metadata-deployment/sample-configs/view-server/config/view-server.config
+  - open-metadata-resources/open-metadata-deployment/sample-configs/engine-host/config/engine-host.config
+  - open-metadata-resources/open-metadata-deployment/sample-configs/active-metadata-store/config/active-metadata-store.config
+  - open-metadata-resources/open-metadata-deployment/sample-configs/integration-daemon/config/integration-daemon.config
+  - open-metadata-resources/open-metadata-deployment/sample-configs/simple-metadata-store/config/simple-metadata-store.config
+Cluster 8: size 5
+  - .github/workflows/merge-v5.yml
+  - .github/workflows/pr-v5.yml
+  - .github/workflows/scorecards.yml
+  - .github/workflows/codeql-v5.yml
+  - .github/workflows/release-v5.yml
+Cluster 9: size 4
+  - open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-avro-sample/build.gradle
+  - open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-csv-sample/build.gradle
+  - open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-create-csv-sample/build.gradle
+  - open-metadata-resources/open-metadata-samples/access-services-samples/asset-management-samples/asset-reader-avro-sample/build.gradle
+Cluster 10: size 4
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesExecutor.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyExecutor.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByPropertyValueExecutor.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/executors/FindEntitiesByClassificationExecutor.java
+Cluster 11: size 3
+  - open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/DatabaseStore.java
+  - open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/database/QueryBuilder.java
+  - open-metadata-implementation/adapters/open-connectors/repository-services-connectors/open-metadata-collection-store-connectors/postgres-repository-connector/src/main/java/org/odpi/openmetadata/adapters/repositoryservices/postgres/repositoryconnector/PostgresOMRSMetadataStore.java
+Cluster 12: size 3
+  - gradle/wrapper/gradle-wrapper.properties
+  - gradle/wrapper/gradle-wrapper.jar
+  - gradlew
+Cluster 13: size 3
+  - open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/ffdc/GovernanceActionConnectorsAuditCode.java
+  - open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionConnector.java
+  - open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java
+Cluster 14: size 3
+  - open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryIteratorForEntities.java
+  - open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelatedEntitiesIterator.java
+  - open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryRelationshipsIterator.java
+Cluster 15: size 3
+  - open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerErrorCode.java
+  - open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryHandlerAuditCode.java
+  - open-metadata-implementation/common-services/repository-handler/src/main/java/org/odpi/openmetadata/commonservices/repositoryhandler/RepositoryErrorHandler.java
+Cluster 16: size 3
+  - open-metadata-implementation/repository-services/repository-services-client/src/main/java/org/odpi/openmetadata/repositoryservices/clients/MetadataCollectionServicesClient.java
+  - open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/LocalRepositoryServicesResource.java
+  - open-metadata-implementation/repository-services/repository-services-spring/src/main/java/org/odpi/openmetadata/repositoryservices/rest/server/spring/EnterpriseRepositoryServicesResource.java
+Cluster 17: size 3
+  - open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/CommonServicesDescription.java
+  - open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/EngineServiceDescription.java
+  - open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/registration/GovernanceServicesDescription.java
+Cluster 18: size 3
+  - open-metadata-implementation/platform-services/platform-services-server/src/main/java/org/odpi/openmetadata/platformservices/server/OMAGServerPlatformActiveServices.java
+  - open-metadata-implementation/platform-services/platform-services-spring/src/main/java/org/odpi/openmetadata/platformservices/server/spring/OMAGServerPlatformActiveResource.java
+  - open-metadata-implementation/platform-services/platform-services-client/src/main/java/org/odpi/openmetadata/platformservices/client/PlatformServicesClient.java
+Cluster 19: size 2
+  - open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ffdc/ConnectorCheckedException.java
+  - open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ffdc/ConnectionCheckedException.java
+Cluster 20: size 2
+  - open-metadata-implementation/adapters/open-connectors/data-manager-connectors/unity-catalog-connectors/UnityCatalog-demo-cataloguing-uc.http
+  - open-metadata-implementation/adapters/open-connectors/data-manager-connectors/unity-catalog-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/unitycatalog/sync/OSSUnityCatalogInsideCatalogSyncFunctions.java
+Cluster 21: size 2
+  - assets/css/style-sub.scss
+  - assets/css/style.scss
+Cluster 22: size 2
+  - GOVERNANCE.md
+  - CONTRIBUTING.md
+Cluster 23: size 2
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedRelationshipSearch.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/instances/TestSupportedEntitySearch.java
+Cluster 24: size 2
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/repositoryconnector/OMRSRepositoryHelper.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositorycontentmanager/OMRSRepositoryContentHelper.java
+Cluster 25: size 2
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceProfileRequirement.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceProfile.java
+Cluster 26: size 2
+  - open-metadata-implementation/adapters/open-connectors/event-bus-connectors/open-metadata-topic-connectors/kafka-open-metadata-topic-connector/src/main/java/org/odpi/openmetadata/adapters/eventbus/topic/kafka/KafkaOpenMetadataTopicConnectorAuditCode.java
+  - open-metadata-implementation/adapters/open-connectors/event-bus-connectors/open-metadata-topic-connectors/kafka-open-metadata-topic-connector/src/main/java/org/odpi/openmetadata/adapters/eventbus/topic/kafka/KafkaOpenMetadataTopicConnectorErrorCode.java
+Cluster 27: size 2
+  - open-metadata-implementation/common-services/multi-tenant/src/main/java/org/odpi/openmetadata/commonservices/multitenant/OMAGServerInstance.java
+  - open-metadata-implementation/common-services/multi-tenant/src/main/java/org/odpi/openmetadata/commonservices/multitenant/OMAGServerPlatformInstanceMap.java
+Cluster 28: size 2
+  - open-metadata-implementation/common-services/metadata-security/metadata-security-connectors/src/main/java/org/odpi/openmetadata/metadatasecurity/connectors/OpenMetadataServerSecurityConnector.java
+  - open-metadata-implementation/common-services/metadata-security/metadata-security-server/src/main/java/org/odpi/openmetadata/metadatasecurity/server/OpenMetadataServerSecurityVerifier.java
+Cluster 29: size 2
+  - open-metadata-implementation/common-services/ffdc-services/src/main/java/org/odpi/openmetadata/commonservices/ffdc/InvalidParameterHandler.java
+  - open-metadata-implementation/common-services/ffdc-services/src/main/java/org/odpi/openmetadata/commonservices/ffdc/OMAGCommonErrorCode.java
+Cluster 30: size 2
+  - _layouts/default.html
+  - _layouts/homepage.html
+Cluster 31: size 2
+  - open-metadata-implementation/repository-services/repository-services-archive-utilities/src/main/java/org/odpi/openmetadata/repositoryservices/archiveutilities/OMRSArchiveHelper.java
+  - open-metadata-implementation/repository-services/repository-services-archive-utilities/src/main/java/org/odpi/openmetadata/repositoryservices/archiveutilities/OMRSArchiveBuilder.java
+Cluster 32: size 2
+  - open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/properties/OMAGServerConfig.java
+  - open-metadata-implementation/admin-services/admin-services-api/src/main/java/org/odpi/openmetadata/adminservices/configuration/properties/AdminServicesConfigHeader.java
+Cluster 33: size 2
+  - Egeria-Operations.md
+  - Community-Guide.md
+Cluster 34: size 2
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/localrepository/repositorycontentmanager/OMRSRepositoryContentValidator.java
+  - open-metadata-implementation/repository-services/repository-services-apis/src/main/java/org/odpi/openmetadata/repositoryservices/connectors/stores/metadatacollectionstore/repositoryconnector/OMRSRepositoryValidator.java
+Cluster 35: size 2
+  - open-metadata-implementation/common-services/generic-handlers/src/main/java/org/odpi/openmetadata/commonservices/generichandlers/ConnectionHandler.java
+  - open-metadata-implementation/common-services/generic-handlers/src/main/java/org/odpi/openmetadata/commonservices/generichandlers/AssetHandler.java
+Cluster 36: size 2
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/tests/repository/RepositoryConformanceTestCase.java
+  - open-metadata-conformance-suite/open-metadata-conformance-suite-server/src/main/java/org/odpi/openmetadata/conformance/workbenches/repository/RepositoryConformanceWorkPad.java
+Cluster 37: size 2
+  - open-metadata-implementation/admin-services/admin-services-client/src/main/java/org/odpi/openmetadata/adminservices/client/CohortMemberConfigurationClient.java
+  - open-metadata-implementation/admin-services/admin-services-spring/src/main/java/org/odpi/openmetadata/adminservices/spring/ConfigRepositoryServicesResource.java
+Cluster 38: size 2
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/connectormanager/OMRSEnterpriseConnectorManager.java
+  - open-metadata-implementation/repository-services/repository-services-implementation/src/main/java/org/odpi/openmetadata/repositoryservices/enterprise/repositoryconnector/EnterpriseOMRSRepositoryConnector.java
