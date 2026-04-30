@@ -2,7 +2,14 @@
 
 ## Methodology
 
-**[Depends](https://github.com/multilang-depends/depends)** (v0.9.7) was used for the initial static analysis of the source code, producing a JSON [dependency matrix](/analysis/data/imports-matrix.json); a custom Python [script](/analysis/scripts/dependency-analysis.py) then processed this output to compute the final statistics.
+**[Depends](https://github.com/multilang-depends/depends)** (v0.9.7) was used for the initial static analysis of the source code. The following command was run against the Egeria source tree to produce a JSON [dependency matrix](/analysis/data/code-dependencies/imports-matrix.json):
+
+```bash
+java -Xmx4g -jar .\depends.jar java .\egeria output -f json -s -d .\deps-output
+```
+
+A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis.py) then processed this output to compute the final statistics.
+
 
 ---
 
