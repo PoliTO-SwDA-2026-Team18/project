@@ -14,10 +14,10 @@
 
 ## Sprint 2 — Apr 21 – May 4, 2026
 
+
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
-
+| 04/05/2026 |   6   | I studied how Egeria works and how it is structured                      |       |        |
 **Summary:**
 
 ---
