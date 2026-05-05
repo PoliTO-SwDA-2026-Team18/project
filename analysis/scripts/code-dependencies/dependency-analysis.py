@@ -1,5 +1,6 @@
 import json
 from collections import defaultdict
+import re
 
 # <--------------------- Load JSON --------------------->
 INPUT_FILE = "imports-matrix.json"
@@ -140,8 +141,8 @@ OMI_MODULES = sorted({
     if "open-metadata-implementation" in norm(var)
 })
 
-# Build the matrix: pkg_matrix[src_module][dest_module] = total imports
-pkg_matrix = defaultdict(lambda: defaultdict(int))
+# Build the matrix: module_matrix[src_module][dest_module] = total imports
+module_matrix = defaultdict(lambda: defaultdict(int))
 for cell in cells:
     src  = variables[cell["src"]]
     dest = variables[cell["dest"]]
@@ -149,7 +150,7 @@ for cell in cells:
     dp   = get_omi_submodule(dest)
     imp  = int(cell["values"].get("Import", 0))
     if sp != dp and sp in OMI_MODULES and dp in OMI_MODULES:
-        pkg_matrix[sp][dp] += imp
+        module_matrix[sp][dp] += imp
 
 section("3. INTER-MODULE CODE DEPENDENCIES")
 print(f"{'Source module':<40}  {'Target module':<40}  {'Imports':>7}")
@@ -160,7 +161,7 @@ THRESHOLD = 10
 printed = False
 for src_mod in OMI_MODULES:
     for dest_mod in OMI_MODULES:
-        w = pkg_matrix[src_mod][dest_mod]
+        w = module_matrix[src_mod][dest_mod]
         if w >= THRESHOLD:
             print(f"  {src_mod:<40}  {dest_mod:<40}  {w:>7}")
             printed = True
@@ -169,17 +170,46 @@ if not printed:
     print("(no cross-module import relationships found)")
 
 # <--------------------- Section 4 - Saving import number --------------------->
-OUTPUT_FILE = "import-edges.csv"
+OUTPUT_FILE_FILES = "import-edges-files.csv"
+OUTPUT_FILE_PACKAGES = "import-edges-packages.csv"
 
 section("4. SAVING IMPORT NUMBER")
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-    f.write("source,target,imports\n")
+
+def get_java_package(path: str) -> str:
+    path = norm(path)
+    match = re.search(r'src/main/java/(.+)/[^/]+\.java$', path)
+    if match:
+        return match.group(1).replace("/", ".")
+    return None
+
+
+pkg_matrix = defaultdict(lambda: defaultdict(int))
+
+with open(OUTPUT_FILE_FILES, "w", encoding="utf-8") as f:
+    f.write("source_file,target_file,imports\n")
     for cell in cells:
         src  = variables[cell["src"]]
         dest = variables[cell["dest"]]
         imp  = int(cell["values"].get("Import", 0))
-        f.write(f"{src},{dest},{imp}\n")
-print("The data has been saved")
+
+        if imp > 0:
+            f.write(f"{norm(src)},{norm(dest)},{imp}\n")
+                
+            src_pkg  = get_java_package(src)
+            dest_pkg = get_java_package(dest)
+            if src_pkg and dest_pkg and src_pkg != dest_pkg:
+                pkg_matrix[src_pkg][dest_pkg] += imp
+
+
+with open(OUTPUT_FILE_PACKAGES, "w", encoding="utf-8") as f:
+    f.write("source_package,target_package,imports\n")
+    for s_pkg, targets in pkg_matrix.items():
+        for d_pkg, count in targets.items():
+            f.write(f"{s_pkg},{d_pkg},{count}\n")
+
+
+print(f"File-level data saved to: {OUTPUT_FILE_FILES}")
+print(f"Full Java Package data saved to: {OUTPUT_FILE_PACKAGES}")
 
 # <--------------------- Final informations --------------------->
 section("ANALYSIS COMPLETED")
