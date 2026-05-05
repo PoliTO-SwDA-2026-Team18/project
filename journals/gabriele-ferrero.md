@@ -21,7 +21,7 @@
 | 23/04/2026 |   4.5 | Design — Dependencies | Analysis of code dependencies | 009e3ce |
 | 24/04/2026 |   4.0 | Design — Dependencies | Analysis of code dependencies | 009e3ce |
 
-**Summary:**
+**Summary:** Performed an assessment of code dependencies to analyze coupling between modules and files.
 
 ---
 
@@ -29,7 +29,8 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 05/05/2026 |   2.5 | Design — Dependencies | Updated dependency-analysis.py script and A1-code-dependencies.md report | 5816869 |
+| 05/05/2026 |   0.5 | Design — Dependencies | Updated dependency-analysis.py script | 3323ba5 |
 
 **Summary:**
 
