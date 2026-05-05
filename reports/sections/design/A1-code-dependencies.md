@@ -5,7 +5,7 @@
 **[Depends](https://github.com/multilang-depends/depends)** (v0.9.7) was used for the initial static analysis of the source code. The following command was run against the Egeria source tree to produce a JSON [dependency matrix](/analysis/data/code-dependencies/imports-matrix.json):
 
 ```bash
-java -Xmx4g -jar .\depends.jar java .\egeria output -f json -s -d .\deps-output
+java -Xmx4g -jar ./depends.jar java ./egeria output -f json -s -d ./deps-output
 ```
 
 A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis.py) then processed this output to compute the final statistics.
@@ -45,6 +45,10 @@ A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis
 
 ---
 
+> Since the files with the highest number of both incoming and outgoing imports belong to the `open-metadata-implementation` module, further analyses were conducted to better understand its internal structure.
+
+---
+
 ## Observed Structural (Code-Level) Dependencies
 
 ### Implementation Dependency
@@ -74,7 +78,7 @@ softwareServerProperties.setQualifiedName(…);
 
 ### Compile-Time Dependency
 
-- **Source:** `common-services/multi-tenant/.../OMAGServerInstanceAuditCode.java`
+- **Source:** `multi-tenant/.../OMAGServerInstanceAuditCode.java`
 - **Depends on:** `audit-log-framework/.../AuditLogMessageSet.java`
 
 The enum declares `AuditLogMessageSet` only in its type signature — no calls or instantiations, purely a compiler-level contract:
@@ -106,50 +110,60 @@ flowchart LR
     srv_ops["server-operations"]
     usr_sec["user-security"]
 
-    adapters -->|"2558"| frameworks
-    adapters -->|"224"| repo_svc
-    adapters -->|"18"| common_svc
-    adapters -->|"17"| admin_svc
-    adapters -->|"11"| gov_svc
-    adapters -->|"10"| srv_ops
-    repo_svc -->|"434"| frameworks
-    repo_svc -->|"21"| common_svc
-    repo_svc -->|"12"| admin_svc
+    access_svc -->|"32"| admin_svc
+    access_svc -->|"94"| common_svc
     access_svc -->|"354"| frameworks
     access_svc -->|"118"| repo_svc
-    access_svc -->|"94"| common_svc
-    access_svc -->|"32"| admin_svc
-    view_svc -->|"439"| frameworks
-    view_svc -->|"28"| access_svc
-    view_svc -->|"152"| common_svc
-    view_svc -->|"240"| admin_svc
-    view_svc -->|"24"| usr_sec
-    common_svc -->|"386"| frameworks
-    common_svc -->|"146"| repo_svc
-    common_svc -->|"11"| admin_svc
+
+    adapters -->|"17"| admin_svc
+    adapters -->|"18"| common_svc
+    adapters -->|"2558"| frameworks
+    adapters -->|"11"| gov_svc
+    adapters -->|"224"| repo_svc
+    adapters -->|"10"| srv_ops
+
+    admin_svc -->|"77"| common_svc
     admin_svc -->|"126"| frameworks
     admin_svc -->|"13"| repo_svc
-    admin_svc -->|"77"| common_svc
-    engine_svc -->|"212"| frameworks
-    engine_svc -->|"59"| repo_svc
+
+    common_svc -->|"11"| admin_svc
+    common_svc -->|"386"| frameworks
+    common_svc -->|"146"| repo_svc
+
     engine_svc -->|"30"| access_svc
-    engine_svc -->|"50"| common_svc
     engine_svc -->|"41"| admin_svc
+    engine_svc -->|"50"| common_svc
+    engine_svc -->|"212"| frameworks
     engine_svc -->|"39"| gov_svc
-    gov_svc -->|"152"| frameworks
+    engine_svc -->|"59"| repo_svc
+
     gov_svc -->|"15"| access_svc
-    gov_svc -->|"31"| common_svc
     gov_svc -->|"22"| admin_svc
-    view_gen_svc -->|"357"| frameworks
-    view_gen_svc -->|"20"| access_svc
-    view_gen_svc -->|"106"| common_svc
-    view_gen_svc -->|"164"| admin_svc
-    view_gen_svc -->|"15"| usr_sec
-    plt_svc -->|"18"| frameworks
-    plt_svc -->|"22"| common_svc
+    gov_svc -->|"31"| common_svc
+    gov_svc -->|"152"| frameworks
+
     plt_svc -->|"12"| admin_svc
+    plt_svc -->|"22"| common_svc
+    plt_svc -->|"18"| frameworks
     plt_svc -->|"20"| srv_ops
-    srv_ops -->|"25"| frameworks
-    srv_ops -->|"15"| common_svc
+
+    repo_svc -->|"12"| admin_svc
+    repo_svc -->|"21"| common_svc
+    repo_svc -->|"434"| frameworks
+
     srv_ops -->|"18"| admin_svc
+    srv_ops -->|"15"| common_svc
+    srv_ops -->|"25"| frameworks
+
+    view_gen_svc -->|"20"| access_svc
+    view_gen_svc -->|"164"| admin_svc
+    view_gen_svc -->|"106"| common_svc
+    view_gen_svc -->|"357"| frameworks
+    view_gen_svc -->|"15"| usr_sec
+
+    view_svc -->|"28"| access_svc
+    view_svc -->|"240"| admin_svc
+    view_svc -->|"152"| common_svc
+    view_svc -->|"439"| frameworks
+    view_svc -->|"24"| usr_sec
 ```

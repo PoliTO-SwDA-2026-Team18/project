@@ -12,8 +12,6 @@ with open(INPUT_FILE, encoding="utf-8") as f:
 variables = data["variables"]
 cells     = data["cells"]       # list of {src: int, dest: int, values: dict}
 
-idx_to_name = {i: variables[i] for i in range(len(variables))}
-
 # <--------------------- Helpers --------------------->
 SEP = "─" * 80
 
@@ -21,19 +19,9 @@ def norm(path: str) -> str:
     """Normalize path separators to forward slashes."""
     return path.replace("\\", "/")
 
-def get_submodule(path: str) -> str:
-    """Return the direct child of open-metadata-implementation, or the
-    first path segment when the file is outside that directory."""
-    parts = norm(path).split("/")
-    if "open-metadata-implementation" in parts:
-        idx = parts.index("open-metadata-implementation")
-        if idx + 1 < len(parts):
-            return parts[idx + 1]
-    return parts[0] if parts else path
-
 def section(title: str) -> None:
     print(f"\n{SEP}")
-    print(f"  {title}")
+    print(f"{title}")
     print(SEP)
 
 # <--------------------- Build per-file import counters --------------------->
@@ -43,39 +31,39 @@ import_out: dict = defaultdict(int)
 import_in:  dict = defaultdict(int)
 
 for cell in cells:
-    src  = idx_to_name[cell["src"]]
-    dest = idx_to_name[cell["dest"]]
+    src  = variables[cell["src"]]
+    dest = variables[cell["dest"]]
     imp  = int(cell["values"].get("Import", 0))
-    if imp:
-        import_out[src]  += imp
-        import_in[dest]  += imp
+    import_out[src]  += imp
+    import_in[dest]  += imp
 
-# <--------------------- Section 1 – Top 5 files with the most outgoing imports --------------------->
+# <--------------------- Section 1 - Ranking files --------------------->
+NUMBER_OF_ELEMENTS_RANKING = 5
 files_with_import = {k: v for k, v in import_out.items() if v >= 1}
-top5_out    = sorted(files_with_import.items(), key=lambda x: -x[1])[:5]
-bottom5_out = sorted(files_with_import.items(), key=lambda x:  x[1])[:5]
-top5_in     = sorted(import_in.items(),         key=lambda x: -x[1])[:5]
+top_out    = sorted(files_with_import.items(), key=lambda x: -x[1])[:NUMBER_OF_ELEMENTS_RANKING]
+bottom_out = sorted(files_with_import.items(), key=lambda x:  x[1])[:NUMBER_OF_ELEMENTS_RANKING]
+top_in     = sorted(import_in.items(),         key=lambda x: -x[1])[:NUMBER_OF_ELEMENTS_RANKING]
 
-section("1. TOP 5 FILES WITH THE MOST OUTGOING IMPORTS")
-for rank, (name, val) in enumerate(top5_out, 1):
-    print(f"  {rank}. imports={val:>3}  {norm(name)}")
+# <--------------------- Top files with the most outgoing imports --------------------->
+section(f"1a. TOP {NUMBER_OF_ELEMENTS_RANKING} FILES WITH THE MOST OUTGOING IMPORTS")
+for rank, (name, val) in enumerate(top_out, 1):
+    print(f"{rank}. imports={val:>3}  {norm(name)}")
 
-# <--------------------- Section 2 – Bottom 5 files with the fewest outgoing imports (>=1) --------------------->
-section("2. BOTTOM 5 FILES WITH THE FEWEST OUTGOING IMPORTS  (minimum 1)")
-for rank, (name, val) in enumerate(bottom5_out, 1):
-    print(f"  {rank}. imports={val:>3}  {norm(name)}")
+# <--------------------- Bottom files with the fewest outgoing imports (>=1) --------------------->
+section(f"1b. BOTTOM {NUMBER_OF_ELEMENTS_RANKING} FILES WITH THE FEWEST OUTGOING IMPORTS  (minimum 1)")
+for rank, (name, val) in enumerate(bottom_out, 1):
+    print(f"{rank}. imports={val:>3}  {norm(name)}")
 
-# <--------------------- Section 3 – Top 5 most imported files (incoming) --------------------->
-section("3. TOP 5 MOST IMPORTED FILES  (incoming import count)")
-for rank, (name, val) in enumerate(top5_in, 1):
-    print(f"  {rank}. imported_by={val:>3}  {norm(name)}")
+# <--------------------- Top most imported files (incoming) --------------------->
+section(f"1c. TOP {NUMBER_OF_ELEMENTS_RANKING} MOST IMPORTED FILES  (incoming import count)")
+for rank, (name, val) in enumerate(top_in, 1):
+    print(f"{rank}. imported_by={val:>3}  {norm(name)}")
 
-# <--------------------- Section 4 – One example per dependency type --------------------->
-# Only look inside open-metadata-implementation for cleaner examples.
-omi_cells = [
-    (c, idx_to_name[c["src"]], idx_to_name[c["dest"]])
+# <--------------------- Section 2 - One example per dependency type --------------------->
+omi_cells = [ # Open Metadata Implementation cells
+    (c, variables[c["src"]], variables[c["dest"]])
     for c in cells
-    if "open-metadata-implementation" in norm(idx_to_name.get(c["src"], ""))
+    if "open-metadata-implementation" in norm(variables[c["src"]])
 ]
 
 ex_impl    = None   # Implementation Dependency
@@ -84,10 +72,6 @@ ex_compile = None   # Compile-Time Dependency
 
 for cell, src, dest in omi_cells:
     v = cell["values"]
-
-    # Construction: file directly instantiates a collaborator via 'new'
-    if ex_constr is None and v.get("Create", 0) > 0:
-        ex_constr = (src, dest, v)
 
     # Implementation: depends on a concrete class (Import + Call/Use),
     # no inheritance relationship (no Extend / Implement), not an Exception
@@ -99,6 +83,10 @@ for cell, src, dest in omi_cells:
             and "Exception" not in dest):
         ex_impl = (src, dest, v)
 
+    # Construction: file directly instantiates a collaborator via 'new'
+    if ex_constr is None and v.get("Create", 0) > 0:
+        ex_constr = (src, dest, v)
+
     # Compile-Time: the only relationship is Import - pure compile-time coupling
     if ex_compile is None and set(v.keys()) == {"Import"}:
         ex_compile = (src, dest, v)
@@ -106,62 +94,66 @@ for cell, src, dest in omi_cells:
     if ex_impl and ex_constr and ex_compile:
         break
 
-section("4a. IMPLEMENTATION DEPENDENCY EXAMPLE")
-print("    Signal: Import + (Call | Use), no Extend/Implement -> depends on a concrete class")
+section("2a. IMPLEMENTATION DEPENDENCY EXAMPLE")
 if ex_impl:
     s, d, v = ex_impl
-    print(f"  Source     : {norm(s)}")
-    print(f"  Depends on : {norm(d)}")
-    print(f"  Values     : {v}")
+    print(f"Source     : {norm(s)}")
+    print(f"Depends on : {norm(d)}")
+    print(f"Values     : {v}")
 else:
-    print("  (no example found)")
+    print("(no example found)")
 
-section("4b. CONSTRUCTION DEPENDENCY EXAMPLE")
-print("    Signal: Create present -> source directly instantiates the collaborator")
+section("2b. CONSTRUCTION DEPENDENCY EXAMPLE")
 if ex_constr:
     s, d, v = ex_constr
-    print(f"  Source     : {norm(s)}")
-    print(f"  Depends on : {norm(d)}")
-    print(f"  Values     : {v}")
+    print(f"Source     : {norm(s)}")
+    print(f"Depends on : {norm(d)}")
+    print(f"Values     : {v}")
 else:
-    print("  (no example found)")
+    print("(no example found)")
 
-section("4c. COMPILE-TIME DEPENDENCY EXAMPLE")
-print("    Signal: Import only, nothing else -> module must know the other at compile time")
+section("2c. COMPILE-TIME DEPENDENCY EXAMPLE")
 if ex_compile:
     s, d, v = ex_compile
-    print(f"  Source     : {norm(s)}")
-    print(f"  Depends on : {norm(d)}")
-    print(f"  Values     : {v}")
+    print(f"Source     : {norm(s)}")
+    print(f"Depends on : {norm(d)}")
+    print(f"Values     : {v}")
 else:
-    print("  (no example found)")
+    print("(no example found)")
 
-# <--------------------- Section 5 – Inter-module import matrix (all 14 OMI submodules) --------------------->
-# Submodules are discovered dynamically from the file paths in 'variables'
-all_submodules = set()
-for var in variables:
-    parts = norm(var).split("/")
+# <--------------------- Section 3 - Inter-module import matrix (all 14 OMI submodules) --------------------->
+
+def get_omi_submodule(path: str) -> str:
+    """Return the direct child of open-metadata-implementation, or the
+    first path segment when the file is outside that directory."""
+    parts = norm(path).split("/")
     if "open-metadata-implementation" in parts:
         idx = parts.index("open-metadata-implementation")
         if idx + 1 < len(parts):
-            all_submodules.add(parts[idx + 1])
+            return parts[idx + 1]
+    return parts[0] if parts else path
 
-OMI_MODULES = sorted(all_submodules)
+# Submodules are discovered dynamically from the file paths in 'variables'
+OMI_MODULES = sorted({
+    get_omi_submodule(var)
+    for var in variables
+    if "open-metadata-implementation" in norm(var)
+})
 
 # Build the matrix: pkg_matrix[src_module][dest_module] = total imports
 pkg_matrix = defaultdict(lambda: defaultdict(int))
 for cell in cells:
-    src  = idx_to_name[cell["src"]]
-    dest = idx_to_name[cell["dest"]]
-    sp   = get_submodule(src)
-    dp   = get_submodule(dest)
+    src  = variables[cell["src"]]
+    dest = variables[cell["dest"]]
+    sp   = get_omi_submodule(src)
+    dp   = get_omi_submodule(dest)
     imp  = int(cell["values"].get("Import", 0))
-    if sp != dp and sp in OMI_MODULES and dp in OMI_MODULES and imp:
+    if sp != dp and sp in OMI_MODULES and dp in OMI_MODULES:
         pkg_matrix[sp][dp] += imp
 
-section("5. INTER-MODULE CODE DEPENDENCIES  (metric: import count, full module names)")
-print(f"  {'Source module':<40}  {'Target module':<40}  {'Imports':>7}")
-print(f"  {'-'*40}  {'-'*40}  {'-'*7}")
+section("3. INTER-MODULE CODE DEPENDENCIES")
+print(f"{'Source module':<40}  {'Target module':<40}  {'Imports':>7}")
+print(f"{'-'*40}  {'-'*40}  {'-'*7}")
 
 THRESHOLD = 10
 
@@ -174,8 +166,22 @@ for src_mod in OMI_MODULES:
             printed = True
 
 if not printed:
-    print("  (no cross-module import relationships found)")
+    print("(no cross-module import relationships found)")
 
-print(f"\n{SEP}")
-print(f"  Analysis complete  |  total files: {len(variables)}  |  total dependency edges: {len(cells)}")
-print(SEP)
+# <--------------------- Section 4 - Saving import number --------------------->
+OUTPUT_FILE = "import-edges.csv"
+
+section("4. SAVING IMPORT NUMBER")
+with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    f.write("source,target,imports\n")
+    for cell in cells:
+        src  = variables[cell["src"]]
+        dest = variables[cell["dest"]]
+        imp  = int(cell["values"].get("Import", 0))
+        f.write(f"{src},{dest},{imp}\n")
+print("The data has been saved")
+
+# <--------------------- Final informations --------------------->
+section("ANALYSIS COMPLETED")
+print(f"Total files: {len(variables)}")
+print(f"Total dependency edges: {len(cells)}")
