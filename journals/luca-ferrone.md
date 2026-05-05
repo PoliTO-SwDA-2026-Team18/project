@@ -21,8 +21,10 @@
 | 24/04/2026 |  1.5  | Design — Dependencies | Co-dependencies analysis with python and code-maat|
 | 25/04/2026 |  1.25 | Design — Dependencies | Co-dependencies analysis with python              |
 | 29/04/2026 |  3.5  | Design — Dependencies | Co-dependencies analysis and writing of report    |
+| 04/05/2026 |  1.5  | Design — Dependencies | Co-dependencies and code-dependencies inconsistencies    |
 
-**Summary:**
+**Summary:** During Sprint 2, I analyzed co-dependencies using Code Maat and Python, and compiled the initial co-dependency design report. 
+Toward the end of Sprint 2, I started looking for inconsistencies between code dependencies and co-dependencies.
 
 ---
 
@@ -30,7 +32,7 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 05/05/2026 |   1   | Design — Dependencies | Co-dependencies and code-dependencies inconsistency analysis |
 
 **Summary:**
 
