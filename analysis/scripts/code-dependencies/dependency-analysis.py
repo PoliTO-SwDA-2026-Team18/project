@@ -1,9 +1,11 @@
 import json
 from collections import defaultdict
 import re
+from pathlib import Path
 
 # <--------------------- Load JSON --------------------->
-INPUT_FILE = "imports-matrix.json"
+BASE_DIR = Path(__file__).resolve().parent
+INPUT_FILE = BASE_DIR.parent.parent / "data" / "code-dependencies" / "imports-matrix.json"
 
 with open(INPUT_FILE, encoding="utf-8") as f:
     data = json.load(f)
@@ -81,7 +83,7 @@ for cell, src, dest in omi_cells:
             and (v.get("Call", 0) > 0 or v.get("Use", 0) > 0)
             and v.get("Extend", 0) == 0
             and v.get("Implement", 0) == 0
-            and "Exception" not in dest):
+            and v.get("Throw", 0) == 0):
         ex_impl = (src, dest, v)
 
     # Construction: file directly instantiates a collaborator via 'new'
@@ -170,8 +172,8 @@ if not printed:
     print("(no cross-module import relationships found)")
 
 # <--------------------- Section 4 - Saving import number --------------------->
-OUTPUT_FILE_FILES = "import-edges-files.csv"
-OUTPUT_FILE_PACKAGES = "import-edges-packages.csv"
+OUTPUT_FILE_FILES = BASE_DIR.parent.parent / "data" / "code-dependencies" / "import-edges-files.csv"
+OUTPUT_FILE_PACKAGES = BASE_DIR.parent.parent / "data" / "code-dependencies" / "import-edges-packages.csv"
 
 section("4. SAVING IMPORT NUMBER")
 
@@ -182,30 +184,52 @@ def get_java_package(path: str) -> str:
         return match.group(1).replace("/", ".")
     return None
 
+def get_list_dependency_types(values: dict) -> list[int]:
+    return [int(values.get("Import", 0)),
+            int(values.get("Contain", 0)),
+            int(values.get("Parameter", 0)),
+            int(values.get("Call", 0)),
+            int(values.get("Return", 0)),
+            int(values.get("Throw", 0)),
+            int(values.get("Implement", 0)),
+            int(values.get("Extend", 0)),
+            int(values.get("Create", 0)),
+            int(values.get("Use", 0)),
+            int(values.get("Cast", 0)),
+            int(values.get("ImplLink", 0)),
+            int(values.get("Annotation", 0)),
+            int(values.get("Mixin", 0))]
 
-pkg_matrix = defaultdict(lambda: defaultdict(int))
+def get_string_dependency_types(values: list[int]) -> str:
+    result = ""
+    for i in range(len(values)):
+        result += f"{values[i]}"
+        if i < len(values)-1:
+            result += f","
+    return result
+
+pkg_matrix = defaultdict(lambda: defaultdict(lambda: [0] * 14))
 
 with open(OUTPUT_FILE_FILES, "w", encoding="utf-8") as f:
-    f.write("source_file,target_file,imports\n")
+    f.write("source_file,target_file,import,contain,parameter,call,return,throw,implement,extend,create,use,cast,impllink,annotation,mixin\n")
     for cell in cells:
         src  = variables[cell["src"]]
         dest = variables[cell["dest"]]
-        imp  = int(cell["values"].get("Import", 0))
 
-        if imp > 0:
-            f.write(f"{norm(src)},{norm(dest)},{imp}\n")
-                
-            src_pkg  = get_java_package(src)
-            dest_pkg = get_java_package(dest)
-            if src_pkg and dest_pkg and src_pkg != dest_pkg:
-                pkg_matrix[src_pkg][dest_pkg] += imp
+        values_list = get_list_dependency_types(cell["values"])
+        f.write(f"{norm(src)},{norm(dest)},{get_string_dependency_types(values_list)}\n")
+            
+        src_pkg  = get_java_package(src)
+        dest_pkg = get_java_package(dest)
+        if src_pkg and dest_pkg and src_pkg != dest_pkg:
+            pkg_matrix[src_pkg][dest_pkg] = [v1 + v2 for v1, v2 in zip(values_list, pkg_matrix[src_pkg][dest_pkg])]
 
 
 with open(OUTPUT_FILE_PACKAGES, "w", encoding="utf-8") as f:
-    f.write("source_package,target_package,imports\n")
+    f.write("source_package,target_package,import,contain,parameter,call,return,throw,implement,extend,create,use,cast,impllink,annotation,mixin\n")
     for s_pkg, targets in pkg_matrix.items():
-        for d_pkg, count in targets.items():
-            f.write(f"{s_pkg},{d_pkg},{count}\n")
+        for d_pkg, values_list in targets.items():
+            f.write(f"{s_pkg},{d_pkg},{get_string_dependency_types(values_list)}\n")
 
 
 print(f"File-level data saved to: {OUTPUT_FILE_FILES}")
