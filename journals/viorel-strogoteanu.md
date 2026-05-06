@@ -24,9 +24,9 @@
 
 ## Sprint 3 — May 5–18, 2026
 
-| Date | Hours | Activity Type | Notes | Commit |
-| ---- | ----: | ------------- | ----- | ------ |
-|      |       |               |       |        |
+| Date       | Hours | Activity Type | Notes                        | Commit  |
+| ---------- | ----: | ------------- | ---------------------------- | ------- |
+| 05/05/2026 |     5 | C4 modeling   | container (L2) diagram draft | b13fb47 |
 
 **Summary:**
 

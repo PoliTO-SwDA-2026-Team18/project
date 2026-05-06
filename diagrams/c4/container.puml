@@ -1,0 +1,45 @@
+@startuml C4_Container_Egeria
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+LAYOUT_WITH_LEGEND()
+
+title Egeria Platform - Container Diagram (Level 2)
+
+Person(user, "User", "Data Engineer, Officer, Steward, Admin, etc.")
+
+
+System_Boundary(egeria, "Egeria Platform") {
+    Container(omag, "OMAG Server Platform", "Spring Boot REST Application", "Java 17, Spring MVC - Exposes REST APIs for View Services, Access Services, Admin Services, Platform Services")
+
+    Container(repoServices, "Repository Services", "Core Metadata Engine", "Java - Open Metadata Repository Services (OMRS): Event pub/sub, metadata federation, audit logging")
+
+    'TODO: Should database alternatives (XTDB, In-Memory) appear here at L2 or in L3?
+    Container(dataRepo, "Data Repository", "PostgreSQL Database", "PostgreSQL (primary) with XTDB/In-Memory alternatives - Persistent storage for metadata, audit logs, configurations, types")
+
+    Container(msgBus, "Message Bus", "Kafka Cluster", "Apache Kafka - Event streaming for metadata changes, federation, async notifications")
+
+    Container(configStore, "Configuration Store", "File-based Configuration", "YAML/JSON files (extensible to Vault, etcd, Consul) - Server configs, connector definitions, deployment settings")
+
+    'TODO:Secrets Management is internal file-based initially or we can consider only the external Vault? 
+    Container(secretsMgmt, "Secrets Management", "Secrets Store", "File-based YAML initially (extensible to Vault, AWS Secrets Manager) - API keys, DB passwords, tokens, encryption keys")
+
+    Rel(omag, repoServices, "Queries metadata, performs governance operations", "Java API")
+    Rel(repoServices, dataRepo, "Stores/retrieves metadata, audit logs", "JDBC SQL")
+    Rel(repoServices, msgBus, "Publishes metadata events, subscribes federation events", "Kafka API")
+    Rel(omag, configStore, "Reads configuration", "File/REST API")
+    Rel(omag, secretsMgmt, "Retrieves credentials, API keys", "Secure API call")
+    Rel(omag, msgBus, "Publishes/subscribes REST API events", "Kafka API")
+}
+
+System_Ext(authService, "Authentication Service", "LDAP, OAuth2, OpenID Connect providers for user identity verification and authorization")
+System_Ext(dataSources, "Data Sources", "SQL Databases, File Systems, Kafka Topics, Data Lakes, Unity Catalog - Metadata sources discovered via Integration Connectors")
+System_Ext(externalTools, "External Tools", "BI Tools, ETL Platforms, Data Catalogs, Analytics - Consume/contribute metadata via REST APIs")
+
+Rel(user, omag, "Uses via REST APIs", "HTTP/HTTPS")
+Rel(omag, authService, "Validates user credentials, retrieves authorization", "LDAP/OAuth2/OIDC")
+Rel(dataSources, msgBus, "Publishes lineage, data quality events", "Kafka API")
+Rel(omag, dataSources, "Discovers schema, lineage, statistics", "Integration Connectors (JDBC, APIs, native)")
+Rel(externalTools, omag, "Retrieves metadata, submits lineage, governance policies", "REST APIs")
+
+@enduml
