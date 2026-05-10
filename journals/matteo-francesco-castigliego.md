@@ -29,7 +29,7 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 10/05/2026 |  1.5  | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
 
 **Summary:**
 
