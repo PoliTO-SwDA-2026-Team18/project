@@ -1,0 +1,43 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class OMRSTopicConnector {
+  + OMRSTopicConnector(): 
+  # auditLog: AuditLog
+  + registerListener(OMRSTopicListener, String): void
+  - processOMRSEvent(OMRSEventV2, OMRSTopicListener): void
+  + disconnect(): void
+  + processEvent(String): void
+  + registerListener(OMRSTopicRepositoryEventListener, String): void
+  - sendEventTask(OMRSEventV2, boolean): boolean
+  + sendInstanceEvent(OMRSInstanceEvent): void
+  - handleUnsupportedEventVersion(String): void
+  - sendEvent(OMRSEventV2, boolean): CompletableFuture<Boolean>
+  + sendRegistryEvent(OMRSRegistryEvent): CompletableFuture<Boolean>
+  + start(): void
+  + sendTypeDefEvent(OMRSTypeDefEvent): CompletableFuture<Boolean>
+}
+
+interface OMRSTopicListener << interface >> {
+  + processRegistryEvent(OMRSRegistryEvent): void
+}
+
+class OpenMetadataOMRSTopicListener {
+  + OpenMetadataOMRSTopicListener(...)
+  + processDeletePurgedRelationshipEvent(...)
+  + processRefreshEntityEvent(...)
+  + processDeletedEntityEvent(...)
+  + processUpdatedEntityEvent(...)
+  + processNewEntityEvent(...)
+  ' ... altri metodi omessi per brevità ...
+}
+
+
+OpenMetadataOMRSTopicListener  -[#008200,dashed]-^  OMRSTopicListener             
+
+OMRSTopicConnector "1" o-- "*" OMRSTopicListener : notifies >
+
+@enduml
