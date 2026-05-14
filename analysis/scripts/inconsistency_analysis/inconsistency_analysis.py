@@ -1,21 +1,23 @@
 import pandas as pd
 import numpy as np
 from collections import defaultdict
-from pathlib import Path
+import os
+import re
 
 # =========================================================
 # PACKAGE NAME NORMALIZATION
 # =========================================================
 
-
-import os
-import re
-
 package_map = {}
 
-JAVA_ROOT = "/Users/lucaferrone/Software design/Project/project/egeria/egeria"
+JAVA_ROOT = (
+    "/Users/lucaferrone/Software design/"
+    "Project/project/egeria/egeria"
+)
 
-package_pattern = re.compile(r"^\s*package\s+([a-zA-Z0-9_.]+)\s*;")
+package_pattern = re.compile(
+    r"^\s*package\s+([a-zA-Z0-9_.]+)\s*;"
+)
 
 for root, _, files in os.walk(JAVA_ROOT):
 
@@ -26,11 +28,18 @@ for root, _, files in os.walk(JAVA_ROOT):
 
         full_path = os.path.join(root, file)
 
-        relative_path = os.path.relpath(full_path, JAVA_ROOT)
-        relative_path = relative_path.replace("\\", "/")
+        relative_path = os.path.relpath(
+            full_path,
+            JAVA_ROOT
+        ).replace("\\", "/")
 
         try:
-            with open(full_path, "r", encoding="utf-8") as f:
+
+            with open(
+                full_path,
+                "r",
+                encoding="utf-8"
+            ) as f:
 
                 for line in f:
 
@@ -38,42 +47,85 @@ for root, _, files in os.walk(JAVA_ROOT):
 
                     if match:
 
-                        package_name = match.group(1)
+                        package_map[relative_path] = (
+                            match.group(1)
+                        )
 
-                        package_map[relative_path] = package_name
                         break
 
         except:
             pass
 
-
-
-
-
 # =========================================================
 # CONFIG
 # =========================================================
 
-CODE_DEP_FILE = "/Users/lucaferrone/Software design/Project/project/analysis/data/inconsistency_analysis/code_dependency_scores.csv"
-CO_DEP_FILE = "/Users/lucaferrone/Software design/Project/project/analysis/data/co-dependencies/filtered_results.csv"
+CODE_DEP_FILE = (
+    "/Users/lucaferrone/Software design/"
+    "Project/project/analysis/data/"
+    "inconsistency_analysis/"
+    "code_dependency_scores.csv"
+)
 
-OUTPUT_FILE = "/Users/lucaferrone/Software design/Project/project/analysis/data/inconsistency_analysis/inconsistency_analysis.csv"
+CO_DEP_FILE = (
+    "/Users/lucaferrone/Software design/"
+    "Project/project/analysis/data/"
+    "co-dependencies/"
+    "filtered_results.csv"
+)
 
+OUTPUT_FILE = (
+    "/Users/lucaferrone/Software design/"
+    "Project/project/analysis/data/"
+    "inconsistency_analysis/"
+    "inconsistency_analysis.csv"
+)
 
 # =========================================================
 # HELPERS
 # =========================================================
 
+def normalize_pair(a, b):
 
-def normalize_package_pair(pkg1, pkg2):
-    """
-    Ensure package pairs are symmetric.
-    """
-    return tuple(sorted([pkg1, pkg2]))
+    return tuple(sorted([a, b]))
+
+
+def robust_zscore(series):
+
+    median = series.median()
+
+    mad = np.median(np.abs(series - median))
+
+    if mad == 0:
+        mad = 1e-9
+
+    return 0.6745 * (series - median) / mad
+
+
+def high_low(value, threshold=1.0):
+
+    return "HIGH" if value >= threshold else "LOW"
+
+
+def classify(row):
+
+    code = row["CODE-DEPENDENCY"]
+    codep = row["CO-DEPENDENCY"]
+
+    if code == "LOW" and codep == "HIGH":
+        return "HIDDEN_DEPENDENCY"
+
+    elif code == "HIGH" and codep == "HIGH":
+        return "NORMAL or OVERCOUPLED"
+
+    elif code == "HIGH" and codep == "LOW":
+        return "CAN BE INCONSISTENT"
+
+    return "UNRELATED or NORMAL"
 
 
 # =========================================================
-# LOAD FILES
+# LOAD DATA
 # =========================================================
 
 code_df = pd.read_csv(CODE_DEP_FILE)
@@ -81,38 +133,31 @@ code_df = pd.read_csv(CODE_DEP_FILE)
 co_df = pd.read_csv(CO_DEP_FILE)
 
 # =========================================================
-# PREPARE CODE DEPENDENCIES
+# CODE DEPENDENCIES
 # =========================================================
 
 code_df["pair"] = code_df.apply(
-    lambda row: normalize_package_pair(
+    lambda row: normalize_pair(
         row["source_package"],
         row["target_package"]
     ),
     axis=1
 )
 
-code_dep_map = {}
-
-for _, row in code_df.iterrows():
-    code_dep_map[row["pair"]] = {
-        "FINAL_SCORE": row["FINAL_SCORE"],
-        "WDS": row.get("WDS", 0),
-        "DD": row.get("DD", 0),
-        "NWDS": row.get("NWDS", 0)
-    }
+code_dep_map = dict(zip(
+    code_df["pair"],
+    code_df["FINAL_SCORE"]
+))
 
 # =========================================================
-# PREPARE CO-DEPENDENCIES
+# CO-DEPENDENCIES
 # =========================================================
 
-# Keep only Java files
 co_df = co_df[
     co_df["entity"].str.endswith(".java") &
     co_df["coupled"].str.endswith(".java")
 ]
 
-# Remove noisy files/directories
 EXCLUDED_PATTERNS = [
     "/test/",
     "/tests/",
@@ -124,37 +169,55 @@ EXCLUDED_PATTERNS = [
 for pattern in EXCLUDED_PATTERNS:
 
     co_df = co_df[
-        ~co_df["entity"].str.contains(pattern, regex=False)
+        ~co_df["entity"].str.contains(
+            pattern,
+            regex=False
+        )
     ]
 
     co_df = co_df[
-        ~co_df["coupled"].str.contains(pattern, regex=False)
+        ~co_df["coupled"].str.contains(
+            pattern,
+            regex=False
+        )
     ]
 
-# Map files to real Java packages
-co_df["source_package"] = co_df["entity"].map(package_map)
-co_df["target_package"] = co_df["coupled"].map(package_map)
-print("INITIAL:", len(co_df))
-# Remove unresolved packages
+co_df["source_package"] = (
+    co_df["entity"].map(package_map)
+)
+
+co_df["target_package"] = (
+    co_df["coupled"].map(package_map)
+)
+
 co_df = co_df.dropna(
-    subset=["source_package", "target_package"]
+    subset=[
+        "source_package",
+        "target_package"
+    ]
 )
-print("INITIAL:", len(co_df))
-# Remove self-package dependencies
+
 co_df = co_df[
-    co_df["source_package"] != co_df["target_package"]
+    co_df["source_package"] !=
+    co_df["target_package"]
 ]
-print("INITIAL:", len(co_df))
-# Weighted co-dependency
+
+# =========================================================
+# WEIGHTED CO-DEPENDENCY
+# =========================================================
+
 co_df["weighted_degree"] = (
-    co_df["degree"] * np.log1p(co_df["average-revs"])
+    co_df["degree"] *
+    np.log1p(co_df["average-revs"])
 )
 
 # =========================================================
-# COUNT FILES PER PACKAGE
+# PACKAGE SIZES
 # =========================================================
 
-all_files = set(co_df["entity"]).union(set(co_df["coupled"]))
+all_files = set(co_df["entity"]).union(
+    set(co_df["coupled"])
+)
 
 package_files = defaultdict(set)
 
@@ -171,121 +234,165 @@ package_sizes = {
 }
 
 # =========================================================
-# AGGREGATE CO-DEPENDENCIES AT PACKAGE LEVEL
+# AGGREGATE CO-DEPENDENCIES
 # =========================================================
 
 aggregated = defaultdict(float)
 
 for _, row in co_df.iterrows():
 
-    pkgA = row["source_package"]
-    pkgB = row["target_package"]
-
-    pair = normalize_package_pair(pkgA, pkgB)
+    pair = normalize_pair(
+        row["source_package"],
+        row["target_package"]
+    )
 
     aggregated[pair] += row["weighted_degree"]
 
 # =========================================================
-# BUILD FINAL DATASET
+# BUILD DATASET
 # =========================================================
 
 results = []
 
-all_pairs = set(aggregated.keys()).union(set(code_dep_map.keys()))
+all_pairs = (
+    set(aggregated.keys())
+    .union(set(code_dep_map.keys()))
+)
 
 for pair in all_pairs:
 
     pkgA, pkgB = pair
 
-    # Co dependency
     raw_codep = aggregated.get(pair, 0)
 
     sizeA = package_sizes.get(pkgA, 1)
     sizeB = package_sizes.get(pkgB, 1)
 
-    normalized_codep = raw_codep / (sizeA * sizeB)
+    normalized_codep = (
+        raw_codep / (sizeA * sizeB)
+    )
 
-    # Code dependency
-    code_info = code_dep_map.get(pair, {})
+    final_score = code_dep_map.get(pair, 0)
 
-    final_score = code_info.get("FINAL_SCORE", 0)
-
-    # =====================================================
-    # Hidden Dependency
-    # High co-dep, low code-dep
-    # =====================================================
-
-    hidden_dependency = normalized_codep / (final_score + 1)
-
-    # =====================================================
-    # Overcoupling
-    # High co-dep AND high code-dep
-    # =====================================================
-
-    overcoupling = normalized_codep * final_score
+    if normalized_codep == 0 and final_score == 0:
+        continue
 
     results.append({
+
         "packageA": pkgA,
         "packageB": pkgB,
 
         "FINAL_SCORE": final_score,
-
-        "RAW_CODEP": raw_codep,
-        "NORMALIZED_CODEP": normalized_codep,
-
-        "HIDDEN_DEPENDENCY": hidden_dependency,
-        "OVERCOUPLING": overcoupling
+        "NORMALIZED_CODEP": normalized_codep
     })
 
+result_df = pd.DataFrame(results)
+
 # =========================================================
-# FINAL DATAFRAME
+# NORMALIZATION
 # =========================================================
 
-result_df = pd.DataFrame(results)
+result_df["Z_CODE"] = robust_zscore(
+    np.log1p(result_df["FINAL_SCORE"])
+)
+
+result_df["Z_CODEP"] = robust_zscore(
+    np.log1p(result_df["NORMALIZED_CODEP"])
+)
+
+# =========================================================
+# HIGH / LOW LABELS
+# =========================================================
+
+result_df["CODE-DEPENDENCY"] = (
+    result_df["Z_CODE"]
+    .apply(high_low)
+)
+
+result_df["CO-DEPENDENCY"] = (
+    result_df["Z_CODEP"]
+    .apply(high_low)
+)
+
+# =========================================================
+# SCORES
+# =========================================================
+
+result_df["INCONSISTENCY_SCORE"] = np.abs(
+    result_df["Z_CODEP"] -
+    result_df["Z_CODE"]
+)
+
+result_df["HIDDEN_DEPENDENCY_SCORE"] = (
+    result_df["Z_CODEP"] -
+    result_df["Z_CODE"]
+)
+
+result_df["OVERCOUPLING_SCORE"] = (
+    result_df["Z_CODEP"] +
+    result_df["Z_CODE"]
+)
 
 # =========================================================
 # CLASSIFICATION
 # =========================================================
 
-code_threshold = result_df["FINAL_SCORE"].quantile(0.75)
-
-codep_threshold = result_df["NORMALIZED_CODEP"].quantile(0.75)
-
-
-def classify(row):
-
-    high_code = row["FINAL_SCORE"] >= code_threshold
-    high_codep = row["NORMALIZED_CODEP"] >= codep_threshold
-
-    if high_code and high_codep:
-        return "OVERCOUPLED"
-
-    elif (not high_code) and high_codep:
-        return "HIDDEN_DEPENDENCY"
-
-    elif high_code and (not high_codep):
-        return "STRUCTURAL_DEPENDENCY"
-
-    else:
-        return "NORMAL"
-
-
-result_df["CATEGORY"] = result_df.apply(classify, axis=1)
+result_df["CATEGORY"] = result_df.apply(
+    classify,
+    axis=1
+)
 
 # =========================================================
 # SORT
 # =========================================================
 
-result_df = result_df.sort_values(
-    by="HIDDEN_DEPENDENCY",
-    ascending=False
+category_order = {
+    "HIDDEN_DEPENDENCY": 0,
+    "NORMAL or OVERCOUPLED": 1,
+    "CAN BE INCONSISTENT": 2,
+    "UNRELATED or NORMAL": 3
+}
+
+
+result_df["ORDER"] = (
+    result_df["CATEGORY"]
+    .map(category_order)
 )
+
+result_df = result_df.sort_values(
+    by=[
+        "ORDER",
+        "INCONSISTENCY_SCORE"
+    ],
+    ascending=[True, False]
+)
+
+result_df = result_df.drop(
+    columns=["ORDER"]
+)
+
+# =========================================================
+# KEEP ONLY FINAL COLUMNS
+# =========================================================
+
+result_df = result_df[
+    [
+        "packageA",
+        "packageB",
+        "CODE-DEPENDENCY",
+        "CO-DEPENDENCY",
+        "CATEGORY"
+    ]
+]
 
 # =========================================================
 # SAVE
 # =========================================================
 
-result_df.to_csv(OUTPUT_FILE, index=False)
+result_df.to_csv(
+    OUTPUT_FILE,
+    index=False
+)
 
 print("Analysis completed.")
 print(f"Output written to: {OUTPUT_FILE}")
