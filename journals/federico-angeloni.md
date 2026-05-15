@@ -27,6 +27,8 @@
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 | 13/05/2026 |     3 | Added pattern 3 documentation |       |    1   |
+| 14/05/2026 |    1.5| Worked on the UML diagram for pattern 3 |        |        |
+| 15/05/2026 |     2 | Finished UML diagram for pattern 3 and updated docs |       |    2   |
 
 **Summary:**
 
