@@ -1,0 +1,67 @@
+@startuml
+!theme plain
+
+skinparam classAttributeIconSize 0
+
+class MoveCopyFileGovernanceActionProvider {
+  +MoveCopyFileGovernanceActionProvider()
+  +configureConnectorType(): void
+  +setConnectorClassName(className: String): void
+  +getSupportedRequestTypes(): List<RequestTypeType>
+  +getSupportedActionTargetTypes(): List<ActionTargetType>
+}
+
+class MoveCopyFileGovernanceActionConnector {
+  +initialize(guid: String, connection: Connection): void
+  +executeAction(requestParameters: Map<String,Object>): void
+}
+
+class GovernanceActionServiceProviderBase {
+  +GovernanceActionServiceProviderBase()
+}
+
+class GovernanceServiceProviderBase {
+  +getSupportedRequestTypes(): List<RequestTypeType>
+  +getSupportedActionTargetTypes(): List<ActionTargetType>
+  +getProducedGuards(): List<GuardType>
+}
+
+class ConnectorProviderBase {
+  -connectorClassName: String
+  +getConnector(connection: Connection): Connector
+  +setConnectorClassName(className: String): void
+  +getConnectorType(): ConnectorType
+}
+
+class ConnectorType
+
+' Inheritance / abstraction chain
+MoveCopyFileGovernanceActionProvider --|> GovernanceActionServiceProviderBase : extends
+GovernanceActionServiceProviderBase --|> GovernanceServiceProviderBase : extends
+GovernanceServiceProviderBase --|> ConnectorProviderBase : extends (via OpenConnectorProviderBase)
+
+' Provider creates/initializes connectors (Adapter -> Adaptee)
+MoveCopyFileGovernanceActionProvider "1" --> "0..*" MoveCopyFileGovernanceActionConnector : "creates / initializes"
+
+' Provider configures connector type (composition)
+MoveCopyFileGovernanceActionProvider "1" *-- "1" ConnectorType : "configures / populates"
+
+' Provider uses base provider getters (verbs shown on associations)
+MoveCopyFileGovernanceActionProvider ..> GovernanceServiceProviderBase : "reads / returns supported lists"
+
+' ConnectorProviderBase responsibilities
+ConnectorProviderBase "1" -- "0..*" Connector : "creates (getConnector)"
+ConnectorProviderBase o-- ConnectorType : "exposes ConnectorType via getConnectorType()"
+
+note top of MoveCopyFileGovernanceActionProvider
+  Role: Adapter / OCF Connector Provider
+  - Translates config & request-types into connector setup
+  - Declares supported request types, parameters, action targets
+end note
+
+note right of ConnectorProviderBase
+  ConnectorProviderBase handles instantiation & initialization
+  of Connector instances using `connectorClassName`.
+end note
+
+@enduml
