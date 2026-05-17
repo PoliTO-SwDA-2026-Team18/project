@@ -21,6 +21,7 @@
 | 23/04/2026 |   1   | Architecture - Component | Added informations about some component and module and added other informations | 4a39916 |
 | 26/04/2026 |  1.5  | Architecture - Component | Added informations about last components i decided to analyze, added justification for excluded components and began the description for SOLID principles violation | e7ad72d-45c713f-a31451a |
 | 29/04/2026 |   2   | Architecture - Component | Added description of missing SOLID principles | 7211e0c |
+
 **Summary:** During sprint 2 I've analyzed the architecture of the project by the point of view of components providing a detailed description of all elements. 
 
 ---
@@ -30,6 +31,7 @@
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 | 10/05/2026 |  1.5  | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
+| 17/05/2026 |   2    | Architecture - Characteristics | Coupling analysis | 1d65ab7 |
 
 **Summary:**
 
