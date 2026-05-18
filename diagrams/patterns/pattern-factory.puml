@@ -1,0 +1,44 @@
+@startuml
+!theme plain
+
+skinparam classAttributeIconSize 0
+
+class CSVFileStoreProvider {
+  +CSVFileStoreProvider()
+}
+
+class OpenConnectorProviderBase {
+  +OpenConnectorProviderBase(openConnectorDescription: OpenConnectorDefinition, connectorClassName: String, recognizedConfigurationPropertyNames: List<String>, implementedInterfaces: List<String>, expectedDataFormat: String)
+}
+
+class ConnectorProviderBase {
+  -connectorClassName: String
+  +getConnector(connection: Connection): Connector
+  +setConnectorClassName(className: String): void
+  +getConnectorType(): ConnectorType
+}
+
+class CSVFileStoreConnector
+class Connector
+class ConnectorType
+class OpenConnectorDefinition
+
+CSVFileStoreProvider --|> OpenConnectorProviderBase : extends
+OpenConnectorProviderBase --|> ConnectorProviderBase : extends
+CSVFileStoreProvider "1" --> "0..*" CSVFileStoreConnector : creates
+ConnectorProviderBase "1" -- "0..*" Connector : creates
+ConnectorProviderBase o-- ConnectorType : exposes
+CSVFileStoreProvider ..> OpenConnectorDefinition : uses
+
+note top of CSVFileStoreProvider
+  Factory Method example
+  - a concrete provider selects the connector implementation
+  - the example is representative, not the only use in Egeria
+end note
+
+note right of ConnectorProviderBase
+  The base provider manages connector instantiation
+  through the connector class name.
+end note
+
+@enduml
