@@ -1,46 +1,42 @@
-# Design — Section B: Pattern 3 – Adapter
+# Design — Section B: Pattern 3
 
 > **Owner:** Federico Angeloni  
-> **Status:** Completed
+> **Status:** completed
 
-### 1. Pattern name
+#### 1. Pattern Name
+**Adapter Pattern**.
 
-**Adapter Pattern**
+#### 2. Involved Classes and Roles
+* **`MoveCopyFileGovernanceActionProvider` (Adapter):** This concrete provider adapts the governance framework to the specific move/copy/delete file behavior. It translates framework-level configuration into the connector-specific setup.
+* **`GovernanceActionServiceProviderBase` (Base Adapter):** This abstract base class supplies the common behavior for governance action service providers and standardizes the information exposed to the framework.
+* **`GovernanceServiceProviderBase` (Common Service Base):** This base class defines the shared capabilities for governance services, such as supported request types, request parameters, action targets and produced guards.
+* **`OpenConnectorProviderBase` and `ConnectorProviderBase` (Infrastructure):** These classes provide the reusable connector-provider machinery that creates connector instances from a class name and exposes the connector type metadata.
+* **`MoveCopyFileGovernanceActionConnector` (Adaptee):** This is the concrete connector that contains the real file operation logic.
 
-### 2. Involved classes and their roles
+#### 3. Motivation: Which Problem It Solves
+Egeria must support many different connectors while keeping the framework stable and uniform. The Adapter pattern solves the **integration and variability problem**:
+* it allows each service to expose a consistent interface to the framework;
+* it hides the details of the specific external tool or connector implementation;
+* it lets the framework work with many different services without hard-wiring their logic into the core code.
 
-The Adapter pattern is widely used in the system to allow various connectors ("adapters") to integrate external tools into the Egeria stack by mapping their APIs and data structures onto the standard interface required by the framework.
+In this project, `MoveCopyFileGovernanceActionProvider` is a good example because it adapts file-oriented governance actions to the generic provider model used by Egeria.
 
-- **Example:**
-    - `org.odpi.openmetadata.adapters.connectors.*`: all the specific connector implementations act as Adapters.
-    - **Target Interface:** The interface required by the framework, such as classes under `org.odpi.openmetadata.frameworks.connectors`.
-    - **Adapter class:** For example, `MoveCopyFileGovernanceActionProvider` (path: `open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java`), adapts the framework calls to external file management tools.
-    - **Client/Framework:** The module using these connectors via the generic interface, e.g., the governance framework itself.
+#### 4. Alternative to the Pattern: Pros and Cons
+**Alternative: hard-coded branching inside the framework**
+* **Pros:** easier to write in the short term if only one integration exists.
+* **Cons:** every new connector would require changing the core framework, which increases coupling, reduces reuse and breaks the Open/Closed Principle.
 
-### 3. Motivation: which problem it solves
+**Using Adapter**
+* **Pros:** each integration remains isolated in its own provider/connector pair; the framework stays stable; new services can be added with minimal impact on existing code.
+* **Cons:** more classes and more indirection, so the design is slightly more verbose.
 
-The Adapter pattern solves the problem of integrating heterogeneous tools (repositories, governance tools, storage providers, etc.) using a consistent and standardized interface. With Adapter, new tools can be added without needing modifications in the core framework—one needs only to implement a specific Adapter for the new tool.
+#### 5. Direct Links to Code (GitHub Permalink)
+* [MoveCopyFileGovernanceActionProvider.java](https://github.com/PoliTO-SwDA-2026-Team18/project/blob/main/open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java)
+* [GovernanceActionServiceProviderBase.java](https://github.com/odpi/egeria/blob/main/open-metadata-implementation/frameworks/open-governance-framework/src/main/java/org/odpi/openmetadata/frameworks/opengovernance/GovernanceActionServiceProviderBase.java)
+* [GovernanceServiceProviderBase.java](https://github.com/odpi/egeria/blob/main/open-metadata-implementation/frameworks/open-governance-framework/src/main/java/org/odpi/openmetadata/frameworks/opengovernance/GovernanceServiceProviderBase.java)
+* [ConnectorProviderBase.java](https://github.com/odpi/egeria/blob/main/open-metadata-implementation/frameworks/open-connector-framework/src/main/java/org/odpi/openmetadata/frameworks/connectors/ConnectorProviderBase.java)
 
-- **Typical scenario:** Plugging in new types of connector/adapters to support additional external systems, with minimal changes to the core codebase.
-
-### 4. Alternative to the pattern: pros and cons
-
-**Alternative:** Direct API mapping inside the core framework, i.e., adding conditional branches or modifying the core code whenever a new tool is added.
-
-- **Pro:** Simple when supporting only one or two tools.
-- **Cons:** Not scalable, because each new integration means touching core framework code, increasing risk of bugs, redundancy, and lack of modularity. It breaks the Open/Closed Principle and requires risky deployments with each evolution.
-
-**Using Adapter:**
-- **Pros:** Modular and extensible; the framework remains stable while each adapter encapsulates the integration logic for a new tool.
-- **Cons:** More boilerplate, as a new Adapter has to be written for every external tool; some code duplication if tools are very similar.
-
-### 5. Direct links to code (GitHub permalinks)
-
-- [MoveCopyFileGovernanceActionProvider.java](https://github.com/PoliTO-SwDA-2026-Team18/project/blob/main/open-metadata-implementation/adapters/open-connectors/governance-action-connectors/src/main/java/org/odpi/openmetadata/adapters/connectors/governanceactions/provisioning/MoveCopyFileGovernanceActionProvider.java)
-- [Connectors package](https://github.com/PoliTO-SwDA-2026-Team18/project/tree/main/open-metadata-implementation/adapters/open-connectors)
-- [Framework connectors interfaces](https://github.com/PoliTO-SwDA-2026-Team18/project/tree/main/open-metadata-implementation/frameworks)
-
-### 6. UML diagram
+#### 6. UML Diagram
 `../../../diagrams/patterns/pattern-adapter.puml`
 
 ![UML diagram svg image](../../images/pattern-adapter.svg)
