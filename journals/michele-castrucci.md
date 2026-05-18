@@ -27,6 +27,7 @@
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 |15/05/2026  |   6   | add Observer pattern documentation and UML diagram |       |    1   |
+|18/05/2026  |   6   | add Facade pattern documentation and UML diagram   |       |    1   |
 
 **Summary:**
 

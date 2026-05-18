@@ -1,0 +1,88 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AuditLog {
+  + AuditLog(AuditLogDestination, ComponentDescription): 
+  + AuditLog(AuditLogDestination, int, ComponentDevelopmentStatus, String, String, String): 
+  - requestId: RequestId
+  - destination: AuditLogDestination
+  # auditLogActivity: AuditLogActivity
+  - log: Logger
+  - reportingComponent: AuditLogReportingComponent
+  # childAuditLogs: List<AuditLog>
+  + logMessage(String, AuditLogMessageDefinition, List<String>): void
+  + createNewAuditLog(ComponentDescription): AuditLog
+  + createNewAuditLog(int, ComponentDevelopmentStatus, String, String, String): AuditLog
+  + logException(String, AuditLogMessageDefinition, String, Throwable): void
+  + logMessage(String, AuditLogMessageDefinition): void
+  + logException(String, AuditLogMessageDefinition, List<String>, Throwable): void
+  - storeLogRecord(String, AuditLogMessageDefinition, List<String>, Throwable): void
+  + logException(String, AuditLogMessageDefinition, Throwable): void
+  + logMessage(String, AuditLogMessageDefinition, String): void
+  - createLogRecord(String, AuditLogMessageDefinition, List<String>, Throwable): AuditLogRecord
+  + getOriginatorProperties(): Map<String, String>
+  + getReport(): AuditLogReport
+}
+
+class EgeriaOpenMetadataStoreClient {
+  + EgeriaOpenMetadataStoreClient(String, String, Map<String, SecretsStoreConnector>, int, AuditLog): 
+  + EgeriaOpenMetadataStoreClient(String, String, String, String, String, int, AuditLog): 
+}
+
+class OMFRESTClient {
+  + OMFRESTClient(String, String, String, String, String, AuditLog): 
+  + OMFRESTClient(String, String, Map<String, SecretsStoreConnector>, AuditLog): 
+  + callTypeDefListPostRESTCall(String, String, Object, Object[]): TypeDefListResponse
+  + callAnchorSearchMatchesPostRESTCall(String, String, Object, Object[]): AnchorSearchMatchesResponse
+  + callOpenMetadataElementPostRESTCall(String, String, Object, Object[]): OpenMetadataElementResponse
+  + callOpenMetadataGraphPostRESTCall(String, String, Object, Object[]): OpenMetadataGraphResponse
+  + callTypeDefGalleryGetRESTCall(String, String, Object[]): TypeDefGalleryResponse
+  + callTranslationDetailGetRESTCall(String, String, Object[]): TranslationDetailResponse
+  + callOpenMetadataElementGetRESTCall(String, String, Object[]): OpenMetadataElementResponse
+  + callTypeDefGetRESTCall(String, String, Object[]): TypeDefResponse
+  + callAnchorSearchMatchesListPostRESTCall(String, String, Object, Object[]): AnchorSearchMatchesListResponse
+  + callRelatedMetadataElementsListGetRESTCall(String, String, Object[]): OpenMetadataRelationshipListResponse
+  + callAttachedClassificationsPostRESTCall(String, String, Object, Object[]): AttachedClassificationsResponse
+  + callAttributeTypeDefGetRESTCall(String, String, Object[]): AttributeTypeDefResponse
+  + callRelatedMetadataElementListPostRESTCall(String, String, Object, Object[]): RelatedMetadataElementListResponse
+  + callBooleanPostRESTCall(String, String, Object, Object[]): BooleanResponse
+  + callOpenMetadataElementsPostRESTCall(String, String, Object, Object[]): OpenMetadataElementsResponse
+  + callTranslationListGetRESTCall(String, String, Object[]): TranslationListResponse
+  + callRelatedMetadataElementListGetRESTCall(String, String, Object[]): RelatedMetadataElementListResponse
+  + callTypeDefPostRESTCall(String, String, Object, Object[]): TypeDefResponse
+  + callOpenMetadataRelationshipPostRESTCall(String, String, Object, Object[]): OpenMetadataRelationshipResponse
+  + callBooleanGetRESTCall(String, String, Object[]): BooleanResponse
+  + callTypeDefListGetRESTCall(String, String, Object[]): TypeDefListResponse
+  + callAttributeTypeDefListGetRESTCall(String, String, Object[]): AttributeTypeDefListResponse
+  + callOpenMetadataRelationshipListPostRESTCall(String, String, Object, Object[]): OpenMetadataRelationshipListResponse
+  + callRelatedMetadataElementGetRESTCall(String, String, Object[]): OpenMetadataRelationshipResponse
+}
+
+class OpenMetadataClientBase {
+  + OpenMetadataClientBase(String, String, String, String, String, int, AuditLog): 
+  + OpenMetadataClientBase(String, String, Map<String, SecretsStoreConnector>, int, AuditLog): 
+  # elementBuilder: OpenMetadataElementBuilder
+  # invalidParameterHandler: InvalidParameterHandler
+  - restClient: OMFRESTClient
+  - propertyHelper: PropertyHelper
+  # relationshipBuilder: OpenMetadataRelationshipBuilder
+  + findMetadataElements(...)
+  + (altri metodi di business...)
+}
+
+class SecretsStoreConnector {
+  + getSecret(String): String
+  + checkSecretsStillValid(): void
+  + getSecretsCollectionName(): String
+  + start(): void
+}
+
+EgeriaOpenMetadataStoreClient  -[#000082,plain]-^  OpenMetadataClientBase        
+OpenMetadataClientBase "1" o-- "1" OMFRESTClient : "delegates network" >
+OpenMetadataClientBase "1" o-- "1" AuditLog : "delegates logging" >
+OpenMetadataClientBase "1" o-- "*" SecretsStoreConnector : "manages security" >
+
+@enduml
