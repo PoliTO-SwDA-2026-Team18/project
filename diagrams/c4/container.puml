@@ -14,14 +14,12 @@ System_Boundary(egeria, "Egeria Platform") {
 
     Container(repoServices, "Repository Services", "Core Metadata Engine", "Java - Open Metadata Repository Services (OMRS): Event pub/sub, metadata federation, audit logging")
 
-    'TODO: Should database alternatives (XTDB, In-Memory) appear here at L2 or in L3?
     Container(dataRepo, "Data Repository", "PostgreSQL Database", "PostgreSQL (primary) with XTDB/In-Memory alternatives - Persistent storage for metadata, audit logs, configurations, types")
 
     Container(msgBus, "Message Bus", "Kafka Cluster", "Apache Kafka - Event streaming for metadata changes, federation, async notifications")
 
     Container(configStore, "Configuration Store", "File-based Configuration", "YAML/JSON files (extensible to Vault, etcd, Consul) - Server configs, connector definitions, deployment settings")
 
-    'TODO:Secrets Management is internal file-based initially or we can consider only the external Vault? 
     Container(secretsMgmt, "Secrets Management", "Secrets Store", "File-based YAML initially (extensible to Vault, AWS Secrets Manager) - API keys, DB passwords, tokens, encryption keys")
 
     Rel(omag, repoServices, "Queries metadata, performs governance operations", "Java API")
