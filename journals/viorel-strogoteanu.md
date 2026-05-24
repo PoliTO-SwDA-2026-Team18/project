@@ -34,9 +34,10 @@
 
 ## Sprint 4 — May 19 – Jun 1, 2026
 
-| Date | Hours | Activity Type | Notes | Commit |
-| ---- | ----: | ------------- | ----- | ------ |
-|      |       |               |       |        |
+| Date       | Hours | Activity Type           | Notes | Commit   |
+| ---------- | ----: | ----------------------- | ----- | -------- |
+| 23/05/2026 |     3 | context documentation   |       |          |
+| 24/05/2026 |     3 | container documentation |       | 9483fd5d |
 
 **Summary:**
 
