@@ -45,7 +45,8 @@ Toward the end of Sprint 2, I started looking for inconsistencies between code d
 | Date       | Hours | Activity Type         | Notes |
 |------------|------:|----------------------------------|-------|
 | 26/05/2026 |  0.5  | Repository Setup & Configuration | I've merged A1, A2 , B1, B2, B3, B4 into design.md |        
-| 26/05/2026 |  4.5  | Design — Dependencies            | I've write the part of the report for the inconsisteny analysis between co and code dependencies |
+| 26/05/2026 |  4.5  | Design — Dependencies            | I've written the part of the report for the inconsisteny analysis between co and code dependencies |
+| 26/05/2026 |   1   | Design — Summary                 | I've written the design summary section and updated design.md accordingly |
 
 **Summary:**
 
