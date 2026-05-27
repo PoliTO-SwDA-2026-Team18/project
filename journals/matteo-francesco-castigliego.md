@@ -43,6 +43,7 @@
 |------------|------:|-----------------------|-------|--------|
 | 26/05/2026 |  2.5  |                       | Added UML diagrams | 39b9b67 |
 | 26/05/2026 |  1.5  | Architecture - Component | Added lines of code to make examples of SOLID principle violation | 5db48dc |
+| 27/05/2026 |  0.5  | Architecture | Putted all architectural parts together but must be reviewed to respect the max number of words | 9b9485f |
 
 **Summary:**
 
