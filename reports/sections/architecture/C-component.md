@@ -15,9 +15,12 @@ Required content:
 
 The modules of Egeria are about 14 and i've decided to analyze two of them that are the most important for the flow of metadata.  
 
-Diagrammi PlantUML
-
 ### 1.1 Metadata Access Server (OMAS) Component Diagram
+
+`../../../diagrams/c4/component-metadata-access-server.puml`
+
+![Metadata Access Server component diagram](../../images/component-metadata-access-server.svg)
+
 This is the main container of the architecture, his main components are linked with some module like:
 
 - **`access-service`**: this module provides the API REST adapt for all metadata, for example we have *ocf-metadata-management* which provides metadata management for the Open Connector Framework (OCF), *omf-metadata-management* which provides metadata management for the Open Metadata Framework (OMF) and *gaf-metadata-management* which provides metadata management for the Open Governance Framework (OGF); all is referred to properties and APIs.
@@ -39,6 +42,11 @@ This is the main container of the architecture, his main components are linked w
 - **`user-security`**: these modules use mechanisms based on tokens to be used as an authentication method; they are distributed to runtime modules and connectors such as security connectors via thread. The main module is the <u>*token-manager*</u> which provides the classes to extract the authorization headers from an incoming HTTP request and add them to thread local storage. 
 
 ### 1.2 Integration Daemon Component Diagram
+
+`../../../diagrams/c4/component-integration-daemon.puml`
+
+![Integration Daemon component diagram](../../images/component-integration-daemon.svg)
+
 In this container there are tools for a continued syncronization:
 
 - **`adapters`**: connectors that implement the comunication with owners tools.
@@ -60,18 +68,73 @@ I decided to exclude peripheral containers (such as the *View Server*, UI applic
 According to this principle there should be only one actor responsable of changes in each class or module. 
 We can see that this principle is violated for exsample by `JacquardIntegrationConnector`, which is responsable to assemble all the **Open Metadata Digital Product Catalog** that is composed by several components like catalogs, glossaries or dictionaries. Each of them has its own set of elements and properties.
 
+```java
+public class JacquardIntegrationConnector extends CatalogIntegratorConnector {
+    // The same class assembles unrelated concerns:
+    private void refreshDigitalProductCatalog()  { ... }
+    private void refreshGlossaries()             { ... }
+    private void refreshDataDictionaries()       { ... }
+    private void refreshReferenceData()          { ... }
+    private void refreshGovernanceActions()      { ... }
+}
+```
+
 ### 3.2 Open/Closed Principle (OCP)
 The system should be open for extension but closed for modification. 
 Egeria allows the addition of new adapters without overturn the code. However, if a completely new standard of metadata is introduced, all the core as *access-services* or *repository-services* might require great modifications on the logic, not only extensions of interfaces, and as conseguence there's the OCP violation.
 
+```java
+// Adding a brand-new standard means extending core enums/switches
+// scattered across access-services and repository-services:
+public enum AccessServiceDescription {
+    OCF_METADATA_MANAGEMENT(...),
+    OMF_METADATA_MANAGEMENT(...),
+    GAF_METADATA_MANAGEMENT(...);
+    // NEW_STANDARD_MANAGEMENT(...)  <-- requires modifying this enum
+}
+```
+
 ### 3.3 Interface Segregation Principle (ISP)
 Each actor should have its own interface composed by the elements that are effectively used by him, not a general interface where everything is putted inside it and several components aren't used depending by the actor. This violation is marked in the `OMRSMetadataCollection`, a module situated in the *repository-services-apis*, which contains all methods that manages entities, relationships etc., so if an actor needs only some part of that must depend by all the entire interface.
+
+```java
+public abstract class OMRSMetadataCollection {
+    public abstract TypeDefGallery getAllTypes(...);
+    public abstract EntityDetail addEntity(...);
+    public abstract EntityDetail updateEntityProperties(...);
+    public abstract List<EntityDetail> findEntitiesByProperty(...);
+}
+```
 
 ### 3.4 Liskov Substitution Principle (LSP)
 Objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.
 In a project too big like this, it's impossible to have metadata tools that support every operation of the interface, infact even if there are a lot of *adapters* they can throw exceptions; this represents a violation of the principle causing a crash of the application.
 
+```java
+// A concrete repository connector cannot honour the full contract:
+@Override
+public EntityDetail isEntityKnown(String userId, String guid)
+        throws FunctionNotSupportedException {
+    throw new FunctionNotSupportedException(
+            OMRSErrorCode.METHOD_NOT_IMPLEMENTED.getMessageDefinition(),
+            this.getClass().getName(), "isEntityKnown");
+}
+```
+
 ### 3.5 Dependency Inversion Principle (DIP)
 High-level modules should not depend on low-level modules; both should depend on abstractions. 
 Especially within the `frameworks` module, there are still instances of tight coupling where high-level modules depend on concrete implementations. An example is found in the `OMAGServerPlatformCatalogConnector`, which directly instantiates the concrete class `SoftwareServerProperties` via the `new` keyword: 
+
+```java
 SoftwareServerProperties softwareServerProperties = new SoftwareServerProperties();
+softwareServerProperties.setQualifiedName(...);
+```
+
+The same connector also pattern-matches against the concrete type instead of an abstraction:
+
+```java
+if (softwareServer.getProperties()
+        instanceof SoftwareServerProperties softwareServerProperties) {
+    softwareServerProperties.getDeployedImplementationType();
+}
+```
