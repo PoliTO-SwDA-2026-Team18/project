@@ -33,7 +33,7 @@
 | 10/05/2026 |  1.5  | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
 | 17/05/2026 |   2   | Architecture - Characteristics | Coupling analysis | 1d65ab7 |
 
-**Summary:**
+**Summary:** During sprint 3 I've completed the analysis of main charactersistics of the project
 
 ---
 
