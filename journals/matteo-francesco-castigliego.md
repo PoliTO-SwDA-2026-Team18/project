@@ -31,7 +31,7 @@
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
 | 10/05/2026 |  1.5  | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
-| 17/05/2026 |   2    | Architecture - Characteristics | Coupling analysis | 1d65ab7 |
+| 17/05/2026 |   2   | Architecture - Characteristics | Coupling analysis | 1d65ab7 |
 
 **Summary:**
 
@@ -41,7 +41,8 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 26/05/2026 |  2.5  |                       | Added UML diagrams | 39b9b67 |
+| 26/05/2026 |  1.5  | Architecture - Component | Added lines of code to make examples of SOLID principle violation | 5db48dc |
 
 **Summary:**
 
