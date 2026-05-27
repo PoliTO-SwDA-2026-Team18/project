@@ -1,0 +1,35 @@
+@startuml C4_Component_MetadataAccessServer
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Metadata Access Server (OMAS) - Component Diagram (Level 3)
+
+Person(client, "Client", "External tool / OMAG client")
+ContainerDb(dataRepo, "Metadata Repository", "PostgreSQL / XTDB / In-Memory", "Persistent store for metadata, audit, types")
+Container(msgBus, "Event Bus", "Apache Kafka", "Publishes/receives metadata change events")
+
+Container_Boundary(mas, "Metadata Access Server") {
+
+    Component(userSec, "user-security", "Token-based auth", "token-manager: extracts auth headers, isolates per-thread credentials")
+
+    Component(access, "access-services (OMAS)", "REST API layer", "ocf-metadata-management (OCF)\nomf-metadata-management (OMF)\ngaf-metadata-management (OGF)")
+
+    Component(common, "common-services", "Shared utilities", "FFDC Service\nMetadata Security\nRepository Handler")
+
+    Component(omrs, "repository-services (OMRS)", "Federation engine", "apis\narchive-utilities\nclient (Local & Enterprise)\nimplementation (peer-to-peer)\nspring (REST)")
+}
+
+Rel(client, userSec, "Sends auth headers", "HTTPS")
+Rel(client, access, "Invokes metadata REST APIs", "HTTPS")
+
+Rel(access, common, "Uses utilities & security checks")
+Rel(access, omrs, "Reads / updates metadata")
+
+Rel(common, omrs, "Translates repository-level exceptions")
+Rel(userSec, common, "Provides authenticated principal")
+
+Rel(omrs, dataRepo, "Persists & queries metadata", "JDBC / native")
+Rel(omrs, msgBus, "Publishes / subscribes change events", "Kafka API")
+
+@enduml

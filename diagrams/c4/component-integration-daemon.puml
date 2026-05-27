@@ -1,0 +1,26 @@
+@startuml C4_Component_IntegrationDaemon
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Integration Daemon - Component Diagram (Level 3)
+
+System_Ext(extTool, "External Tool", "Third-party catalog, ETL, BI, governance suite, etc.")
+Container(mas, "Metadata Access Server", "OMAG Server", "Hosts OMAS, OMRS, common-services")
+Container(msgBus, "Event Bus", "Apache Kafka", "Metadata change events")
+
+Container_Boundary(intd, "Integration Daemon") {
+
+    Component(frameworks, "frameworks", "Pluggable interfaces", "Metadata: open type definitions\nConnector: access to real-world resources\nWatchdog: event monitoring & action triggers")
+
+    Component(adapters, "adapters", "Concrete connectors", "Implement framework interfaces;\ntranslate between the tool's proprietary format\nand Egeria Open Metadata Types")
+}
+
+Rel(extTool, adapters, "Native protocol / API")
+Rel(adapters, frameworks, "Implements pluggable interfaces")
+
+Rel(adapters, mas, "Pushes & pulls metadata", "REST")
+Rel(mas, msgBus, "Publishes change events", "Kafka API")
+Rel(adapters, msgBus, "Subscribes to events for sync", "Kafka API")
+
+@enduml
