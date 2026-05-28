@@ -34,10 +34,12 @@
 
 ## Sprint 4 — May 19 – Jun 1, 2026
 
-| Date       | Hours | Activity Type           | Notes | Commit   |
-| ---------- | ----: | ----------------------- | ----- | -------- |
-| 23/05/2026 |     3 | context documentation   |       |          |
-| 24/05/2026 |     3 | container documentation |       | 9483fd5d |
+| Date       | Hours | Activity Type                                                                         | Notes                           | Commit   |
+| ---------- | ----: | ------------------------------------------------------------------------------------- | ------------------------------- | -------- |
+| 23/05/2026 |     3 | context documentation                                                                 |                                 |          |
+| 24/05/2026 |     3 | container documentation                                                               |                                 | 9483fd5d |
+| 28/05/2026 |     3 | C4 context and container review                                                       |                                 | 15e46996 |
+| 28/05/2026 |   1.5 | Review of C4 context and container diagram and description after professor's feedback | Review after professor feedback | 57fd1cac |
 
 **Summary:**
 
