@@ -27,28 +27,26 @@ Compliance / Privacy / Security Officers are not a separate actor: their work sp
 
 ## External Systems
 
-| System                    | Why it is external                                                                                                                     |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **Data Sources**          | Heterogeneous origins of metadata (databases, lakes, file systems, warehouses). Egeria does not own them; integration connectors crawl |
-| them.                     |
-| **Data Tools**            | BI, ETL and data science platforms that produce or consume metadata via Egeria's REST APIs.                                            |
-| **Apache Kafka**          | Event backbone for asynchronous metadata change events and cohort federation. Real out-of-process service; the in-memory fallback      |
-| exists only for dev/test. |
+| System | Why it is external |
+| --- | --- |
+| **Data Sources** | Heterogeneous origins of metadata (databases, lakes, file systems, warehouses). Egeria does not own them; integration connectors crawl them. |
+| **Data Tools** | BI, ETL and data science platforms that produce or consume metadata via Egeria's REST APIs. |
+| **Apache Kafka** | Event backbone for asynchronous metadata change events and cohort federation. Real out-of-process service; the in-memory fallback exists only for dev/test. |
+| **Third-party Metadata Repositories** | Apache Atlas, IBM IGC, Collibra and others. Egeria does not own them; the Repository Proxy federates their metadata by translating between their native model and Open Metadata Types. |
+| **Egeria React UI** | Web frontend in a separate repository (egeria-react-ui). The access channel for human users; calls Egeria on their behalf. |
 
-Three systems are deliberately **not** at L1:
-
-- The **Egeria React UI** lives in a separate repository: it is the access channel for human users and appears at L2.
-- **Identity Provider, configuration store and secrets store** are infrastructure details reached through pluggable connectors; they appear at L2/L3.
+**Identity Provider, configuration store and secrets store** are infrastructure details reached through pluggable connectors; they appear at L2/L3.
 
 ## Key Interactions
 
-| Flow                                            | Intent                                                                                                                               |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Architect / Steward / Consumer / Admin → Egeria | Each actor invokes the metadata, governance or admin operations relevant to their role.                                              |
-| Egeria → Data Sources                           | Egeria **pulls** schema, lineage and statistics through integration connectors that run inside the platform.                         |
-| Egeria ↔ Apache Kafka                           | Egeria publishes and consumes Open Metadata change events; the platform connects to the broker as both publisher and subscriber.     |
-| Data Tools → Egeria                             | BI / ETL tools **call Egeria's REST APIs** to read catalogue metadata and to push lineage / audit events. The tools initiate; Egeria |
-| does not push to them.                          |
+| Flow | Intent |
+| --- | --- |
+| Architect / Steward / Consumer / Admin → Egeria React UI | Human actors reach Egeria through the web UI, which exposes metadata catalogue, governance and administration operations. |
+| Egeria React UI → Egeria | The UI forwards user requests to the platform as metadata and governance operations. |
+| Egeria → Data Sources | Egeria **pulls** schema, lineage and statistics through integration connectors that run inside the platform. |
+| Egeria → Apache Kafka | Egeria publishes and consumes Open Metadata change events; the platform connects to the broker as both publisher and subscriber. |
+| Egeria → Third-party Metadata Repositories | Egeria **federates** metadata with third-party repositories via the Repository Proxy, translating between Open Metadata Types and each repository's native model. |
+| Data Tools → Egeria | BI / ETL tools **call Egeria's REST APIs** to read catalogue metadata and to push lineage / audit events. The tools initiate; Egeria does not push to them. |
 
 Arrows are unidirectional and labelled with intent. Protocol detail belongs in the Container diagram.
 

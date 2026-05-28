@@ -14,19 +14,19 @@ System(egeria, "Egeria Platform", "Open Metadata & Governance platform: catalogu
 
 System_Ext(dataSources,   "Data Sources", "Databases, data lakes, file systems, data warehouses, catalogues and lineage extracted via integration connectors")
 System_Ext(externalTools, "Data Tools",   "BI, ETL, data science platforms and third-party catalogues that produce or consume metadata")
-System_Ext(kafka,         "Apache Kafka", "Event backbone for asynchronous exchange of metadata change events (optional: in-memory fallback available)")
-System_Ext(ui,            "Egeria React UI", "Web UI for exploring the open metadata ecosystem and configuring servers")
+System_Ext(kafka,         "Apache Kafka",                     "Event backbone for asynchronous exchange of metadata change events (optional: in-memory fallback available)")
+System_Ext(thirdPartyRepo,"Third-party Metadata Repositories","Apache Atlas, IBM IGC, Collibra and others, federated via Repository Proxy")
+System_Ext(ui,            "Egeria React UI",                  "Web UI for exploring the open metadata ecosystem and configuring servers")
 
 Rel(architect, egeria, "Defines types, glossaries and governance models")
 Rel(steward,   egeria, "Curates assets and handles exceptions")
 Rel(consumer,  egeria, "Searches and consults assets")
 Rel(admin,     egeria, "Configures platform and logical servers")
 
-Rel(egeria, dataSources,   "Extracts metadata and lineage")
-Rel(egeria, kafka,         "Publishes and consumes metadata change events")
-Rel(ui, egeria, "Invokes metadata and governance operations")
+Rel(egeria, dataSources,    "Extracts metadata and lineage")
+Rel(egeria, kafka,          "Publishes and consumes metadata change events")
+Rel(egeria, thirdPartyRepo, "Federates metadata with third-party repositories")
+Rel(ui, egeria, "Exposes metadata catalogue, governance and administration operations to users")
 Rel(externalTools, egeria, "Reads catalogue metadata and pushes lineage / audit events")
-' TODO: arrow direction: egeria ussually starts the interaction with the internal integration connectors (do pull of datasources and tools)
-' The external tools queries catalogue metadata (opposite direction)
 
 @enduml
