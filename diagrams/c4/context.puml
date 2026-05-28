@@ -5,31 +5,35 @@ LAYOUT_WITH_LEGEND()
 
 title Egeria Platform - Context Diagram (Level 1)
 
-Person(dataUsers, "Data Platform Users", "Data Engineers, Officers, Stewards, Analysts")
-' All 26 identified user roles are represented by the collective "Data Platform Users" actor
-Person(admins, "Platform Administrators", "DevOps, SRE, Platform Team")
-Person(governance, "Data Governance Teams", "Compliance, Privacy, Security Officers")
+note as N1
+  Scope: single OMAG Server Platform is shown; 
+  cohort federation across multiple platforms 
+  is out of scope at this level. 'TODO: ask if we need to have replicas
+end note
 
-System(egeria, "Egeria Platform", "Metadata & Governance Orchestration - manages metadata, lineage, governance policies across enterprise")
+' By definitions of the documentation
+Person(architect, "Information Architect", "Domain expert designing the canonical metadata model")
+Person(steward,   "Data Steward",          "Owner of asset quality and metadata correctness")
+Person(consumer,  "Asset Consumer",        "Analyst, data engineer or product user looking for data")
+Person(admin,     "Platform Administrators","DevOps / SRE responsible for Egeria operations")
 
-System_Ext(dataSources, "Data Sources", "SQL Databases, File Systems, Kafka Topics, Data Lakes, Unity Catalog, etc.")
-System_Ext(externalTools, "External Tools", "BI Tools, ETL Platforms, Data Catalogs, Analytics Platforms")
-System_Ext(kafka, "Message Bus", "Apache Kafka - Event streaming platform")
+System(egeria, "Egeria Platform", "Open Metadata & Governance platform: catalogues metadata, manages lineage, governance, federates third-party repositories")
+' TODO: ask if this description is useful of is just noise bcause of the definition in other parts of the arch doc
 
-Rel(dataUsers, egeria, "Requests metadata, creates glossaries, manages governance")
-Rel(egeria, dataUsers, "Exposes REST APIs, metadata search results")
+System_Ext(dataSources,   "Data Sources", "Databases, data lakes, file systems, data warehouses, catalogues and lineage extracted via integration connectors")
+System_Ext(externalTools, "Data Tools",   "BI, ETL, data science platforms and third-party catalogues that produce or consume metadata")
+System_Ext(kafka,         "Apache Kafka/Message Bus", "Event backbone for asynchronous exchange of metadata change events (optional: in-memory fallback available)")
+' TODO: ask if we can write here Kafka or we have to consider the default situation
 
-Rel(admins, egeria, "Configures platform, manages servers")
-Rel(egeria, admins, "Server status, operational metrics")
+Rel(architect, egeria, "Defines types, glossaries and governance models")
+Rel(steward,   egeria, "Curates assets and handles exceptions")
+Rel(consumer,  egeria, "Searches and consults assets")
+Rel(admin,     egeria, "Configures platform and logical servers")
 
-Rel(governance, egeria, "Creates policies, audit requirements")
-Rel(egeria, governance, "Compliance reports, governance status")
-
-Rel(egeria, dataSources, "Discovers schema, lineage, statistics")
-Rel(dataSources, kafka, "Publishes lineage and audit events")
-Rel(egeria, kafka, "Publishes/subscribes metadata change events")
-
-Rel(egeria, externalTools, "Exports metadata, lineage, policies via REST APIs")
-Rel(externalTools, egeria, "Provides data discovery requests via REST APIs")
+Rel(egeria, dataSources,   "Extracts metadata and lineage")
+Rel(egeria, kafka,         "Publishes and consumes metadata change events")
+Rel(externalTools, egeria, "Reads catalogue metadata and pushes lineage / audit events")
+' TODO: arrow direction: egeria ussually starts the interaction with the internal integration connectors (do pull of datasources and tools)
+' The external tools queries catalogue metadata (opposite direction)
 
 @enduml
