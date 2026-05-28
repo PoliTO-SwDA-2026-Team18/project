@@ -3,66 +3,33 @@
 > **Owner:** Viorel Strogoteanu  
 > **Status:** Completed
 
-<!-- 
-Required content:
-- C4 Container Diagram
-- Explanation: applications, databases, services of the system
-- Mandatory question: relationship with Clean Architecture (justify)
-- Diagram: ../../../diagrams/c4/container.puml
--->
-
 ## Diagram
 
 `../../../diagrams/c4/container.puml`
 
-## Description
+## Scope
 
-The container diagram opens the Egeria Platform black box and shows the six major deployable units and how they communicate.
-
-### Containers
-
-| Container | Technology | Responsibility |
-|---|---|---|
-| **OMAG Server Platform** | Java 17, Spring Boot | Main entry point for all HTTP traffic. Hosts View Services (26 domain APIs), Access Services (metadata management), Admin Services (server lifecycle), and Platform Services. |
-| **Repository Services (OMRS)** | Java, event-driven | Core metadata engine. Handles metadata federation across cohorts, event publishing/subscription, and audit logging. |
-| **Data Repository** | PostgreSQL | Persistent storage for metadata, type definitions, and audit logs. XTDB and in-memory connectors are available as alternatives for temporal queries and testing respectively. |
-| **Message Bus** | Apache Kafka | Asynchronous event streaming for metadata changes, cohort federation events, and notifications. Decouples the repository from downstream consumers. |
-| **Configuration Store** | File-based (YAML/JSON) | Stores server configurations, connector definitions, and deployment settings. Extensible to etcd or Vault for production-grade configuration management. |
-| **Secrets Management** | File-based (YAML) | Stores credentials, API keys, and encryption tokens. Designed to be replaced by Vault or AWS Secrets Manager in production deployments. |
-
-### Internal Interactions
-
-| From | To | Protocol | Intent |
-|---|---|---|---|
-| OMAG Server Platform | Repository Services | Java API | Metadata queries and governance operations |
-| OMAG Server Platform | Configuration Store | File / REST API | Read server configuration on startup and at runtime |
-| OMAG Server Platform | Secrets Management | Secure API call | Retrieve credentials and API keys |
-| OMAG Server Platform | Message Bus | Kafka API | Publish and subscribe to REST-triggered events |
-| Repository Services | Data Repository | JDBC SQL | Persist and retrieve metadata and audit logs |
-| Repository Services | Message Bus | Kafka API | Publish metadata change events; subscribe to federation events |
-
-### External Interactions
-
-| From | To | Protocol | Intent |
-|---|---|---|---|
-| User | OMAG Server Platform | HTTP/HTTPS | All user-facing API calls |
-| OMAG Server Platform | Authentication Service | LDAP / OAuth2 / OIDC | Validate user identity and retrieve authorization info |
-| OMAG Server Platform | Data Sources | Integration Connectors (JDBC, native APIs) | Discover schema, lineage, and statistics |
-| External Tools | OMAG Server Platform | REST APIs | Retrieve metadata; submit lineage and governance policies |
-| Data Sources | Message Bus | Kafka API | Publish lineage and data quality events |
+Each OMAG Server type runs as an independent Spring Boot process on an OMAG Server Platform. They can share one platform instance (dev/test) or be distributed across multiple instances (production). The diagram models the production-style distributed case, where each server type is a separate deployable unit.
 
 ## Relationship with Clean Architecture
 
-Clean Architecture organizes software into concentric layers where source-code dependencies can only point inward: Frameworks & Drivers → Interface Adapters → Use Cases → Entities. The inner layers know nothing about the outer ones.
+Clean Architecture (Robert C. Martin) organises source-code dependencies into four concentric rings — Entities, Use Cases, Interface Adapters, Frameworks & Drivers — with one strict rule: **dependencies can only point inward**. Outer rings know about inner rings; inner rings know nothing about outer ones. The goal is to keep domain logic independent from infrastructure so that databases, frameworks, and external tools are swappable without touching business rules.
 
-Egeria's container layout maps closely onto this blueprint:
+Egeria's container layout maps onto those rings as follows:
 
-- **Entities** → the Open Metadata Type System and governance rules defined inside **Repository Services (OMRS)**. These core business objects have no dependency on web frameworks, databases, or external tooling.
+| Clean Architecture ring | Egeria container | Why |
+| --- | --- | --- |
+| **Entities** | Core of the **Metadata Access Server** (OMRS) | The Open Metadata Type System — canonical types, relationships, classifications — is pure domain. No dependency on Spring, Kafka, or any database. |
+| **Use Cases** | Also the **Metadata Access Server** (OMAS) | The Access Services (Asset Manager, Data Manager, Governance Program…) implement application-level metadata workflows. They orchestrate types without knowing how they are stored or transported. |
+| **Interface Adapters** | **View Server, Integration Daemon, Engine Host, Repository Proxy** | Each translates between an external concern and the metadata core: the View Server adapts HTTP UI requests into OMAS calls; the Integration Daemon translates third-party data formats into Open Metadata Types; the Repository Proxy maps a foreign repository's model onto OMRS. They all depend on MAS; they do not depend on each other. |
+| **Frameworks & Drivers** | **Metadata Repository, Apache Kafka, Data Sources, Third-party Repositories, Egeria React UI** | Concrete infrastructure. Replaceable without touching the business rules, because each is reached through an abstraction defined by the inner layers (Repository Connector, Open Metadata Topic Connector, Integration Connector). |
 
-- **Use Cases** → also **Repository Services**. Cohort federation, metadata event pub/sub, and audit management are application-level business rules that orchestrate entities without knowing how they are exposed or stored.
+**Dependency rule check.** The arrows in the diagram respect the inward rule:
+- View Server → MAS, Integration Daemon → MAS, Engine Host → MAS: adapters calling the core. ✓
+- MAS → Metadata Repository: the dependency is on the *Repository Connector interface* (defined inside OCF, the core framework), not on PostgreSQL or in-memory directly. The concrete driver lives in the outermost ring and is injected at startup. ✓
+- MAS → Apache Kafka: similarly mediated by the *Open Metadata Topic Connector* abstraction. ✓
 
-- **Interface Adapters** → **OMAG Server Platform**. Spring Boot controllers translate incoming HTTP requests into domain calls and format domain objects into REST responses. View Services and Access Services act as role-specific adapters between the domain and the outside world.
+**Main deviations from strict Clean Architecture:**
 
-- **Frameworks & Drivers** → **Data Repository (PostgreSQL), Message Bus (Kafka), Configuration Store, Secrets Management, Authentication Service, Data Sources**. All of these are replaceable infrastructure. PostgreSQL, Kafka, YAML files, and LDAP are concrete implementations of abstract interfaces defined by the inner layers — the connector abstraction in `frameworks/` enforces this boundary, so the domain never depends on a specific technology.
-
-The main deviation from strict Clean Architecture is that the **OMAG Server Platform publishes directly to the Message Bus** without going through Repository Services. This means that a container in the Interface Adapters layer (OMAG) communicates directly with a container in the Frameworks & Drivers layer (Kafka), skipping the Use Case layer entirely — which breaks the strict inward-only dependency rule. It is a pragmatic trade-off to avoid routing every real-time notification through the metadata engine.
+1. **Collapsed inner rings.** MAS bundles both the Entity layer (OMRS, type system) and the Use Case layer (OMAS business rules) into one deployable unit. The boundary between them exists in the source code but is invisible at L2; it only becomes visible at L3. This is a deliberate design choice: separating OMRS and OMAS into two independent processes would create distributed coupling with no architectural gain, since every OMAS call needs synchronous access to the type system.
+2. **Framework ubiquity.** All five OMAG Server types are built on Spring Boot, meaning the Frameworks & Drivers ring is present inside every container. This is an unavoidable characteristic of microservice architectures. The risk — that framework concerns bleed into business logic — is mitigated by the OCF connector boundary, which forces all infrastructure access through interfaces owned by the inner layers.

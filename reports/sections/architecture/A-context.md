@@ -1,56 +1,62 @@
 # Architecture — Section A: Context Level (C4 — Level 1)
 
-> **Owner:** Viorel Strogoteanu  
+> **Owner:** Viorel Strogoteanu
 > **Status:** Completed
-
-<!-- 
-Required content:
-- C4 Context Diagram
-- Explanation: external actors, external systems, analyzed system at the center
-- Diagram: ../../../diagrams/c4/context.puml
--->
 
 ## Diagram
 
 `../../../diagrams/c4/context.puml`
 
-## Description
+## Scope
 
-The context diagram places **Egeria Platform** at the center as a single black box, showing every external actor and system that interacts with it without exposing any internal structure.
+Single OMAG Server Platform deployment. Cohort federation across multiple Egeria platforms is a runtime capability of OMRS, not a separate system at L1; it
+surfaces in the Container diagram.
 
-### External Actors
+## External Actors
 
-| Actor | Description |
-|---|---|
-| **Data Platform Users** | Collective actor covering Data Engineers, Data Officers, Data Stewards, and Analysts. They interact with Egeria to search and manage metadata, create business glossaries, and consume governance outputs. |
-| **Platform Administrators** | DevOps, SRE, and Platform team members responsible for deploying, configuring, and monitoring Egeria servers via the Admin REST APIs. |
-| **Data Governance Teams** | Compliance, Privacy, and Security Officers who define governance policies, audit requirements, and consume compliance reports. |
+Actors are grouped by **functional role** (what they do with metadata), not by job title or organisational team: this is stable across reorganisations and aligns with the View Services that Egeria exposes per role.
 
-All three actors are grouped by _role_ rather than job title. Individual roles (e.g. Data Designer, Security Officer) are served by dedicated view services and appear at component level.
+| Actor                      | Identity                                                                                     |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
+| **Information Architect**  | Domain expert designing the canonical metadata model — types, glossaries, governance models. |
+| **Data Steward**           | Owner of asset quality and metadata correctness; curates assets and handles exceptions.      |
+| **Asset Consumer**         | Analyst, data engineer or product user searching the catalogue for usable data.              |
+| **Platform Administrator** | DevOps / SRE responsible for deploying, configuring and operating Egeria.                    |
 
-### External Systems
+Compliance / Privacy / Security Officers are not a separate actor: their work splits between Information Architect (writing policies) and Data Steward (enforcing them) at L1 granularity.
 
-| System | Description |
-|---|---|
-| **Data Sources** | SQL databases, file systems, Kafka topics, data lakes, and data platforms (e.g. Databricks Unity Catalog). Egeria crawls and catalogs their metadata via integration connectors. |
-| **External Tools** | BI tools, ETL platforms, data catalogs, and analytics platforms that exchange metadata with Egeria through REST APIs. |
-| **Message Bus** | Apache Kafka, used as the event-streaming backbone for asynchronous metadata change events and federation notifications. |
+## External Systems
 
-Configuration management and secrets storage are intentionally excluded at this level: they are internal infrastructure details that appear in the Container diagram.
+| System                    | Why it is external                                                                                                                     |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Data Sources**          | Heterogeneous origins of metadata (databases, lakes, file systems, warehouses). Egeria does not own them; integration connectors crawl |
+| them.                     |
+| **Data Tools**            | BI, ETL and data science platforms that produce or consume metadata via Egeria's REST APIs.                                            |
+| **Apache Kafka**          | Event backbone for asynchronous metadata change events and cohort federation. Real out-of-process service; the in-memory fallback      |
+| exists only for dev/test. |
 
-### Key Interactions
+Three systems are deliberately **not** at L1:
 
-| Flow | Protocol | Intent |
-|---|---|---|
-| Data Platform Users → Egeria | HTTP REST (token auth) | Request metadata, submit governance actions |
-| Egeria → Data Platform Users | HTTP REST | Expose search results, metadata APIs |
-| Platform Administrators → Egeria | HTTP REST (Admin APIs) | Configure platform, manage server lifecycle |
-| Egeria → Platform Administrators | HTTP REST | Server status, operational metrics |
-| Data Governance Teams → Egeria | HTTP REST | Create policies and audit rules |
-| Egeria → Data Governance Teams | HTTP REST | Compliance reports, governance status |
-| Egeria ↔ Data Sources | Integration Connectors (JDBC, native APIs) | Discover schema, lineage, and statistics |
-| Egeria ↔ Message Bus | Kafka Pub/Sub | Publish and subscribe to metadata change events |
-| Data Sources → Message Bus | Kafka | Publish lineage and audit events |
-| Egeria ↔ External Tools | REST APIs | Export metadata, policies; receive discovery requests |
+- The **Egeria React UI** lives in a separate repository: it is the access channel for human users and appears at L2.
+- **Identity Provider, configuration store and secrets store** are infrastructure details reached through pluggable connectors; they appear at L2/L3.
 
-All labels use intent rather than technical detail, following C4 context-level conventions.
+## Key Interactions
+
+| Flow                                            | Intent                                                                                                                               |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Architect / Steward / Consumer / Admin → Egeria | Each actor invokes the metadata, governance or admin operations relevant to their role.                                              |
+| Egeria → Data Sources                           | Egeria **pulls** schema, lineage and statistics through integration connectors that run inside the platform.                         |
+| Egeria ↔ Apache Kafka                           | Egeria publishes and consumes Open Metadata change events; the platform connects to the broker as both publisher and subscriber.     |
+| Data Tools → Egeria                             | BI / ETL tools **call Egeria's REST APIs** to read catalogue metadata and to push lineage / audit events. The tools initiate; Egeria |
+| does not push to them.                          |
+
+Arrows are unidirectional and labelled with intent. Protocol detail belongs in the Container diagram.
+
+## Design notes
+
+- **Pull-first for Data Sources.** Integration connectors live inside Egeria and poll or observe the sources. The push model (sources emitting events to
+  Kafka or to a REST endpoint) exists but is the minority case and is captured at L2.
+- **Tools initiate, not Egeria.** Outbound notifications to data tools, when they happen, travel via Kafka rather than via direct calls from Egeria —
+  therefore the only L1 arrow between Egeria and Data Tools is _inbound_.
+- **Single platform at L1.** Modelling a cohort as N separate systems at L1 would suggest each platform is independently usable, which is misleading: the
+  cohort is a federation property of a single Egeria deployment, not a separate product.

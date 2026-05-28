@@ -5,7 +5,6 @@ LAYOUT_WITH_LEGEND()
 
 title Egeria Platform - Container Diagram (Level 2)
 
-' ' By definitions of the documentation
 Person(architect, "Information Architect", "Defines types, glossaries and governance")
 Person(steward,   "Data Steward",          "Curates metadata quality and correctness")
 Person(consumer,  "Asset Consumer",        "Searches and consults catalogued assets")
@@ -13,23 +12,14 @@ Person(admin,     "Platform Administrator","Configures and operates the platform
 
 System_Boundary(egeria, "Egeria Platform") {
     Container(mas, "Metadata Access Server", "Java 17, Spring Boot (OMAG Server)", "Hosts the Open Metadata Access Services (OMAS) and the Open Metadata Repository Services (OMRS). Central access point for metadata; exposes domain REST APIs and OMAS in/out event topics")
-    ' TODO: ask fot level of specificity
-
-
-    ' TODO: ask if it's ok to have the logical servers instead of one single (physical) one
     Container(intd, "Integration Daemon", "Java 17, Spring Boot (OMAG Server)", "Hosts the Open Metadata Integration Services (OMIS) and their integration connectors. Synchronises metadata and lineage between Egeria and third-party technologies")
-
     Container(engine, "Engine Host", "Java 17, Spring Boot (OMAG Server)", "Hosts the Open Metadata Engine Services (OMES) and governance engines. Runs automated governance actions (e.g. surveys, remediation)")
-
     Container(view, "View Server", "Java 17, Spring Boot (OMAG Server)", "Hosts the Open Metadata View Services (OMVS). Provides REST APIs tailored to user interfaces")
-
     Container(proxy, "Repository Proxy", "Java 17, Spring Boot (OMAG Server)", "Cohort member that integrates a third-party metadata repository, mapping its APIs/events to Open Metadata Types")
-
     ContainerDb(metadataStore, "Metadata Repository", "Pluggable (in-memory / PostgreSQL / XTDB)", "Local metadata persistence. The implementation depends on the configured Repository Connector (in-memory default, PostgreSQL or XTDB for durable persistence)")
 }
 
-' TODO: ask if the UI has to be considered (it's in a different github repo but at the beginning was part of this repo)
-System_Ext(ui,            "Egeria React UI",                  "Web UI in a separate repository (egeria-react-ui) for exploring the open metadata ecosystem and configuring servers")
+System_Ext(ui,            "Egeria React UI", "Web UI for exploring the open metadata ecosystem and configuring servers")
 System_Ext(kafka,         "Apache Kafka",                     "Event backbone for cohort federation and asynchronous metadata exchange (Open Metadata Topics). Optional: in-memory fallback available")
 System_Ext(thirdPartyRepo,"Third-party Metadata Repositories","Apache Atlas, IBM IGC, Collibra and others, federated via Repository Proxy")
 System_Ext(dataSources,   "Data Sources",                     "Databases, data lakes, file systems, data warehouses — catalogues and lineage extracted via Integration Connectors")
@@ -47,20 +37,8 @@ Rel(engine, mas, "Reads metadata and writes governance results", "REST / HTTPS")
 Rel(mas,   metadataStore, "Reads and writes metadata via Repository Connector", "JDBC / Java API")
 Rel(mas,   kafka,         "Publishes and consumes OMRS / cohort topic events",  "Kafka protocol")
 Rel(proxy, kafka,         "Exchanges cohort events with other members",         "Kafka protocol")
-
 Rel(proxy,  thirdPartyRepo, "Federates metadata via Repository Proxy",                  "REST / native API")
 Rel(intd,   dataSources,    "Extracts metadata and lineage via Integration Connectors", "JDBC / REST / native")
 Rel(externalTools, intd,  "Reads catalogue metadata and pushes lineage / audit events", "REST / Kafka")
-' TODO: arrow direction: external tools actively call egeria's api to query catalogue metadata
-' egeria polls the tools and synchronise metadata
-
-' NOTE: each logical OMAG Server (Metadata Access, Integration Daemon, Engine Host, View Server, Repository Proxy) is modelled 
-' as a separate container, reflecting the production-style distributed deployment where each server type runs on its own 
-' OMAG Server Platform. Within a single platform they would instead share one JVM process; that single-process scenario is 
-' out of scope here.
-
-' The Repository Connector implementation is one of several pluggable options (in-memory default for test; PostgreSQL or 
-' XTDB for durable persistence). Federation of third-party repositories is handled separately via the Repository Proxy (see 
-' arrow to third-party metadata repositories).
 
 @enduml
