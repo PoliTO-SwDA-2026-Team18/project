@@ -1,6 +1,6 @@
 # Overview
 
-## 1. System Purpose
+## System Purpose
 
 Modern organizations rely on dozens of specialized tools — catalogs, analysis platforms, lineage trackers, governance suites — each storing metadata in its own proprietary format. These isolated silos cannot communicate with one another, forcing companies into expensive point-to-point integrations where every pair of tools needs a custom connection.
 
@@ -18,7 +18,7 @@ In short, Egeria's role is to receive metadata from any connected tool, normaliz
 
 ---
 
-## 2. Principal Stakeholders
+## Principal Stakeholders
 
 | Stakeholder | Role |
 |---|---|
@@ -31,9 +31,9 @@ In short, Egeria's role is to receive metadata from any connected tool, normaliz
 
 ---
 
-## 3. System Description
+## System Description
 
-### 3.1 Functional Overview
+### Functional Overview
 
 Egeria’s highly configurable platform supports multi-tenancy, allowing multiple organizations to run independent metadata solution in the same platform instance. This is managed via virtual **Open Metadata and Governance (OMAG) servers**, each specialized for specific tasks:
 
@@ -61,7 +61,7 @@ For enterprises operating tools across multiple data centers, multiple platforms
 
 ![Egeria distributed operation](./images/egeria-distributed-operation.svg)
 
-### 3.2 Technical Description
+### Technical Description
 
 The source repository is organized into top-level modules, each serving a distinct purpose:
 
@@ -94,9 +94,9 @@ The `open-metadata-implementation/` module is further divided into **14 sub-modu
 
 ---
 
-## 4. Code Statistics
+## Code Statistics
 
-### 4.1 Language Breakdown
+### Language Breakdown
 
 | Language | Files | LOC | Comments | Blanks |
 |---|---|---|---|---|
@@ -107,7 +107,7 @@ The `open-metadata-implementation/` module is further divided into **14 sub-modu
 | Other | 236 | 6,280 | 1,043 | 2,693 |
 | **Total** | **5,180** | **585,975** | **303,448** | **152,462** |
 
-### 4.2 Summary Metrics
+### Summary Metrics
 
 | Metric | Value |
 |---|---|

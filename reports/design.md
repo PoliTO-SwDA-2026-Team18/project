@@ -1,6 +1,6 @@
-# Section A: Dependency Analysis
+# Software Design
 
-## A1. Code Dependencies
+## Code Dependencies
 
 ### Methodology
 
@@ -171,7 +171,7 @@ flowchart LR
 ```
 
 
-## A2. Knowledge Dependencies
+## Knowledge Dependencies
 
 
 The co-dependency analysis was performed using CodeMaat, following this workflow:
@@ -273,9 +273,7 @@ These cases do not represent architectural anomalies.
 
 <br><br>
 
-# Section B: Design Pattern Analysis
-
-## B1. Observer Pattern
+## Observer Pattern
 
 The pattern is often referred to as the Publish-Subscribe pattern in distributed systems.
 
@@ -306,7 +304,7 @@ The Observer pattern solves the **decoupling and synchronization problem**:
 
 
 
-## B2. Facade Pattern (Open Metadata Store Client)
+## Facade Pattern (Open Metadata Store Client)
 
 ### 1. Involved Classes and Each One's Role
 * **`EgeriaOpenMetadataStoreClient` (Facade):** This is the concrete Facade class. It provides a simplified, unified interface to the Open Metadata Framework (OMF). It is the primary entry point for developers who need to perform metadata operations without dealing with the internal technicalities of the framework.
@@ -340,7 +338,7 @@ The Facade pattern solves the **complexity and interface pollution** problems by
 ![UML diagram svg image](./images/pattern-facade.svg)
 
 
-## B3. Adapter Pattern
+## Adapter Pattern
 
 ### 1. Involved Classes and Roles
 * **`MoveCopyFileGovernanceActionProvider` (Adapter):** This concrete provider adapts the governance framework to the specific move/copy/delete file behavior. It translates framework-level configuration into the connector-specific setup.
@@ -377,7 +375,7 @@ In this project, `MoveCopyFileGovernanceActionProvider` is a good example becaus
 ![UML diagram svg image](./images/pattern-adapter.svg)
 
 
-## B4. Factory Method
+## Factory Method
 
 ### 1. Involved Classes and Roles
 * **`OpenConnectorProviderBase` / `ConnectorProviderBase` (Creator / Factory):** base classes that store the connector class name and create `Connector` instances at runtime.
@@ -419,7 +417,7 @@ In this project, `CSVFileStoreProvider` is only an example; Factory Method is wi
 
 <br><br>
 
-# Section C: Summary
+## Summary
 
 The dependency analysis shows that Egeria is a highly modular system centered around reusable framework components and extensible connectors. <br>
 The code-level analysis highlights strong interactions between framework modules, repository services, and connectors, while the co-dependency analysis reveals several hidden logical relationships between components that frequently evolve together despite weak explicit dependencies. <br>

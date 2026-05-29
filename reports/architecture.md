@@ -1,19 +1,12 @@
 # Software Architecture
 
-> **Max:** 2,500 words (diagrams excluded)
+## Context Level (C4 — Level 1)
 
-<!--
-Final report assembled from individual sections in reports/sections/architecture/.
-Once all sections are completed, copy the content below in the indicated order.
--->
-
-## Section A: Context Level (C4 — Level 1)
-
-## Diagram
+### Diagram
 
 `../../../diagrams/c4/context.puml`
 
-## Description
+### Description
 
 The context diagram places **Egeria Platform** at the center as a single black box, showing every external actor and system that interacts with it without exposing any internal structure.
 
@@ -54,13 +47,13 @@ Configuration management and secrets storage are intentionally excluded at this 
 
 All labels use intent rather than technical detail, following C4 context-level conventions.
 
-## Section B: Container Level (C4 — Level 2)
+## Container Level (C4 — Level 2)
 
-## Diagram
+### Diagram
 
 `../../../diagrams/c4/container.puml`
 
-## Description
+### Description
 
 The container diagram opens the Egeria Platform black box and shows the six major deployable units and how they communicate.
 
@@ -96,7 +89,7 @@ The container diagram opens the Egeria Platform black box and shows the six majo
 | External Tools | OMAG Server Platform | REST APIs | Retrieve metadata; submit lineage and governance policies |
 | Data Sources | Message Bus | Kafka API | Publish lineage and data quality events |
 
-## Relationship with Clean Architecture
+### Relationship with Clean Architecture
 
 Clean Architecture organizes software into concentric layers where source-code dependencies can only point inward: Frameworks & Drivers → Interface Adapters → Use Cases → Entities. The inner layers know nothing about the outer ones.
 
@@ -113,13 +106,13 @@ Egeria's container layout maps closely onto this blueprint:
 The main deviation from strict Clean Architecture is that the **OMAG Server Platform publishes directly to the Message Bus** without going through Repository Services. This means that a container in the Interface Adapters layer (OMAG) communicates directly with a container in the Frameworks & Drivers layer (Kafka), skipping the Use Case layer entirely — which breaks the strict inward-only dependency rule. It is a pragmatic trade-off to avoid routing every real-time notification through the metadata engine.
 
 
-## Section C: Component Level (C4 — Level 3)
+## Component Level (C4 — Level 3)
 
-## 1. C4 Component Diagrams for Relevant Containers
+### 1. C4 Component Diagrams for Relevant Containers
 
 The modules of Egeria are about 14 and i've decided to analyze two of them that are the most important for the flow of metadata.  
 
-### 1.1 Metadata Access Server (OMAS) Component Diagram
+#### 1.1 Metadata Access Server (OMAS) Component Diagram
 
 `../../../diagrams/c4/component-metadata-access-server.puml`
 
@@ -145,7 +138,7 @@ This is the main container of the architecture, his main components are linked w
 
 - **`user-security`**: these modules use mechanisms based on tokens to be used as an authentication method; they are distributed to runtime modules and connectors such as security connectors via thread. The main module is the <u>*token-manager*</u> which provides the classes to extract the authorization headers from an incoming HTTP request and add them to thread local storage. 
 
-### 1.2 Integration Daemon Component Diagram
+#### 1.2 Integration Daemon Component Diagram
 
 `../../../diagrams/c4/component-integration-daemon.puml`
 
@@ -161,14 +154,14 @@ In this container there are tools for a continued syncronization:
     - *Watchdog*: monitoring for events and issues actions to report.
 
 
-## 2. Justify any decisions to exclude specific containers from analysis
+### 2. Justify any decisions to exclude specific containers from analysis
 
 I decided to exclude peripheral containers (such as the *View Server*, UI applications, or pure administrative/platform chassis services) because they do not handle the core business logic of metadata federation and synchronization. I've done a "zoom in" on the most important and complex containers. Modules like `repository-services`, `access-services`, `adapters`, and `frameworks` act as the central hubs of the system, possessing the highest number of inter-module dependencies. Focusing on the *Metadata Access Server* and *Integration Daemon* provides the best way for understanding Egeria's architecture.
 
 
-## 3. SOLID Principle Violations at Level 3
+### 3. SOLID Principle Violations at Level 3
 
-### 3.1 Single Responsability Principle (SRP)
+#### 3.1 Single Responsability Principle (SRP)
 According to this principle there should be only one actor responsable of changes in each class or module. 
 We can see that this principle is violated for exsample by `JacquardIntegrationConnector`, which is responsable to assemble all the **Open Metadata Digital Product Catalog** that is composed by several components like catalogs, glossaries or dictionaries. Each of them has its own set of elements and properties.
 
@@ -183,7 +176,7 @@ public class JacquardIntegrationConnector extends CatalogIntegratorConnector {
 }
 ```
 
-### 3.2 Open/Closed Principle (OCP)
+#### 3.2 Open/Closed Principle (OCP)
 The system should be open for extension but closed for modification. 
 Egeria allows the addition of new adapters without overturn the code. However, if a completely new standard of metadata is introduced, all the core as *access-services* or *repository-services* might require great modifications on the logic, not only extensions of interfaces, and as conseguence there's the OCP violation.
 
@@ -198,7 +191,7 @@ public enum AccessServiceDescription {
 }
 ```
 
-### 3.3 Interface Segregation Principle (ISP)
+#### 3.3 Interface Segregation Principle (ISP)
 Each actor should have its own interface composed by the elements that are effectively used by him, not a general interface where everything is putted inside it and several components aren't used depending by the actor. This violation is marked in the `OMRSMetadataCollection`, a module situated in the *repository-services-apis*, which contains all methods that manages entities, relationships etc., so if an actor needs only some part of that must depend by all the entire interface.
 
 ```java
@@ -210,7 +203,7 @@ public abstract class OMRSMetadataCollection {
 }
 ```
 
-### 3.4 Liskov Substitution Principle (LSP)
+#### 3.4 Liskov Substitution Principle (LSP)
 Objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.
 In a project too big like this, it's impossible to have metadata tools that support every operation of the interface, infact even if there are a lot of *adapters* they can throw exceptions; this represents a violation of the principle causing a crash of the application.
 
@@ -225,7 +218,7 @@ public EntityDetail isEntityKnown(String userId, String guid)
 }
 ```
 
-### 3.5 Dependency Inversion Principle (DIP)
+#### 3.5 Dependency Inversion Principle (DIP)
 High-level modules should not depend on low-level modules; both should depend on abstractions. 
 Especially within the `frameworks` module, there are still instances of tight coupling where high-level modules depend on concrete implementations. An example is found in the `OMAGServerPlatformCatalogConnector`, which directly instantiates the concrete class `SoftwareServerProperties` via the `new` keyword: 
 
@@ -243,9 +236,9 @@ if (softwareServer.getProperties()
 }
 ```
 
-## Section D: Architectural Characteristics
+## Architectural Characteristics
 
-## 1. Architectural Qualities
+### 1. Architectural Qualities
 
 - **Extensibility**: is the best quality of Egeria. The presence of plug-in patterns like `frameworks` and `adapters` allows for major extensions in the project, adding new standards and connectors without overturning the system.
 - **Scalability**: is a consequence of the division into multiple containers (e.g., *Metadata Access Server*, *Integration Daemon*). The system achieves horizontal scalability of OMAG servers depending on their load.
@@ -254,7 +247,7 @@ if (softwareServer.getProperties()
 - **Performance**: optimized by the presence of connectors which, when there is a change, publish an event on a notification channel that is immediately received by all other tools to be updated. This is an event-driven architecture and allows a real-time synchronization of data in the system.
 
 
-## 2. Coupling and Cohesion
+### 2. Coupling and Cohesion
 
 A structural and co-change analysis (Design report, Sections A1 and A2) reveals a system with a strongly coupled core and uneven cohesion across modules.
 
