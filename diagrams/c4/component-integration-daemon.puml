@@ -5,9 +5,9 @@ LAYOUT_WITH_LEGEND()
 
 title Integration Daemon - Component Diagram (Level 3)
 
-System_Ext(extTool, "External Tool", "Third-party catalog, ETL, BI, governance suite, etc.")
+System_Ext(extTool, "Data Tools", "BI, ETL, data science platforms that produce or consume metadata")
 Container(mas, "Metadata Access Server", "OMAG Server", "Hosts OMAS, OMRS, common-services")
-Container(msgBus, "Event Bus", "Apache Kafka", "Metadata change events")
+Container(msgBus, "Apache Kafka", "Kafka", "Event backbone for asynchronous metadata change events")
 
 Container_Boundary(intd, "Integration Daemon") {
 
@@ -16,11 +16,11 @@ Container_Boundary(intd, "Integration Daemon") {
     Component(adapters, "adapters", "Concrete connectors", "Implement framework interfaces;\ntranslate between the tool's proprietary format\nand Egeria Open Metadata Types")
 }
 
-Rel(extTool, adapters, "Native protocol / API")
+Rel(extTool, adapters, "Reads catalogue metadata and pushes lineage / audit events", "REST / Kafka")
 Rel(adapters, frameworks, "Implements pluggable interfaces")
 
-Rel(adapters, mas, "Pushes & pulls metadata", "REST")
-Rel(mas, msgBus, "Publishes change events", "Kafka API")
-Rel(adapters, msgBus, "Subscribes to events for sync", "Kafka API")
+Rel(adapters, mas, "Pushes / pulls metadata via paired OMAS", "REST / HTTPS")
+Rel(mas, msgBus, "Publishes and consumes OMRS / cohort topic events", "Kafka protocol")
+Rel(adapters, msgBus, "Subscribes to metadata change events for sync", "Kafka protocol")
 
 @enduml

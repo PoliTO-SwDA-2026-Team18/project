@@ -5,9 +5,12 @@ LAYOUT_WITH_LEGEND()
 
 title Metadata Access Server (OMAS) - Component Diagram (Level 3)
 
-Person(client, "Client", "External tool / OMAG client")
+Person(admin,   "Platform Administrator", "Configures and operates the platform")
+Container(view,   "View Server",         "OMAG Server", "Hosts OMVS; provides REST APIs tailored to user interfaces")
+Container(intd,   "Integration Daemon",  "OMAG Server", "Hosts OMIS and integration connectors; synchronises metadata with third-party technologies")
+Container(engine, "Engine Host",         "OMAG Server", "Hosts OMES and governance engines; runs automated governance actions")
 ContainerDb(dataRepo, "Metadata Repository", "PostgreSQL / XTDB / In-Memory", "Persistent store for metadata, audit, types")
-Container(msgBus, "Event Bus", "Apache Kafka", "Publishes/receives metadata change events")
+Container(msgBus, "Apache Kafka", "Kafka", "Event backbone for cohort federation and asynchronous metadata exchange")
 
 Container_Boundary(mas, "Metadata Access Server") {
 
@@ -20,8 +23,15 @@ Container_Boundary(mas, "Metadata Access Server") {
     Component(omrs, "repository-services (OMRS)", "Federation engine", "apis\narchive-utilities\nclient (Local & Enterprise)\nimplementation (peer-to-peer)\nspring (REST)")
 }
 
-Rel(client, userSec, "Sends auth headers", "HTTPS")
-Rel(client, access, "Invokes metadata REST APIs", "HTTPS")
+Rel(admin,   userSec, "Sends auth headers", "HTTPS")
+Rel(view,    userSec, "Sends auth headers", "HTTPS")
+Rel(intd,    userSec, "Sends auth headers", "HTTPS")
+Rel(engine,  userSec, "Sends auth headers", "HTTPS")
+
+Rel(admin,   access, "Invokes admin endpoints directly", "REST / HTTPS")
+Rel(view,    access, "Calls access services for UI experiences", "REST / HTTPS")
+Rel(intd,    access, "Pushes / pulls metadata via paired OMAS", "REST / HTTPS")
+Rel(engine,  access, "Reads metadata and writes governance results", "REST / HTTPS")
 
 Rel(access, common, "Uses utilities & security checks")
 Rel(access, omrs, "Reads / updates metadata")
@@ -29,7 +39,7 @@ Rel(access, omrs, "Reads / updates metadata")
 Rel(common, omrs, "Translates repository-level exceptions")
 Rel(userSec, common, "Provides authenticated principal")
 
-Rel(omrs, dataRepo, "Persists & queries metadata", "JDBC / native")
-Rel(omrs, msgBus, "Publishes / subscribes change events", "Kafka API")
+Rel(omrs, dataRepo, "Reads and writes metadata via Repository Connector", "JDBC / Java API")
+Rel(omrs, msgBus, "Publishes and consumes OMRS / cohort topic events", "Kafka protocol")
 
 @enduml
