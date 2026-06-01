@@ -33,7 +33,7 @@
 | 10/05/2026 |  1.5  | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
 | 17/05/2026 |   2   | Architecture - Characteristics | Coupling analysis | 1d65ab7 |
 
-**Summary:** During sprint 3 I've completed the analysis of main charactersistics of the project
+**Summary:** During sprint 3 I've completed the analysis of main charactersistics of the project.
 
 ---
 
@@ -44,8 +44,9 @@
 | 26/05/2026 |  2.5  |                       | Added UML diagrams | 39b9b67 |
 | 26/05/2026 |  1.5  | Architecture - Component | Added lines of code to make examples of SOLID principle violation | 5db48dc |
 | 27/05/2026 |  0.5  | Architecture | Putted all architectural parts together but must be reviewed to respect the max number of words | 9b9485f |
+| 01/06/2006 |  2.5  | Architecture - Component and characteristics | I have changed some description due to changes made in diagrams and corrected names | 1d872d6 |
 
-**Summary:**
+**Summary:** During Sprint 4 I have worked on UML diagrams and I corrected some description due to changes made in diagrams. I've merged various file of architecture but must be reviewed.
 
 ---
 
