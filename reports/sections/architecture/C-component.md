@@ -1,45 +1,35 @@
 # Architecture — Section C: Component Level (C4 — Level 3)
 
 > **Owner:** Matteo Francesco Castigliego  
-> **Status:** To be completed
-
-<!-- 
-Required content:
-- C4 Component Diagram(s) for relevant containers
-- Justify any decisions to exclude specific containers from analysis
-- Mandatory question: SOLID principle violations at level 3
-- Diagrams: ../../../diagrams/c4/component-<name>.puml
--->
+> **Status:** Completed
 
 ## 1. C4 Component Diagrams for Relevant Containers
 
-The modules of Egeria are about 14 and i've decided to analyze two of them that are the most important for the flow of metadata.  
+Egeria comprises approximately 14 OMAG Server types. The two analysed here — **Metadata Access Server** and **Integration Daemon** — are the most relevant for understanding the core metadata flow, as confirmed by the dependency analysis (Design report, Section A1), where `repository-services`, `access-services`, `adapters`, and `frameworks` account for the highest inter-module import counts in the entire codebase.
 
-### 1.1 Metadata Access Server (OMAS) Component Diagram
+### 1.1 Metadata Access Server Component Diagram
 
 `../../../diagrams/c4/component-metadata-access-server.puml`
 
 ![Metadata Access Server component diagram](../../images/component-metadata-access-server.svg)
 
-This is the main container of the architecture, his main components are linked with some module like:
+The Metadata Access Server is the central container of the architecture. It is called by four distinct containers — **View Server**, **Integration Daemon**, **Engine Host**, and **Platform Administrator** — each with a dedicated interaction, and internally it is structured into four components:
 
-- **`access-service`**: this module provides the API REST adapt for all metadata, for example we have *ocf-metadata-management* which provides metadata management for the Open Connector Framework (OCF), *omf-metadata-management* which provides metadata management for the Open Metadata Framework (OMF) and *gaf-metadata-management* which provides metadata management for the Open Governance Framework (OGF); all is referred to properties and APIs.
+- **`access-services (OMAS)`**: the REST API layer for all metadata operations. It is divided into domain-specific sub-modules: *ocf-metadata-management* for the Open Connector Framework (OCF), *omf-metadata-management* for the Open Metadata Framework (OMF), and *gaf-metadata-management* for the Open Governance Framework (OGF). Each sub-module exposes its own set of properties and APIs.
 
-- **`repository-services (OMRS)`**: the Open Metadata Repository Services enable metadata repositories to exchange messages independently by technology or technology supplier. When a project borns is composed by a small number of interfaces, this number increases during the developement and several interfaces are present, as conseguence multiple silos of metadata are created. The goal of ORMS is to bring these repositories together so metadata are linked and can work together. There are more modules *repository-services..*:
-    - <u>*apis*</u>: contains the connector interfaces and event structures for the repository services.
-    - <u>*archive-utilities*</u>: provides the common utilities used to build Open Metadata Archives.
-    - <u>*client*</u>: supports two clients:
-        - *Local Repository Services Client*: calls to the local repository in a remote server
-        - *Enterprise Repository Services Client*: calls to the enterprise repository services in a remote server.
-    - <u>*implementation*</u>: implementation contains the support for the peer-to-peer metadata exchange and federation.
-    - <u>*spring*</u>: uses spring annotations to create the OMRS REST services.
-    
-- **`common-services`**: provides common java functions to clients and the specialized services that run in the OMAG Server. It is divided in more parts, for example:
-    - <u>*First-Failure Data Capture (FFDC) Service*</u>: supports common exceptions and error handling.
-    - <u>*Metadata Security*</u>: supports authorization of access to OMAG Services and specific metadata instances. 
-    - <u>*Repository Handle*</u>: supports access to multiple related metadata instances from the OMRS. It checks and translates exceptions of repository services into exceptions that are used in access services (OMASs).
+- **`repository-services (OMRS)`**: the federation engine. Its purpose is to allow independent metadata repositories to exchange metadata regardless of the underlying technology or vendor — effectively eliminating metadata silos by linking repositories into a cohort. It is composed of several sub-modules:
+    - *apis*: connector interfaces and event structures for the repository services.
+    - *archive-utilities*: common utilities for building Open Metadata Archives.
+    - *client*: two client implementations — the *Local Repository Services Client* for calls to a local repository and the *Enterprise Repository Services Client* for calls to the enterprise-wide federated repository.
+    - *implementation*: peer-to-peer metadata exchange and cohort federation logic.
+    - *spring*: Spring annotations that expose OMRS capabilities as REST services.
 
-- **`user-security`**: these modules use mechanisms based on tokens to be used as an authentication method; they are distributed to runtime modules and connectors such as security connectors via thread. The main module is the <u>*token-manager*</u> which provides the classes to extract the authorization headers from an incoming HTTP request and add them to thread local storage. 
+- **`common-services`**: shared Java utilities consumed by both clients and the specialised services running in the OMAG Server. Key sub-modules include:
+    - *First-Failure Data Capture (FFDC) Service*: common exception handling and error reporting.
+    - *Metadata Security*: authorisation of access to OMAG services and individual metadata instances.
+    - *Repository Handler*: mediates access to multiple related metadata instances from OMRS, translating repository-level exceptions into the exception types used by the access services.
+
+- **`user-security`**: token-based authentication layer. Credentials extracted from incoming HTTP request headers are stored in thread-local storage and propagated to runtime modules and security connectors. The core sub-module is *token-manager*, which implements this extraction and distribution mechanism.
 
 ### 1.2 Integration Daemon Component Diagram
 
@@ -47,26 +37,32 @@ This is the main container of the architecture, his main components are linked w
 
 ![Integration Daemon component diagram](../../images/component-integration-daemon.svg)
 
-In this container there are tools for a continued syncronization:
+The Integration Daemon is responsible for the continuous, bidirectional synchronisation of metadata between Egeria and third-party technologies. It is structured into two components:
 
-- **`adapters`**: connectors that implement the comunication with owners tools.
+- **`adapters`**: concrete integration connectors that implement communication with specific external tools (BI platforms, ETL tools, data catalogues, etc.). Each adapter translates between the tool's proprietary format and Egeria's Open Metadata Types. Adapters push and pull metadata to and from the Metadata Access Server via the paired OMAS, and subscribe to metadata change events from Apache Kafka to stay synchronised in real time.
 
-- **`frameworks`**: define the interfaces for pluggable components, these components provide much of the customization and technology integration points offered by the open metadata and governance implementation. Depending by the context there are several types like:
-    - *Metadata*: basic definitions for metadata types.
+- **`frameworks`**: pluggable interfaces that define the contracts for all integration components. They provide the customisation and technology-integration points of the open metadata and governance implementation. There are three main interface families:
+    - *Metadata*: base definitions for Open Metadata Types.
     - *Connector*: interfaces for components that access real-world digital resources.
-    - *Watchdog*: monitoring for events and issues actions to report.
+    - *Watchdog*: event-monitoring interfaces that trigger actions in response to metadata changes.
 
 
-## 2. Justify any decisions to exclude specific containers from analysis
+## 2. Justify Any Decisions to Exclude Specific Containers from Analysis
 
-I decided to exclude peripheral containers (such as the *View Server*, UI applications, or pure administrative/platform chassis services) because they do not handle the core business logic of metadata federation and synchronization. I've done a "zoom in" on the most important and complex containers. Modules like `repository-services`, `access-services`, `adapters`, and `frameworks` act as the central hubs of the system, possessing the highest number of inter-module dependencies. Focusing on the *Metadata Access Server* and *Integration Daemon* provides the best way for understanding Egeria's architecture.
+The **View Server**, **Engine Host**, and **Repository Proxy** were excluded from the component-level analysis for the following reasons:
+
+- *View Server*: a thin adapter layer that translates HTTP UI requests into OMAS calls. It contains no domain logic of its own; its behaviour is fully determined by the access services it delegates to.
+- *Engine Host*: hosts governance engines that execute automated actions. Its internal structure mirrors the Integration Daemon (engine services + frameworks) but with narrower scope; the patterns are already covered by the Integration Daemon analysis.
+- *Repository Proxy*: a cohort member whose sole responsibility is mapping a third-party repository's API to OMRS events. It does not host business logic and its internal structure is connector-level detail, not architectural.
+
+The two chosen containers — Metadata Access Server and Integration Daemon — hold the highest concentration of cross-module dependencies (Design report, Section A1) and together cover the full metadata lifecycle: ingestion, federation, persistence, and event propagation.
 
 
 ## 3. SOLID Principle Violations at Level 3
 
-### 3.1 Single Responsability Principle (SRP)
-According to this principle there should be only one actor responsable of changes in each class or module. 
-We can see that this principle is violated for exsample by `JacquardIntegrationConnector`, which is responsable to assemble all the **Open Metadata Digital Product Catalog** that is composed by several components like catalogs, glossaries or dictionaries. Each of them has its own set of elements and properties.
+### 3.1 Single Responsibility Principle (SRP)
+
+According to this principle, each class or module should have exactly one reason to change. This principle is violated by `JacquardIntegrationConnector`, which is responsible for assembling the entire **Open Metadata Digital Product Catalog** — a concern that spans product catalogs, glossaries, data dictionaries, reference data, and governance actions, each with its own property beans and element types, all within a single class.
 
 ```java
 public class JacquardIntegrationConnector extends CatalogIntegratorConnector {
@@ -80,8 +76,8 @@ public class JacquardIntegrationConnector extends CatalogIntegratorConnector {
 ```
 
 ### 3.2 Open/Closed Principle (OCP)
-The system should be open for extension but closed for modification. 
-Egeria allows the addition of new adapters without overturn the code. However, if a completely new standard of metadata is introduced, all the core as *access-services* or *repository-services* might require great modifications on the logic, not only extensions of interfaces, and as conseguence there's the OCP violation.
+
+The system should be open for extension but closed for modification. Egeria supports adding new adapters without changing existing code. However, introducing an entirely new metadata standard requires modifying core enums in `access-services` and `repository-services` rather than extending an interface — a direct OCP violation.
 
 ```java
 // Adding a brand-new standard means extending core enums/switches
@@ -95,7 +91,8 @@ public enum AccessServiceDescription {
 ```
 
 ### 3.3 Interface Segregation Principle (ISP)
-Each actor should have its own interface composed by the elements that are effectively used by him, not a general interface where everything is putted inside it and several components aren't used depending by the actor. This violation is marked in the `OMRSMetadataCollection`, a module situated in the *repository-services-apis*, which contains all methods that manages entities, relationships etc., so if an actor needs only some part of that must depend by all the entire interface.
+
+Clients should not be forced to depend on interfaces they do not use. This principle is violated by `OMRSMetadataCollection`, located in *repository-services-apis*, which aggregates all methods for managing entities, relationships, types, and classifications into a single abstract class. Any component that needs only a subset of these operations must still depend on the entire interface.
 
 ```java
 public abstract class OMRSMetadataCollection {
@@ -107,8 +104,8 @@ public abstract class OMRSMetadataCollection {
 ```
 
 ### 3.4 Liskov Substitution Principle (LSP)
-Objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.
-In a project too big like this, it's impossible to have metadata tools that support every operation of the interface, infact even if there are a lot of *adapters* they can throw exceptions; this represents a violation of the principle causing a crash of the application.
+
+Objects of a superclass should be replaceable by objects of any subclass without altering the correctness of the program. In a codebase of this scale, it is not feasible for every repository connector to support the full operation set defined by the superclass. Concrete adapters routinely throw `FunctionNotSupportedException`, breaking the substitutability contract and potentially causing runtime failures in callers that assume full interface compliance.
 
 ```java
 // A concrete repository connector cannot honour the full contract:
@@ -122,15 +119,13 @@ public EntityDetail isEntityKnown(String userId, String guid)
 ```
 
 ### 3.5 Dependency Inversion Principle (DIP)
-High-level modules should not depend on low-level modules; both should depend on abstractions. 
-Especially within the `frameworks` module, there are still instances of tight coupling where high-level modules depend on concrete implementations. An example is found in the `OMAGServerPlatformCatalogConnector`, which directly instantiates the concrete class `SoftwareServerProperties` via the `new` keyword: 
+
+High-level modules should not depend on low-level modules; both should depend on abstractions. Despite the general use of connector interfaces throughout the codebase, violations still appear: `OMAGServerPlatformCatalogConnector` directly instantiates the concrete class `SoftwareServerProperties` via `new`, and pattern-matches against its concrete type instead of programming to an abstraction.
 
 ```java
 SoftwareServerProperties softwareServerProperties = new SoftwareServerProperties();
 softwareServerProperties.setQualifiedName(...);
 ```
-
-The same connector also pattern-matches against the concrete type instead of an abstraction:
 
 ```java
 if (softwareServer.getProperties()
