@@ -54,7 +54,7 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 02/06/2026 |  1.5  |  Architecture         | Merging of level 1 and level 2 parts   |  823022f  |
 
 **Summary:**
 
