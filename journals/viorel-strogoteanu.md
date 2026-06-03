@@ -47,9 +47,9 @@
 
 ## Sprint 5 — Jun 2–10, 2026
 
-| Date | Hours | Activity Type | Notes | Commit |
-| ---- | ----: | ------------- | ----- | ------ |
-|      |       |               |       |        |
+| Date     | Hours | Activity Type                                           | Notes | Commit   |
+| -------- | ----: | ------------------------------------------------------- | ----- | -------- |
+| 03/06/26 |     1 | Review of the Architecture report and exported diagrams |       | a5df7199 |
 
 **Summary:**
 
