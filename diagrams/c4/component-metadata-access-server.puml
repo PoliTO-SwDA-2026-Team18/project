@@ -28,10 +28,7 @@ Rel(view,    userSec, "Sends auth headers", "HTTPS")
 Rel(intd,    userSec, "Sends auth headers", "HTTPS")
 Rel(engine,  userSec, "Sends auth headers", "HTTPS")
 
-Rel(admin,   access, "Invokes admin endpoints directly", "REST / HTTPS")
-Rel(view,    access, "Calls access services for UI experiences", "REST / HTTPS")
-Rel(intd,    access, "Pushes / pulls metadata via paired OMAS", "REST / HTTPS")
-Rel(engine,  access, "Reads metadata and writes governance results", "REST / HTTPS")
+
 
 Rel(access, common, "Uses utilities & security checks")
 Rel(access, omrs, "Reads / updates metadata")
