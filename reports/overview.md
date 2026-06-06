@@ -35,19 +35,19 @@ In short, Egeria's role is to receive metadata from any connected tool, normaliz
 
 ### Functional Overview
 
-Egeria’s highly configurable platform supports multi-tenancy, allowing multiple organizations to run independent metadata solution in the same platform instance. This is managed via virtual **Open Metadata and Governance (OMAG) servers**, each specialized for specific tasks:
+Egeria’s highly configurable platform supports multi-tenancy, allowing multiple organizations to run independent metadata solution in the same platform instance. This is managed via virtual **Open Metadata and Governance (OMAG) Servers**, each specialized for specific tasks:
 
 *Figure 3 — OMAG Platform*
 
 ![Egeria solution components exposed](./images/egeria-solution-components-exposed.svg)
 
-- **Metadata Access Server** — provides services for the **Open Metadata Repositories** and metadata change events (sent on the **OutTopic**) for other servers.
-- **Integration Daemon** — hosts the integration connectors that continuously synchronize metadata between Egeria and external tools.
-- **Engine Host** — executes automated governance tasks such as metadata surveys, quality checks, and watchdog monitoring that respond to metadata changes.
-- **View Server** — provides the REST APIs to maintaining/query open metadata and to initiate/control governance actions.
-- **Repository Proxy** — allows third-party metadata repositories to participate in an Egeria federation without migrating their data.
+- **Metadata Access Server**: Provides services for the **Open Metadata Repositories** and metadata change events (sent on the **OutTopic**) for other servers.
+- **Integration Daemon**: Hosts the integration connectors that continuously synchronize metadata between Egeria and external tools.
+- **Engine Host**: Executes automated governance tasks such as metadata surveys, quality checks, and watchdog monitoring that respond to metadata changes.
+- **View Server**: Provides the REST APIs to maintaining/query open metadata and to initiate/control governance actions.
+- **Repository Proxy**: Allows third-party metadata repositories to participate in an Egeria federation without migrating their data.
 
-**Content packs** (`.omarchive` files) are ready-to-use packages that add new metadata types, reference data, and governance configurations to the platform. Once loaded, their content is immediately activated by the runtime.
+**Content packs** (`.omarchive` files) are ready-to-use packages that add new metadata types, reference data, and governance configurations to the platform. They are formatted as Open Metadata Archives and can be loaded at server start up or while the server is running.
 
 **How metadata flows.** When metadata changes in a source tool, its connector writes the update to the **Metadata Access Server**, which publishes an event on a notification channel. All other connectors receive this event and update their respective tools, keeping the entire ecosystem synchronized.
 
@@ -69,30 +69,30 @@ The source repository is organized into top-level modules, each serving a distin
 
 | Folder | Purpose |
 |---|---|
-| `open-metadata-implementation/` | Core source code split into 14 sub-modules that implement all platform services, APIs, and connectors |
-| `open-metadata-resources/` | Samples, utilities, and developer-oriented resources to help contributors get started |
-| `open-metadata-conformance-suite/` | Conformance test suite validating correct implementation of Egeria's APIs and repository behaviors |
-| `open-metadata-distribution/` | Docker images and platform distribution packages used for deployment |
-| `content-packs/` | 25 pre-built `.omarchive` content packs ready for immediate loading |
+| `open-metadata-implementation/` | Core source code split into 14 sub-modules that implement all platform services, APIs, clients and connectors. |
+| `open-metadata-resources/` | Samples, utilities, and developer-oriented resources to help contributors get started. |
+| `open-metadata-conformance-suite/` | Conformance test suite validating correct implementation of Egeria's APIs and repository behaviors. |
+| `open-metadata-distribution/` | Docker images and platform distribution packages used for deployment. |
+| `content-packs/` | 25 pre-built `.omarchive` content packs ready for immediate loading. |
 
 The `open-metadata-implementation/` module is further divided into **14 sub-modules**:
 
 | Sub-module | Responsibility |
 |---|---|
-| `access-services` (OMAS) | REST APIs supporting the framework interfaces, running in the metadata access servers |
-| `adapters` | Pre-written pluggable components for the frameworks, enabling calls to third-party technology |
-| `admin-services` | APIs for configuring and operating OMAG Servers on the platform |
-| `common-services` | First Failure Data Capture (FFDC), multi-tenancy support, metadata security, and management services |
-| `engine-services` (OMES) | Hosting support for governance engines running in the Engine Host server |
-| `frameworks` | Interfaces for pluggable components such as connectors, discovery services, and governance actions |
-| `governance-server-services` | Specialist services supporting the different types of governance servers on the platform |
-| `platform-chassis` | Base component and web server receiving REST API requests for the platform |
-| `platform-services` | APIs for configuring the platform and discovering information about hosted servers |
-| `repository-services` (OMRS) | Events, interfaces, and implementation of metadata exchange and federation capabilities |
-| `server-operations` | Starting and shutdown of OMAG Servers on the platform |
-| `view-server-generic-services` | Basic user interfaces to demonstrate open metadata and governance capabilities |
-| `user-security` | Token-based authentication and authorization for the platform |
-| `view-services` (OMVS) | Domain-specific services for tools and platforms maintaining and retrieving metadata |
+| `access-services` (OMAS) | The access services provide REST APIs to support the interfaces defined in the frameworks.  The access services run in either the metadata access point server or metadata server on the OMAG Server Platform.  They call the repository services and the common services. |
+| `adapters` | The adapters provide the pre-written pluggable components that fit into the framework (see below).  These components allow calls to third party technology to be made from the Egeria OMAS Server Platform.  Some of these components are to support the operation of Egeria and others are to enable Egeria to connect to third party technology to exchange metadata or govern its assets. |
+| `admin-services` | The admin services provides the APIs for configuring and operating Open Metadata and Governance (OMAG) Servers that run on the OMAG Server Platform. |
+| `common-services` | A variety of common services from First Failure Data Capture (FFDC), multi-tenancy (for the platform) along with metadata security and management.  Some of these services are client-side and other server-side. |
+| `engine-services` (OMES) | The engine services support the hosting of different types of governance engines that can be hosted in the engine host governance server on the OMAG Server Platform. |
+| `frameworks` | The frameworks define the interfaces for pluggable components such as connectors, discovery services and governance actions. These components provide much of the customization offered by the open metadata and governance implementation. |
+| `governance-server-services` | The governance server services provide the specialist services that support the different types of governance servers that can run in the OMAG Server Platform. |
+| `platform-chassis` | The platform chassis is the base component for the  [OMAG Server Platform](https://egeria-project.org/concepts/omag-server-platform/). It includes the web server that receives the REST API requests for both the OMAG Server Platform and the [OMAG Servers](https://egeria-project.org/concepts/omag-server/) that run on it. |
+| `platform-services` | The platform services provides the APIs for configuring the Open Metadata and Governance (OMAG) Server Platform and discovering information about the [OMAG Servers](https://egeria-project.org/concepts/omag-server/) that it is hosting. |
+| `repository-services` (OMRS) | The repository services provides the events, interfaces and implementation of the metadata exchange and federation capabilities for a metadata repository that supports the open metadata standards. |
+| `server-operations` | The server operations supports the starting and shutdown of OMAG Servers on either the OMAG Server Platform or OMAG Server Runtime. |
+| `view-server-generic-services` | Basic user interfaces to demonstrate the power of the open metadata and governance capabilities. |
+| `user-security` | Modules to enable token-based authentication/authorization for the OMAG Server Platform and OMAG Server Runtime. |
+| `view-services` (OMVS) | The view services provide domain-specific services for data tools, engines and platforms that maintaining and retrieving metadata. These services run in a view server on the OMAG Server Platform. |
 
 ---
 

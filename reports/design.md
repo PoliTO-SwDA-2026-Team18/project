@@ -10,7 +10,7 @@
 java -Xmx4g -jar ./depends.jar java ./egeria output -f json -s -d ./deps-output
 ```
 
-A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis.py) then processed this output to compute the final statistics.
+A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis.py) then processed this output to compute the final statistics. All code dependency counts refer to **`import` declarations** in the source files.
 
 
 ---
@@ -25,7 +25,7 @@ A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis
 | 51 | `repository-services-apis/.../OMRSMetadataCollection.java` |
 | 51 | `open-metadata-framework/.../OpenMetadataPropertyConverterBase.java` |
 
-`JacquardIntegrationConnector` ranks highest because it assembles the **Open Metadata Digital Product Catalog**, managing digital products across a single class: product catalogs, solution blueprints, reference data sets, governance actions, communities, glossaries, and data dictionaries. Each concern introduces its own set of property beans, elements, and context types.
+`JacquardIntegrationConnector` ranks highest because it implements the **Open Metadata Digital Product Catalog** — a unified registry that groups and exposes metadata assets (datasets, APIs, reports, etc.) as *digital products* that other teams can discover and subscribe to. Assembling this catalog entirely within a single class requires handling multiple distinct domains: product catalogs (i.e. the internal folder and collection structure that organizes products), solution blueprints, reference data sets, governance actions, communities, glossaries, and data dictionaries. Each domain brings its own set of property beans, metadata elements, and context types, resulting in a high number of imports.
 
 #### Lowest Outgoing Imports
 
@@ -35,7 +35,7 @@ A custom Python [script](/analysis/scripts/code-dependencies/dependency-analysis
 | 1 | `open-metadata-framework/.../DataMappingProperties.java` |
 | 1 | `open-metadata-framework/.../ConceptBeadAttributeProperties.java` |
 
-`CommunityMattersResource` ranks lowest because it is the server-side REST controller for **Community Matters OMVS**: it only exposes HTTP endpoints and immediately delegates each call to `CommunityMattersRESTServices`. Since all logic is delegated to `CommunityMattersRESTServices`, this class never touches Egeria types directly — `CommunityMattersRESTServices` is the only explicit Egeria import it declares.
+`CommunityMattersResource` ranks lowest because it is the Spring REST controller for **Community Matters OMVS** — the view service that manages communities, i.e. groups of people organized around a common theme or governance program within an organization. The controller's only responsibility is to expose HTTP endpoints and immediately forward each call to `CommunityMattersRESTServices`, which holds all the actual logic. Since the class contains no business logic and never manipulates Egeria domain types directly, it has a single dependency: `CommunityMattersRESTServices` itself.
 
 #### Most Imported Files
 
