@@ -42,7 +42,7 @@
 |------------|------:|-----------------------|-------|--------|
 |            |       |                       |       |        |
 
-**Summary:**
+**Summary:** No activities related to the project were carried out
 
 ---
 
@@ -50,9 +50,9 @@
 
 | Date       | Hours | Activity Type         | Notes | Commit |
 |------------|------:|-----------------------|-------|--------|
-|            |       |                       |       |        |
+| 07/06/2026 |  4.0  | General review        | A general review of the entire project has been carried out with updates related to the overview and design |  |
 
-**Summary:**
+**Summary:** During this sprint, review activities were carried out
 
 ---
 
