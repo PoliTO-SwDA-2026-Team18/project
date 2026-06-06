@@ -199,7 +199,7 @@ Using file `analysis.txt`, I derived the following conclusions.
   This suggests that, although they are physically separate, they logically form a single information block. 
   Splitting these dependencies in the future may be difficult.
 
-- **`Enterprise Executors`**   
+- **`Enterprise Executors` (inside `repository-services` package)**   
   Search executors (e.g., FindEntitiesByClassificationExecutor vs FindEntitiesByPropertyValueExecutor) show very high coupling (100%–92%).
   This suggests code duplication or highly similar logic (if a bug appears in one, it is likely present in the other as well).
   It can be usefull estract common logic in a unique class.
@@ -246,8 +246,7 @@ The analysis, however, reveals the presence of strong hidden logical dependencie
 | `adminservices.client`       | `adminservices.spring`                  |
 | `platformservices.client`    | `platformservices.server`               |
 
-The fact that client-side modules and their corresponding server/Spring services evolve together, despite exhibiting weak direct code dependencies, suggests that communication protocols and API contracts are not sufficiently isolated.
-This pattern often indicates architectural erosion, where changes propagate across distributed layers due to implicit behavioral coupling rather than explicit interface definitions.
+The observed pattern is consistent with the expected evolution of distributed service interfaces. The low structural dependency confirms the separation between client and server implementations, while the logical coupling reflects the coordinated evolution required by shared communication contracts.
 
 <br>
 
@@ -264,14 +263,14 @@ The relationship between metadatasecurity.connectors and metadatasecurity.server
 The co-evolution observed between governanceactions.ffdc (First Failure Data Capture) and governanceactions.provisioning indicates that failure-management mechanisms and governance provisioning workflows are strongly interconnected at the logical level.
 These findings may reveal critical maintenance hotspots, where architectural modularity is only partially achieved in practice.
 
-<br>
-
-#### <u>4. Other packages</u>
+<br><br>
 
 The vast majority of the remaining package pairs in the dataset exhibit LOW - LOW values and are therefore correctly classified as UNRELATED or NORMAL.
 These cases do not represent architectural anomalies.
 
 <br><br>
+
+# Patterns
 
 ## Observer Pattern
 
@@ -323,9 +322,9 @@ The Facade pattern solves the **complexity and interface pollution** problems by
 
 ### 3. Alternative to the Pattern: Pros and Cons
 **Alternative: Direct Subsystem Access**
-* **Pros:** * Provides maximum flexibility, allowing access to low-level features not exposed by the Facade.
+* **Pros:** Provides maximum flexibility, allowing access to low-level features not exposed by the Facade.
     * Avoids the overhead of an additional abstraction layer.
-* **Cons:** * **High Coupling:** Any change in the internal REST protocol or security management would break all client applications.
+* **Cons:**  High Coupling. Any change in the internal REST protocol or security management would break all client applications.
     * **Complexity:** Developers must write significant boilerplate code to manage connections and authentication.
     * **Error Prone:** Improper handling of low-level components can lead to inconsistent metadata states or security vulnerabilities.
 

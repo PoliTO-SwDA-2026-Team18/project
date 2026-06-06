@@ -51,6 +51,8 @@ Egeria’s highly configurable platform supports multi-tenancy, allowing multipl
 
 **How metadata flows.** When metadata changes in a source tool, its connector writes the update to the **Metadata Access Server**, which publishes an event on a notification channel. All other connectors receive this event and update their respective tools, keeping the entire ecosystem synchronized.
 
+Egeria handles metadata synchronization primarily through governance rules and authoritative sources rather than automatic conflict resolution mechanisms. When concurrent updates occur on the same metadata element, conflicts are typically resolved by giving precedence to the designated authoritative source or through stewardship processes, ensuring consistency across federated repositories.
+
 *Figure 4 — Bidirectional metadata exchange through Egeria connectors*
 
 ![Egeria exchange](./images/egeria-exchange.svg)
