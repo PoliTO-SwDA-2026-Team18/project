@@ -7,7 +7,8 @@ title Integration Daemon - Component Diagram (Level 3)
 
 System_Ext(extTool, "Data Tools", "BI, ETL, data science platforms that produce or consume metadata")
 Container(mas, "Metadata Access Server", "OMAG Server", "Hosts OMAS, OMRS, common-services")
-Container(msgBus, "Apache Kafka", "Kafka", "Event backbone for asynchronous metadata change events")
+System_Ext(msgBus, "Apache Kafka", "Kafka", "Event backbone for asynchronous metadata change events")
+System_Ext(dataSources, "Data Sources", "Databases, data lakes, file systems, data warehouses — catalogues and lineage extracted via Integration Connectors")
 
 Container_Boundary(intd, "Integration Daemon") {
 
@@ -17,10 +18,13 @@ Container_Boundary(intd, "Integration Daemon") {
 }
 
 Rel(extTool, adapters, "Reads catalogue metadata and pushes lineage / audit events", "REST / Kafka")
-Rel(adapters, frameworks, "Implements pluggable interfaces")
+Rel(adapters, frameworks, "Uses framework interfaces", "Java API")
 
-Rel(adapters, mas, "Pushes / pulls metadata via paired OMAS", "REST / HTTPS")
-Rel(mas, msgBus, "Publishes and consumes OMRS / cohort topic events", "Kafka protocol")
+Rel(adapters, mas, "Pushes metadata via paired OMAS", "REST / HTTPS")
+Rel(mas, adapters, "Returns requested metadata", "REST / HTTPS")
+Rel(mas, msgBus, "Publishes OMRS / cohort topic events", "Kafka protocol")
+Rel(msgBus, mas, "Delivers metadata change events", "Kafka protocol")
 Rel(adapters, msgBus, "Subscribes to metadata change events for sync", "Kafka protocol")
+Rel(adapters, dataSources, "Extracts metadata and lineage via Integration Connectors", "JDBC / REST / native")
 
 @enduml
