@@ -178,10 +178,11 @@ The co-dependency analysis was performed using CodeMaat, following this workflow
 
 ![co-dependency anaysis workflow](./images/co-dependencies-workflow.jpg)
 
-Using file `analysis.txt`, I derived the following conclusions.
-
+Using file [analysis.txt](../analysis/data/co-dependencies/analysis.txt), I derived the following conclusions.
 
 ### Hub analysis
+
+An hub, is a component with an unusually high number of co-dependency relationships compared to other components in the system.
 
 - **`Content packs (.omarchive)`**  
   These files contain definitions of data models. If you change the data model, you need to update almost everything else.
@@ -201,7 +202,7 @@ Using file `analysis.txt`, I derived the following conclusions.
 
 - **`Enterprise Executors` (inside `repository-services` package)**   
   Search executors (e.g., FindEntitiesByClassificationExecutor vs FindEntitiesByPropertyValueExecutor) show very high coupling (100%–92%).
-  This suggests code duplication or highly similar logic (if a bug appears in one, it is likely present in the other as well).
+  This is caused by code duplication and shared logic; since the classes are closely related (any bug in one is likely to exist in the other as well).
   It can be usefull estract common logic in a unique class.
 
 

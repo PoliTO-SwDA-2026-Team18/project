@@ -56,7 +56,7 @@ Toward the end of Sprint 2, I started looking for inconsistencies between code d
 
 | Date       | Hours | Activity Type         | Notes |
 |------------|------:|-----------------------|-------|
-|            |       |                       |       |        
+|  7/06/2026 |   1   |   Meeting : review    |       |        
 
 **Summary:**
 
