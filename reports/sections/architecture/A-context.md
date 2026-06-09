@@ -55,7 +55,7 @@ Arrows are unidirectional and labelled with intent. Protocol detail belongs in t
 
 - **Pull-first for Data Sources.** Integration connectors live inside Egeria and poll or observe the sources. The push model (sources emitting events to
   Kafka or to a REST endpoint) exists but is the minority case and is captured at L2.
-- **Tools initiate, not Egeria.** Outbound notifications to data tools, when they happen, travel via Kafka rather than via direct calls from Egeria —
+- **Tools initiate, not Egeria.** Outbound notifications to data tools, when they happen, travel via Kafka rather than via direct calls from Egeria
   therefore the only L1 arrow between Egeria and Data Tools is _inbound_.
 - **Single platform at L1.** Modelling a cohort as N separate systems at L1 would suggest each platform is independently usable, which is misleading: the
   cohort is a federation property of a single Egeria deployment, not a separate product.
