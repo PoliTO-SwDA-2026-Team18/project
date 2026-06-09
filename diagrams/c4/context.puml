@@ -24,7 +24,7 @@ Rel(consumer,  ui, "Searches and consults assets")
 Rel(admin,     ui, "Configures platform and logical servers")
 Rel(admin,     egeria, "Administers servers directly via CLI / scripts")
 
-Rel(ui, egeria, "Exposes metadata catalogue, governance and administration operations to users")
+Rel(ui, egeria, "Forwards user requests to catalogue, governance and administration operations to egeria")
 
 Rel(egeria, dataSources,    "Extracts metadata and lineage")
 Rel(egeria, kafka,          "Publishes and consumes metadata change events")

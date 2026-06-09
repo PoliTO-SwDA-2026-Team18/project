@@ -47,28 +47,13 @@
 
 ## Sprint 5 — Jun 2–10, 2026
 
-| Date     | Hours | Activity Type                                           | Notes | Commit   |
-| -------- | ----: | ------------------------------------------------------- | ----- | -------- |
-| 03/06/26 |     1 | Review of the Architecture report and exported diagrams |       | a5df7199 |
-| 07/06/26 |     2 | Review of architecture report                           |       |          |
-| 08/06/26 |   0.5 | Review of container diagram                             |       | 3cc19f97 |
+| Date       | Hours | Activity Type                                           | Notes                                                                                                       | Commit   |
+| ---------- | ----: | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------- |
+| 03/06/26   |     1 | Review of the Architecture report and exported diagrams |                                                                                                             | a5df7199 |
+| 07/06/26   |     2 | Review of architecture report                           |                                                                                                             |          |
+| 08/06/26   |   0.5 | Review of container diagram                             |                                                                                                             | 3cc19f97 |
+| 09/06/2026 |   1.0 | General review                                          | A general review of the entire project has been carried out with updates related to the overview and design |          |
 
 **Summary:** During Sprint 5, I carried out review activities on the architecture report and the exported SVG diagrams, and refined the container diagram flow.
 
 ---
-
-## Total Effort
-
-| Activity Type                    | Hours |
-| -------------------------------- | ----: |
-| Meeting                          |       |
-| Overview                         |       |
-| Design — Dependencies            |       |
-| Design — Patterns                |       |
-| Design — Summary                 |       |
-| Architecture — Context           |       |
-| Architecture — Container         |       |
-| Architecture — Component         |       |
-| Architecture — Characteristics   |       |
-| Repository Setup & Configuration |       |
-| **Total**                        |       |

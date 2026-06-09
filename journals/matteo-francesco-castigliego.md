@@ -4,34 +4,34 @@
 
 ## Sprint 1 — Apr 7–20, 2026
 
-| Date       | Hours | Activity Type         | Notes | Commit |
-|------------|------:|-----------------------|-------|--------|
-| 15/04/2026 |  0.5  | Meeting               | Meeting with team members to discuss how divide the work for the analysis |        |
-| 19/04/2026 |   2   | Overview | General analysis of all documentation files and overview.md to decide main containers and components to focus for components description |     |
+| Date       | Hours | Activity Type | Notes                                                                                                                                    | Commit |
+| ---------- | ----: | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 15/04/2026 |   0.5 | Meeting       | Meeting with team members to discuss how divide the work for the analysis                                                                |        |
+| 19/04/2026 |     2 | Overview      | General analysis of all documentation files and overview.md to decide main containers and components to focus for components description |        |
 
-**Summary:** During Sprint 1 I partecipated to the meeting to organize the work and I read the most of the documentation to understand the structure of the project to be ready for the writing of the analysis. 
+**Summary:** During Sprint 1 I partecipated to the meeting to organize the work and I read the most of the documentation to understand the structure of the project to be ready for the writing of the analysis.
 
 ---
 
 ## Sprint 2 — Apr 21 – May 4, 2026
 
-| Date       | Hours | Activity Type         | Notes | Commit |
-|------------|------:|-----------------------|-------|--------|
-| 22/04/2026 |  1.5  | Architecture - Component | First look to the the project and firt notes to describe components | 853e2a0 |
-| 23/04/2026 |   1   | Architecture - Component | Added informations about some component and module and added other informations | 4a39916 |
-| 26/04/2026 |  1.5  | Architecture - Component | Added informations about last components i decided to analyze, added justification for excluded components and began the description for SOLID principles violation | e7ad72d-45c713f-a31451a |
-| 29/04/2026 |   2   | Architecture - Component | Added description of missing SOLID principles | 7211e0c |
+| Date       | Hours | Activity Type            | Notes                                                                                                                                                               | Commit                  |
+| ---------- | ----: | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| 22/04/2026 |   1.5 | Architecture - Component | First look to the the project and firt notes to describe components                                                                                                 | 853e2a0                 |
+| 23/04/2026 |     1 | Architecture - Component | Added informations about some component and module and added other informations                                                                                     | 4a39916                 |
+| 26/04/2026 |   1.5 | Architecture - Component | Added informations about last components i decided to analyze, added justification for excluded components and began the description for SOLID principles violation | e7ad72d-45c713f-a31451a |
+| 29/04/2026 |     2 | Architecture - Component | Added description of missing SOLID principles                                                                                                                       | 7211e0c                 |
 
-**Summary:** During sprint 2 I've analyzed the architecture of the project by the point of view of components providing a detailed description of all elements. 
+**Summary:** During sprint 2 I've analyzed the architecture of the project by the point of view of components providing a detailed description of all elements.
 
 ---
 
 ## Sprint 3 — May 5–18, 2026
 
-| Date       | Hours | Activity Type         | Notes | Commit |
-|------------|------:|-----------------------|-------|--------|
-| 10/05/2026 |  1.5  | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
-| 17/05/2026 |   2   | Architecture - Characteristics | Coupling analysis | 1d65ab7 |
+| Date       | Hours | Activity Type                  | Notes                                                  | Commit  |
+| ---------- | ----: | ------------------------------ | ------------------------------------------------------ | ------- |
+| 10/05/2026 |   1.5 | Architecture - Characteristics | I've analyzed different characteristics of the project | 88a06ee |
+| 17/05/2026 |     2 | Architecture - Characteristics | Coupling analysis                                      | 1d65ab7 |
 
 **Summary:** During sprint 3 I've completed the analysis of main charactersistics of the project.
 
@@ -39,12 +39,12 @@
 
 ## Sprint 4 — May 19 – Jun 1, 2026
 
-| Date       | Hours | Activity Type         | Notes | Commit |
-|------------|------:|-----------------------|-------|--------|
-| 26/05/2026 |  2.5  |                       | Added UML diagrams | 39b9b67 |
-| 26/05/2026 |  1.5  | Architecture - Component | Added lines of code to make examples of SOLID principle violation | 5db48dc |
-| 27/05/2026 |  0.5  | Architecture | Putted all architectural parts together but must be reviewed to respect the max number of words | 9b9485f |
-| 01/06/2006 |  2.5  | Architecture - Component and characteristics - professor's feedback| I have changed some description due to changes made in diagrams and corrected names suggested after professor's feedback | 1d872d6 |
+| Date       | Hours | Activity Type                                                       | Notes                                                                                                                    | Commit  |
+| ---------- | ----: | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------- |
+| 26/05/2026 |   2.5 |                                                                     | Added UML diagrams                                                                                                       | 39b9b67 |
+| 26/05/2026 |   1.5 | Architecture - Component                                            | Added lines of code to make examples of SOLID principle violation                                                        | 5db48dc |
+| 27/05/2026 |   0.5 | Architecture                                                        | Putted all architectural parts together but must be reviewed to respect the max number of words                          | 9b9485f |
+| 01/06/2006 |   2.5 | Architecture - Component and characteristics - professor's feedback | I have changed some description due to changes made in diagrams and corrected names suggested after professor's feedback | 1d872d6 |
 
 **Summary:** During Sprint 4 I have worked on UML diagrams and I corrected some description due to changes made in diagrams. I've merged various file of architecture but must be reviewed.
 
@@ -52,28 +52,13 @@
 
 ## Sprint 5 — Jun 2–10, 2026
 
-| Date       | Hours | Activity Type         | Notes | Commit |
-|------------|------:|-----------------------|-------|--------|
-| 02/06/2026 |  1.5  |     Architecture      | Merging of level 1 and level 2 parts   |  823022f  |
-| 07/06/2026 |   1   |       Meeting         | Meeting with all team members for a general review of the project |        |
-| 09/06/2026 |  1.5  |     Architecture      | Added details | 70b0bd1 |
+| Date       | Hours | Activity Type  | Notes                                                                                                       | Commit  |
+| ---------- | ----: | -------------- | ----------------------------------------------------------------------------------------------------------- | ------- |
+| 02/06/2026 |   1.5 | Architecture   | Merging of level 1 and level 2 parts                                                                        | 823022f |
+| 07/06/2026 |     1 | Meeting        | Meeting with all team members for a general review of the project                                           |         |
+| 09/06/2026 |   1.5 | Architecture   | Added details                                                                                               | 70b0bd1 |
+| 09/06/2026 |   1.0 | General review | A general review of the entire project has been carried out with updates related to the overview and design |         |
 
 **Summary:**
 
 ---
-
-## Total Effort
-
-| Activity Type                     | Hours |
-|-----------------------------------|------:|
-| Meeting                           |       |
-| Overview                          |       |
-| Design — Dependencies             |       |
-| Design — Patterns                 |       |
-| Design — Summary                  |       |
-| Architecture — Context            |       |
-| Architecture — Container          |       |
-| Architecture — Component          |       |
-| Architecture — Characteristics    |       |
-| Repository Setup & Configuration  |       |
-| **Total**                         |       |

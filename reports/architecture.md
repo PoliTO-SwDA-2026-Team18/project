@@ -35,15 +35,15 @@ Actors are grouped by functional role, not job title: this is stable across orga
 
 ### Key Interactions
 
-| Flow                                                     | Intent                                                                                                                                                            |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Architect / Steward / Consumer / Admin → Egeria React UI | Human actors reach Egeria through the web UI, which exposes metadata catalogue, governance and administration operations.                                         |
-| Egeria React UI → Egeria                                 | The UI forwards user requests to the platform as metadata and governance operations.                                                                              |
+| Flow                                                     | Intent                                                                                                                                                                                                           |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Architect / Steward / Consumer / Admin → Egeria React UI | Human actors reach Egeria through the web UI, which exposes metadata catalogue, governance and administration operations.                                                                                        |
+| Egeria React UI → Egeria                                 | The UI forwards user requests to the platform as metadata and governance operations.                                                                                                                             |
 | Admin → Egeria                                           | The administrator also operates the platform **directly** via CLI / scripts, bypassing the UI (e.g. server configuration and lifecycle). This direct channel resurfaces at L2 as Admin → Metadata Access Server. |
-| Egeria → Data Sources                                    | Egeria **pulls** schema, lineage and statistics through integration connectors that run inside the platform.                                                      |
-| Egeria → Apache Kafka                                    | Egeria publishes and consumes Open Metadata change events; the platform connects to the broker as both publisher and subscriber.                                  |
-| Egeria → Third-party Metadata Repositories               | Egeria **federates** metadata with third-party repositories via the Repository Proxy, translating between Open Metadata Types and each repository's native model. |
-| Data Tools → Egeria                                      | BI / ETL tools **call Egeria's REST APIs** to read catalogue metadata and to push lineage / audit events. The tools initiate; Egeria does not push to them.       |
+| Egeria → Data Sources                                    | Egeria **pulls** schema, lineage and statistics through integration connectors that run inside the platform.                                                                                                     |
+| Egeria → Apache Kafka                                    | Egeria publishes and consumes Open Metadata change events; the platform connects to the broker as both publisher and subscriber.                                                                                 |
+| Egeria → Third-party Metadata Repositories               | Egeria **federates** metadata with third-party repositories via the Repository Proxy, translating between Open Metadata Types and each repository's native model.                                                |
+| Data Tools → Egeria                                      | BI / ETL tools **call Egeria's REST APIs** to read catalogue metadata and to push lineage / audit events. The tools initiate; Egeria does not push to them.                                                      |
 
 Arrows are unidirectional and labelled with intent. Protocol detail belongs in the Container diagram.
 
@@ -52,7 +52,7 @@ Arrows are unidirectional and labelled with intent. Protocol detail belongs in t
 - **Pull-first for Data Sources.** Integration connectors live inside Egeria and poll or observe the sources. The push model (sources emitting events to Kafka or to a REST endpoint) exists but is the minority case and is captured at L2.
 - **Tools initiate, not Egeria.** Outbound notifications to data tools, when they happen, travel via Kafka rather than via direct calls from Egeria therefore the only L1 arrow between Egeria and Data Tools is _inbound_.
 - - **Single platform at L1.** Modelling a cohort as N separate systems at L1 would suggest each platform is independently usable, which is misleading: the
-  cohort is a federation property of a single Egeria deployment, not a separate product.
+    cohort is a federation property of a single Egeria deployment, not a separate product.
 
 ---
 
@@ -108,14 +108,14 @@ The Metadata Access Server is the central container of the architecture. It is c
 - **`repository-services (OMRS)`**: when a project borns is composed by a small number of interfaces, this number increases during the development and several interfaces are present, as consequence multiple silos of metadata are created. The goal of OMRS is to bring these repositories together so metadata are linked and can work together. Sub-modules:
   - _apis_: connector interfaces and event structures for the repository service;
   - _archive-utilities_: provides utilities to build Open Metadata Archives;
-  - _client_: calls two client implementations — the *Local Repository Services Client* for calls to a local repository and the *Enterprise Repository Services Client* for calls to the enterprise-wide federated repository;
+  - _client_: calls two client implementations — the _Local Repository Services Client_ for calls to a local repository and the _Enterprise Repository Services Client_ for calls to the enterprise-wide federated repository;
   - _implementation_: support for peer-to-peer federation logic;
   - _spring_: Spring annotations that expose OMRS capabilities as REST services.
 - **`common-services`**: shared Java utilities consumed by both clients and the specialised services running in the OMAG Server. Key sub-modules include:
-    - *First-Failure Data Capture (FFDC) Service*: common exception handling and error reporting.
-    - *Metadata Security*: authorisation of access to OMAG services and individual metadata instances.
-    - *Repository Handler*: mediates access to multiple related metadata instances from OMRS, translating repository-level exceptions into the exception types used by the access services.
-- **`user-security`**: token-based authentication layer. Credentials extracted from incoming HTTP request headers are stored in thread-local storage and propagated to runtime modules and security connectors. The core sub-module is *token-manager*, which implements this extraction and distribution mechanism.
+  - _First-Failure Data Capture (FFDC) Service_: common exception handling and error reporting.
+  - _Metadata Security_: authorisation of access to OMAG services and individual metadata instances.
+  - _Repository Handler_: mediates access to multiple related metadata instances from OMRS, translating repository-level exceptions into the exception types used by the access services.
+- **`user-security`**: token-based authentication layer. Credentials extracted from incoming HTTP request headers are stored in thread-local storage and propagated to runtime modules and security connectors. The core sub-module is _token-manager_, which implements this extraction and distribution mechanism.
 
 ### Integration Daemon
 
@@ -149,7 +149,7 @@ public class JacquardIntegrationConnector extends CatalogIntegratorConnector {
 
 ```java
 public enum AccessServiceDescription {
-    OCF_METADATA_MANAGEMENT(...), 
+    OCF_METADATA_MANAGEMENT(...),
     OMF_METADATA_MANAGEMENT(...),
     GAF_METADATA_MANAGEMENT(...);
     // NEW_STANDARD_MANAGEMENT(...)  <-- requires modifying this enum
@@ -210,9 +210,10 @@ A structural and co-change analysis (Design report, Sections A1 and A2) reveals 
 **Cohesion** measures how much a module influences a single responsibility. A module with high cohesion does one thing well; a module with low cohesion tends to change for many different reasons. In Egeria, `JacquardIntegrationConnector` is an example of low cohesion: it assembles the entire Open Metadata Digital Product Catalog in a single class, handling catalogs, glossaries, dictionaries, reference data, and governance actions, violating the single responsability principle. While, `CommunityMattersResource` shows high cohesion: it only exposes HTTP endpoints and immediately delegates every call to `CommunityMattersRESTServices`, resulting in a single Egeria import and a tightly focused responsability.
 
 - **Structural coupling (code)**:
-    - **Central hubs**: `frameworks`, `repository-services`, and `access-services` act as architectural hubs. `frameworks` is the most critical, imported by almost every other module in the system. All connectors and services depend on `frameworks` and as consequence some change to a framework propagate risks to the entire codebase.
-    - **SOLID-driven coupling**: coupling is amplified by SOLID violations such as the interface `OMRSMetadataCollection` (ISP) and the direct instantiation of concrete classes like `SoftwareServerProperties` (DIP), which prevent the compiler from enforcing the boundary between abstraction and implementation.
+  - **Central hubs**: `frameworks`, `repository-services`, and `access-services` act as architectural hubs. `frameworks` is the most critical, imported by almost every other module in the system. All connectors and services depend on `frameworks` and as consequence some change to a framework propagate risks to the entire codebase.
+  - **SOLID-driven coupling**: coupling is amplified by SOLID violations such as the interface `OMRSMetadataCollection` (ISP) and the direct instantiation of concrete classes like `SoftwareServerProperties` (DIP), which prevent the compiler from enforcing the boundary between abstraction and implementation.
 
 **Logical coupling (co-change)**:
-  - **Over-coupling**: Some Search Executor classes, such as `FindEntitiesByClassificationExecutor` and `FindEntitiesByPropertyValueExecutor`, are often changed together. This suggests that they share similar or duplicated logic. Introducing a common base class could reduce duplication and make maintenance easier.
-  - **Hidden dependencies**: The `.omarchive` content-pack files are almost always modified together. Although they are stored as separate files, they behave like a single component. This dependency is not visible in the code structure and can only be discovered by analyzing the change history, making maintenance more difficult and risky.
+
+- **Over-coupling**: Some Search Executor classes, such as `FindEntitiesByClassificationExecutor` and `FindEntitiesByPropertyValueExecutor`, are often changed together. This suggests that they share similar or duplicated logic. Introducing a common base class could reduce duplication and make maintenance easier.
+- **Hidden dependencies**: The `.omarchive` content-pack files are almost always modified together. Although they are stored as separate files, they behave like a single component. This dependency is not visible in the code structure and can only be discovered by analyzing the change history, making maintenance more difficult and risky.

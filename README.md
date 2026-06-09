@@ -4,10 +4,10 @@ Analysis of the open-source system **[Egeria](https://github.com/odpi/egeria)** 
 
 ### Analyzed System
 
-| | |
-|---|---|
-| **Repository** | [odpi/egeria](https://github.com/odpi/egeria) |
-| **Analyzed Release** | [V6.0](https://github.com/odpi/egeria/releases/tag/V6.0) |
+|                      |                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------ |
+| **Repository**       | [odpi/egeria](https://github.com/odpi/egeria)                                              |
+| **Analyzed Release** | [V6.0](https://github.com/odpi/egeria/releases/tag/V6.0)                                   |
 | **Reference Commit** | [`d893f299`](https://github.com/odpi/egeria/tree/d893f299defd372c7c571e6d8f934a127a2fbd75) |
 
 ---
@@ -162,29 +162,13 @@ project/
 
 ## Contributions
 
-| Member | Contributions |
-|---|---|
-| **Gabriele Ferrero** | `overview.md` · `sections/design/A1-code-dependencies.md` |
-| **Luca Ferrone** | `sections/design/A2-knowledge-dependencies.md` · `sections/design/C-summary.md` |
-| **Michele Castrucci** | `sections/design/B-pattern-1.md` · `sections/design/B-pattern-2.md` |
-| **Federico Angeloni** | `sections/design/B-pattern-3.md` · `sections/design/B-pattern-4.md` |
-| **Viorel Strogoteanu** | `sections/architecture/A-context.md` · `sections/architecture/B-container.md` |
+| Member                           | Contributions                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| **Gabriele Ferrero**             | `overview.md` · `sections/design/A1-code-dependencies.md`                             |
+| **Luca Ferrone**                 | `sections/design/A2-knowledge-dependencies.md` · `sections/design/C-summary.md`       |
+| **Michele Castrucci**            | `sections/design/B-pattern-1.md` · `sections/design/B-pattern-2.md`                   |
+| **Federico Angeloni**            | `sections/design/B-pattern-3.md` · `sections/design/B-pattern-4.md`                   |
+| **Viorel Strogoteanu**           | `sections/architecture/A-context.md` · `sections/architecture/B-container.md`         |
 | **Matteo Francesco Castigliego** | `sections/architecture/C-component.md` · `sections/architecture/D-characteristics.md` |
 
 ---
-
-## Total Effort
-
-| Activity Type                     | Hours |
-|-----------------------------------|------:|
-| Meeting                           |   0.5 |
-| Overview                          |   8.0 |
-| Design — Dependencies             | 31.25 |
-| Design — Patterns                 |  23.5 |
-| Design — Summary                  |   1.0 |
-| Architecture — Context            |  8.25 |
-| Architecture — Container          | 10.25 |
-| Architecture — Component          |   7.5 |
-| Architecture — Characteristics    |   3.5 |
-| Repository Setup & Configuration  |   3.0 |
-| **Total**                         | **96.75** |

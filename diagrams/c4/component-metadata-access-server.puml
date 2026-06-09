@@ -10,7 +10,7 @@ Container(view,   "View Server",         "OMAG Server", "Hosts OMVS; provides RE
 Container(intd,   "Integration Daemon",  "OMAG Server", "Hosts OMIS and integration connectors; synchronises metadata with third-party technologies")
 Container(engine, "Engine Host",         "OMAG Server", "Hosts OMES and governance engines; runs automated governance actions")
 ContainerDb(dataRepo, "Metadata Repository", "PostgreSQL / XTDB / In-Memory", "Persistent store for metadata, audit, types")
-System_Ext(msgBus, "Apache Kafka", "Kafka", "Event backbone for cohort federation and asynchronous metadata exchange")
+System_Ext(msgBus, "Apache Kafka",  "Event backbone for cohort federation and asynchronous metadata exchange")
 
 Container_Boundary(mas, "Metadata Access Server") {
 
@@ -38,6 +38,6 @@ Rel(userSec, common, "Provides authenticated principal", "Java API")
 
 Rel(omrs, dataRepo, "Reads and writes metadata via Repository Connector", "JDBC / Java API")
 Rel(omrs, msgBus, "Publishes OMRS / cohort topic events", "Kafka protocol")
-Rel(msgBus, omrs, "Delivers metadata change events", "Kafka protocol")
+' Rel(msgBus, omrs, "Delivers metadata change events", "Kafka protocol")
 
 @enduml

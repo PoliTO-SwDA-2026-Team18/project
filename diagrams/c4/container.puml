@@ -40,5 +40,6 @@ Rel(proxy, kafka,         "Exchanges cohort events with other members",         
 Rel(proxy,  thirdPartyRepo, "Federates metadata via Repository Proxy",                  "REST / native API")
 Rel(intd,   dataSources,    "Extracts metadata and lineage via Integration Connectors", "JDBC / REST / native")
 Rel(externalTools, intd,  "Reads catalogue metadata and pushes lineage / audit events", "REST / Kafka")
+Rel(intd, kafka, "Subscribes to metadata change events for sync", "Kafka protocol")
 
 @enduml
